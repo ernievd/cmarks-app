@@ -45,62 +45,49 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-passport.use(new LinkedInStrategy({
-		consumerKey: LINKEDIN_API_KEY,
-		consumerSecret: LINKEDIN_SECRET_KEY,
-		callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback"
-	},
-	function(token, tokenSecret, profile, done) {
-		User.findOrCreate({ linkedinId: profile.id }, function (err, user) {
-			return done(err, user);
-		});
-	}
-));
-
-
 // Does actual work of logging in
-// passport.use('local', new localStrategy({
-//     passReqToCallback: true,
-//     usernameField: 'username'
-//     }, function(req, username, password, done) {
-// 	    pool.connect(function (err, client, release) {
-// 	    	console.log('called local - pg');
-//
-//         // assumes the username will be unique, thus returning 1 or 0 results
-//         client.query("SELECT * FROM users WHERE username = $1", [username],
-//           function(err, result) {
-//             var user = {};
-//
-//             console.log('here');
-//
-//             // Handle Errors
-//             if (err) {
-//               console.log('connection err ', err);
-//               done(null, user);
-//             }
-//
-//             release();
-//
-//             if(result.rows[0] != undefined) {
-//               user = result.rows[0];
-//               console.log('User obj', user);
-//               // Hash and compare
-//               if(encryptLib.comparePassword(password, user.password)) {
-//                 // all good!
-//                 console.log('passwords match');
-//                 done(null, user);
-//               } else {
-//                 console.log('password does not match');
-//                 done(null, false, {message: 'Incorrect credentials.'});
-//               }
-//             } else {
-//               console.log('no user');
-//               done(null, false);
-//             }
-//
-//           });
-// 	    });
-//     }
-// ));
+passport.use('local', new localStrategy({
+    passReqToCallback: true,
+    usernameField: 'username'
+    }, function(req, username, password, done) {
+	    pool.connect(function (err, client, release) {
+	    	console.log('called local - pg');
+
+        // assumes the username will be unique, thus returning 1 or 0 results
+        client.query("SELECT * FROM users WHERE username = $1", [username],
+          function(err, result) {
+            var user = {};
+
+            console.log('here');
+
+            // Handle Errors
+            if (err) {
+              console.log('connection err ', err);
+              done(null, user);
+            }
+
+            release();
+
+            if(result.rows[0] != undefined) {
+              user = result.rows[0];
+              console.log('User obj', user);
+              // Hash and compare
+              if(encryptLib.comparePassword(password, user.password)) {
+                // all good!
+                console.log('passwords match');
+                done(null, user);
+              } else {
+                console.log('password does not match');
+                done(null, false, {message: 'Incorrect credentials.'});
+              }
+            } else {
+              console.log('no user');
+              done(null, false);
+            }
+
+          });
+	    });
+    }
+));
 
 module.exports = passport;
