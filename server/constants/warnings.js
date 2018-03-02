@@ -1,6 +1,5 @@
 const badSecret = `
 ----------------------------
-// hey ernie
 *** WARNING ***
 Your application is not very secure.
 You need to set SERVER_SESSION_SECRET to a better secret
