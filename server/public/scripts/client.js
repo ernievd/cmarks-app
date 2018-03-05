@@ -1,4 +1,21 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial']);
+
+myApp.controller('NavController', function($scope, $mdSidenav) {
+  $scope.openRightMenu = function() {
+    $mdSidenav('right').toggle();
+  };
+});
+
+myApp.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('red', {
+      'default': '500'
+    })
+    .accentPalette('grey', {
+      'default': '900'
+    });
+});
+
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
