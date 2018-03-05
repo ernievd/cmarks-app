@@ -44,6 +44,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
 // Does actual work of logging in
 passport.use('local', new localStrategy({
     passReqToCallback: true,
