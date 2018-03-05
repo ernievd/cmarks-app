@@ -5,18 +5,18 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
-      redirectTo: 'home'
+      redirectTo: 'login'
     })
-    .when('/home', {
-      templateUrl: '/views/templates/home.html',
+    .when('/login', {
+      templateUrl: '/views/templates/login.html',
       controller: 'LoginController as vm',
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
-      controller: 'LoginController as vm'
+      controller: 'LoginController as vm',
     })
-    .when('/user', {
-      templateUrl: '/views/templates/user.html',
+    .when('/join-event', {
+      templateUrl: '/views/templates/join-event.html',
       controller: 'UserController as vm',
       resolve: {
         getuser : function(UserService){
@@ -24,8 +24,35 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
+    .when('/event', {
+      templateUrl: '/views/templates/event.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/my-events', {
+      templateUrl: '/views/templates/my-events.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/event-cmarks', {
+      templateUrl: '/views/templates/event-cmarks.html',
+      controller: 'InfoController as vm',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/manage-events', {
+      templateUrl: '/views/templates/manage-events.html',
       controller: 'InfoController as vm',
       resolve: {
         getuser : function(UserService){
