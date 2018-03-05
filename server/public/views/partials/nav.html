@@ -1,9 +1,18 @@
 
   <div layout="row" ng-controller="NavController">
     <md-sidenav md-component-id="right" class="md-sidenav-right">
-      <a href="#!join-event">Join Event</a>
-      <a href="#!my-events">My Events</a>
-      <a href="#!manage-events">Manage Events</a>
-      <md-button ng-click="vm.userService.logout()">Log Out</md-button>
+      <md-toolbar class="md-primary">
+
+      </md-toolbar>
+      <md-list class="nav-container">
+        <md-list-item class="nav-divider"><p>Audience</p></md-list-item>
+        <md-list-item class="nav-link"><a href="#!join-event">Join Event</a></md-list-item>
+        <md-list-item class="nav-link"><a href="#!my-events">My Events</a></md-list-item>
+      </md-list>
+      <md-list>
+        <md-list-item class="nav-divider"><p>Speaker</p></md-list-item>
+        <md-list-item class="nav-link"><a href="#!manage-events">Manage Events</a></md-list-item>
+      </md-list>
+      <md-button class="logout-btn" ng-click="vm.userService.logout()">Log Out</md-button>
     </md-sidenav>
   </div>

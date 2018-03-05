@@ -1,0 +1,29 @@
+.nav-container {
+    padding: 0;
+}
+
+.nav-divider {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 80%;
+    font-size: 14pt;
+    border-bottom: 1px solid #F44336;
+    text-align: center;
+}
+
+.nav-link > a {
+    text-decoration: none;
+    color: #212121;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link > a:hover {
+    color: #F44336;
+}
+
+.logout-btn {
+    position: absolute !important;
+    bottom: 30px;
+    right: 30px;
+}
