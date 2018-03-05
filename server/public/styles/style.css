@@ -27,3 +27,24 @@
     bottom: 30px;
     right: 30px;
 }
+
+.heading {
+    text-align: center;
+}
+
+.subheading {
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #F44336;
+    width: 80%;
+}
+
+@media screen and (min-width: 900px) {
+    .subheading {
+        width: 25%;
+    }
+}
+
+.event-details > span {
+    line-height: 2;
+}
