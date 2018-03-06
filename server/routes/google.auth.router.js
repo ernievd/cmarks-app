@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('../auth/passport');
+var passport = require('../strategies/google.strategy');
 /**
  * GET /auth/google
  *
@@ -17,6 +17,7 @@ var passport = require('../auth/passport');
  */
 router.get('/google', passport.authenticate('google',
   {
+    client_id: process.env.CLIENT_ID,
     scope: ['openid', 'profile', 'email'],
     prompt: 'select_account',
   })
@@ -32,8 +33,8 @@ router.get('/google', passport.authenticate('google',
  */
 router.get('/google/callback', passport.authenticate('google',
   {
-    successRedirect: '/user', // take them to their data
-    failureRedirect: '/', // take them back home to try again
+    successRedirect: '/#!/join-event', // take them to their data
+    failureRedirect: '/login', // take them back home to try again
   })
 );
 /**
