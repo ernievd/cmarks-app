@@ -7,6 +7,7 @@ const sessionConfig = require('./modules/session-middleware');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const linkedinRouter = require('./routes/linkedin.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -21,11 +22,12 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/linked', linkedinRouter);
 
 // Serve static files
 app.use(express.static('server/public'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 /** Listen * */
 app.listen(PORT, () => {

@@ -1,6 +1,6 @@
 var express = require('express')
 	, passport = require('passport')
-	, LinkedinStrategy = require('./lib').Strategy;
+	, LinkedinStrategy = require('../lib').Strategy;
 
 //I added -
 var cookieParser = require('cookie-parser');
@@ -72,8 +72,8 @@ if ('development' == envir) {
 	app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 	app.use(session({
 		secret: 'keyboard cat',
-		 resave: false ,
-		 saveUninitialized: true //,
+		resave: false ,
+		saveUninitialized: true //,
 		// cookie: { secure: true }
 	}));
 
@@ -97,6 +97,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
 //   request.  The first step in Linkedin authentication will involve
 //   redirecting the user to linkedin.com.  After authorization, Linkedin
 //   will redirect the user back to this application at /auth/linkedin/callback
+//app.get('/auth/linkedin',
 app.get('/auth/linkedin',
 	passport.authenticate('linkedin', { state: 'SOME STATE' }),
 	function(req, res){
@@ -109,6 +110,8 @@ app.get('/auth/linkedin',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
+//app.get('/auth/linkedin/callback',
+//http://localhost:3000/api/linked/auth/linkedin/callback
 app.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', { failureRedirect: '/login' }),
 	function(req, res) {
@@ -121,10 +124,6 @@ app.get('/logout', function(req, res){
 	res.redirect('/');
 });
 
-var http = require('http');
-
-http.createServer(app).listen(3000);
-
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
@@ -134,3 +133,5 @@ function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
 	res.redirect('/login');
 }
+
+module.exports = app;
