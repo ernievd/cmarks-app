@@ -30,6 +30,15 @@
 
 .heading {
     text-align: center;
+    border-bottom: 1px solid #F44336;
+    width: 70%;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 900px) {
+    .heading { 
+        width: 100%;
+    }
 }
 
 .subheading {
@@ -40,4 +49,12 @@
 
 .event-details > span {
     line-height: 2;
+}
+
+.new-btn {
+    float: right;
+}
+
+.event-list {
+    clear: right;
 }
