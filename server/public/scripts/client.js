@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMdIcons']);
 
 myApp.controller('NavController', function($scope, $mdSidenav) {
   $scope.openRightMenu = function() {
