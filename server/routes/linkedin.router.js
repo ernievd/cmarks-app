@@ -13,8 +13,8 @@ const pool = require('../modules/pool.js');
 
 // API Access link for creating client ID and secret:
 // https://www.linkedin.com/secure/developer
-const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
-const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
+const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_API_KEY;
+const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_SECRET_KEY;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -23,11 +23,11 @@ const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete Linkedin profile is
 //   serialized and deserialized.
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
 	done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser(function (obj, done) {
 	done(null, obj);
 });
 
@@ -37,13 +37,13 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an accessToken, refreshToken, and Linkedin
 //   profile), and invoke a callback with a user object.
 passport.use(new LinkedinStrategy({
-		clientID:     LINKEDIN_CLIENT_ID,
-		clientSecret: LINKEDIN_CLIENT_SECRET,
-		callbackURL:  "http://localhost:3000/api/linked/auth/linkedin/callback",
-		scope:        [ 'r_basicprofile', 'r_emailaddress'],
-		passReqToCallback: true
-	},
-	function(req, accessToken, refreshToken, profile, done) {
+	clientID: LINKEDIN_CLIENT_ID,
+	clientSecret: LINKEDIN_CLIENT_SECRET,
+	callbackURL: "http://localhost:3000/api/linked/auth/linkedin/callback",
+	scope: ['r_basicprofile', 'r_emailaddress'],
+	passReqToCallback: true
+},
+	function (req, accessToken, refreshToken, profile, done) {
 		// asynchronous verification, for effect...
 		req.session.accessToken = accessToken;
 		process.nextTick(function () {
@@ -51,44 +51,43 @@ passport.use(new LinkedinStrategy({
 			// represent the logged-in user.  In a typical application, you would want
 			// to associate the Linkedin account with a user record in your database,
 			// and return that user instead.
-			  console.log('the access token is :', accessToken);
-			  console.log('profile is :', profile);
+			console.log('the access token is :', accessToken);
+			console.log('profile is :', profile);
 
 			// User has been authenticated on LinkedIn. Now check to see if they are new and if so then add them to the DB
-				const authKey = profile.id;
-				console.log('profile id', authKey);
-				console.log('I AM IM POST');
+			const authKey = profile.id;
+			console.log('profile id', authKey);
+			console.log('I AM IM POST');
 
-				pool.query('SELECT * FROM users WHERE auth_key = $1', [authKey],
-					(error, result) => {
-						if (error) {
+			pool.query('SELECT * FROM users WHERE auth_key = $1', [authKey],
+				(error, result) => {
+					if (error) {
 
-							console.log("Error finding data: ", error);
-							// res.sendStatus(500);
-						}
-						// If the result.row array is empty then the user is new and we add them to the database
-						else if(result.rows.length === 0)
-						{
-							console.log('New user');
-							pool.query('INSERT INTO users (auth_key) VALUES ($1)', [authKey],
-								(error, result) => {
-									if (error) {
-										console.log("Error inserting data: ", error);
-										// res.sendStatus(500);
-									} else {
-										return done(null, profile);
-										// res.sendStatus(201);
-									}
-								});
-							return done(null, profile);
-						}
-						else {
-							console.log('***********result is', result.rows);
-							console.log('User Exists!');
-							// res.sendStatus(201);
-							return done(null, profile);
-						}
-					});
+						console.log("Error finding data: ", error);
+						// res.sendStatus(500);
+					}
+					// If the result.row array is empty then the user is new and we add them to the database
+					else if (result.rows.length === 0) {
+						console.log('New user');
+						pool.query('INSERT INTO users (auth_key) VALUES ($1)', [authKey],
+							(error, result) => {
+								if (error) {
+									console.log("Error inserting data: ", error);
+									// res.sendStatus(500);
+								} else {
+									return done(null, profile);
+									// res.sendStatus(201);
+								}
+							});
+						return done(null, profile);
+					}
+					else {
+						console.log('***********result is', result.rows);
+						console.log('User Exists!');
+						// res.sendStatus(201);
+						return done(null, profile);
+					}
+				});
 		});
 	}
 ));
@@ -108,7 +107,7 @@ if ('development' == envir) {
 	app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 	app.use(session({
 		secret: 'keyboard cat',
-		resave: false ,
+		resave: false,
 		saveUninitialized: true //,
 		// cookie: { secure: true }
 	}));
@@ -120,11 +119,11 @@ if ('development' == envir) {
 	app.use(express.static(__dirname + '/public'));
 }
 
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
 	res.render('index', { user: req.user });
 });
 
-app.get('/account', ensureAuthenticated, function(req, res){
+app.get('/account', ensureAuthenticated, function (req, res) {
 	res.render('account', { user: req.user });
 });
 
@@ -136,7 +135,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
 //app.get('/auth/linkedin',
 app.get('/auth/linkedin',
 	passport.authenticate('linkedin', { state: 'SOME STATE' }),
-	function(req, res){
+	function (req, res) {
 		// The request will be redirected to Linkedin for authentication, so this
 		// function will not be called.
 	});
@@ -148,13 +147,13 @@ app.get('/auth/linkedin',
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', { failureRedirect: '/login' }),
-	function(req, res) {
+	function (req, res) {
 		console.log('I made it to the callback!!!');
 		res.redirect('/');
 	});
 
 
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/');
 });

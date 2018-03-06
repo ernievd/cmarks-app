@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-
+var env = require('dotenv').config();
 // const passport = require('./strategies/sql.localstrategy');
 const sessionConfig = require('./modules/session-middleware');
 
@@ -17,8 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(sessionConfig);
 
 
-///FOR LOCAL
-// // Start up passport sessions
 // app.use(passport.initialize());
 // app.use(passport.session());
 
@@ -29,9 +27,9 @@ app.use('/api/linked', linkedinRouter);
 // Serve static files
 app.use(express.static('server/public'));
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 /** Listen * */
-app.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+app.listen(port, () => {
+    console.log(`Listening on port: ${port}`);
 });
