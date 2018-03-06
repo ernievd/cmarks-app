@@ -20,17 +20,6 @@
     </head>
 
 
-    <% if (!user) { %>
-    <h2>Welcome! Please log in.</h2>
-    <a href="/api/linked/auth/linkedin">Login with Linkedin</a>
-    <!--<a href="/api/linked/auth/linkedin/callback">Callback page</a>-->
-    <% } else { %>
-    <h2>Hello, <%= user.displayName %>.</h2>
-    <pre><code><%= JSON.stringify(user, null, 2) %></code></pre>
-    <% } %>
-
-
-
     <body ng-app="myApp">
 
       <main ng-view></main>

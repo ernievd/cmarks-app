@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const passport = require('./strategies/sql.localstrategy');
+// const passport = require('./strategies/sql.localstrategy');
 const sessionConfig = require('./modules/session-middleware');
 
 // Route includes
-const userRouter = require('./routes/user.router');
+//const userRouter = require('./routes/user.router');
 const linkedinRouter = require('./routes/linkedin.router');
 
 // Body parser middleware
@@ -16,12 +16,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Passport Session Configuration
 app.use(sessionConfig);
 
-// Start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
+
+///FOR LOCAL
+// // Start up passport sessions
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
+// app.use('/api/user', userRouter);
 app.use('/api/linked', linkedinRouter);
 
 // Serve static files

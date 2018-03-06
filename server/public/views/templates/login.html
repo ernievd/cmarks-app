@@ -1,8 +1,18 @@
 <div ng-include="'views/partials/header.html'"></div>
 
 <h1>Login</h1>
-<h1 ng-if="vm.message != ''">{{vm.message}}</h2>
-<form ng-submit="vm.login()">
+
+
+<h2>Log in with LinkedIn:</h2>
+<div>
+<a class="linkedLogin" href="/api/linked/auth/linkedin">Login with Linkedin</a>
+</div>
+
+
+
+<h1 ng-if="vm.message != ''">{{vm.message}}</h1>
+
+<form class="loginForm" ng-submit="vm.login()">
     <div>
         <label for="username">Username:</label>
         <input type="text" ng-model="vm.user.username" />

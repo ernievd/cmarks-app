@@ -1,20 +1,20 @@
-var express = require('express')
-	, passport = require('passport')
-	, LinkedinStrategy = require('../lib').Strategy;
+const express = require('express');
+const passport = require('passport');
+const LinkedinStrategy = require('../lib').Strategy;
 
-//I added -
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 // morgan replaces express.logger
-var morgan = require('morgan');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-
-var env = require('dotenv').config();
+const morgan = require('morgan');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const env = require('dotenv').config();
+const router = express.Router();
+const pool = require('../modules/pool.js');
 
 // API Access link for creating client ID and secret:
 // https://www.linkedin.com/secure/developer
-var LINKEDIN_CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
-var LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
+const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_CLIENT_ID;
+const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_CLIENT_SECRET;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -39,7 +39,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new LinkedinStrategy({
 		clientID:     LINKEDIN_CLIENT_ID,
 		clientSecret: LINKEDIN_CLIENT_SECRET,
-		callbackURL:  "http://localhost:3000/auth/linkedin/callback",
+		callbackURL:  "http://localhost:3000/api/linked/auth/linkedin/callback",
 		scope:        [ 'r_basicprofile', 'r_emailaddress'],
 		passReqToCallback: true
 	},
@@ -51,12 +51,48 @@ passport.use(new LinkedinStrategy({
 			// represent the logged-in user.  In a typical application, you would want
 			// to associate the Linkedin account with a user record in your database,
 			// and return that user instead.
-			console.log('the access token is :', accessToken);
-			console.log('profile is :', profile);
-			return done(null, profile);
+			  console.log('the access token is :', accessToken);
+			  console.log('profile is :', profile);
+
+			// User has been authenticated on LinkedIn. Now check to see if they are new and if so then add them to the DB
+				const authKey = profile.id;
+				console.log('profile id', authKey);
+				console.log('I AM IM POST');
+
+				pool.query('SELECT * FROM users WHERE auth_key = $1', [authKey],
+					(error, result) => {
+						if (error) {
+
+							console.log("Error finding data: ", error);
+							// res.sendStatus(500);
+						}
+						// If the result.row array is empty then the user is new and we add them to the database
+						else if(result.rows.length === 0)
+						{
+							console.log('New user');
+							pool.query('INSERT INTO users (auth_key) VALUES ($1)', [authKey],
+								(error, result) => {
+									if (error) {
+										console.log("Error inserting data: ", error);
+										// res.sendStatus(500);
+									} else {
+										return done(null, profile);
+										// res.sendStatus(201);
+									}
+								});
+							return done(null, profile);
+						}
+						else {
+							console.log('***********result is', result.rows);
+							console.log('User Exists!');
+							// res.sendStatus(201);
+							return done(null, profile);
+						}
+					});
 		});
 	}
 ));
+
 
 var app = express();
 
@@ -110,14 +146,13 @@ app.get('/auth/linkedin',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-//app.get('/auth/linkedin/callback',
-//http://localhost:3000/api/linked/auth/linkedin/callback
 app.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', { failureRedirect: '/login' }),
 	function(req, res) {
 		console.log('I made it to the callback!!!');
 		res.redirect('/');
 	});
+
 
 app.get('/logout', function(req, res){
 	req.logout();
