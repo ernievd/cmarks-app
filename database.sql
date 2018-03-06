@@ -1,6 +1,8 @@
 CREATE TABLE users (
 	id serial primary key,
-	auth_key  varchar(200) not null UNIQUE
+	username varchar(50) UNIQUE,
+	password varchar(100),
+	auth_key varchar(240) UNIQUE
 );
 
 CREATE TABLE events (
