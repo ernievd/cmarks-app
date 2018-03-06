@@ -121,11 +121,12 @@ if ('development' == envir) {
 }
 
 app.get('/', function(req, res){
-	res.render('index', { user: req.user });
+	res.send({ user: req.user });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
-	res.render('account', { user: req.user });
+	console.log('in /account');
+	res.send({ user: req.user });
 });
 
 // GET /auth/linkedin
@@ -150,7 +151,7 @@ app.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', { failureRedirect: '/login' }),
 	function(req, res) {
 		console.log('I made it to the callback!!!');
-		res.redirect('/');
+		res.redirect('/#!/join-event');
 	});
 
 
@@ -166,7 +167,7 @@ app.get('/logout', function(req, res){
 //   login page.
 function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
-	res.redirect('/login');
+	res.sendStatus(402);
 }
 
 module.exports = app;

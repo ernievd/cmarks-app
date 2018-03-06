@@ -35,11 +35,11 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     .when('/join-event', {
       templateUrl: '/views/templates/join-event.html',
       controller: 'UserController as vm',
-      resolve: {
-        getuser : function(UserService){
-          return UserService.getuser();
-        }
-      }
+      // resolve: {
+      //   getuser : function(LinkedinService){
+      //     return LinkedinService.getuser();
+      //   }
+      // }
     })
     .when('/event', {
       templateUrl: '/views/templates/event.html',
