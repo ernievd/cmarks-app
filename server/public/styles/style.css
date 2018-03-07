@@ -1,6 +1,62 @@
-.linkedLogin {
-    margin: 20px;
+
+.nav-container {
+    padding: 0;
 }
-.loginForm {
-    margin: 20px;
+
+.nav-divider {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 80%;
+    font-size: 14pt;
+    border-bottom: 1px solid #F44336;
+    text-align: center;
 }
+
+.nav-link > a {
+    text-decoration: none;
+    color: #212121;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link > a:hover {
+    color: #F44336;
+}
+
+.logout-btn {
+    position: absolute !important;
+    bottom: 30px;
+    right: 30px;
+}
+
+.heading {
+    text-align: center;
+    border-bottom: 1px solid #F44336;
+    width: 70%;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 900px) {
+    .heading { 
+        width: 100%;
+    }
+}
+
+.subheading {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.event-details > span {
+    line-height: 2;
+}
+
+.new-btn {
+    float: right;
+}
+
+.event-list {
+    clear: right;
+}
+>>>>>>> 82eabe5afbb2735fdeda820519f5f3e7f628188b
