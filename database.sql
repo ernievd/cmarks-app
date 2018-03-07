@@ -1,7 +1,5 @@
 CREATE TABLE users (
 	id serial primary key,
-	username varchar(50) UNIQUE,
-	password varchar(100),
 	auth_key varchar(240) UNIQUE
 );
 
