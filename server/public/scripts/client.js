@@ -28,13 +28,9 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/login.html',
       controller: 'LoginController as vm',
     })
-    .when('/register', {
-      templateUrl: '/views/templates/register.html',
-      controller: 'LoginController as vm',
-    })
     .when('/join-event', {
       templateUrl: '/views/templates/join-event.html',
-      controller: 'UserController as vm',
+      controller: 'JoinEventController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -43,7 +39,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/event', {
       templateUrl: '/views/templates/event.html',
-      controller: 'InfoController as vm',
+      controller: 'EventController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -52,16 +48,16 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/my-events', {
       templateUrl: '/views/templates/my-events.html',
-      controller: 'InfoController as vm',
+      controller: 'MyEventsController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
         }
       }
     })
-    .when('/event-cmarks', {
-      templateUrl: '/views/templates/event-cmarks.html',
-      controller: 'InfoController as vm',
+    .when('/cmarks', {
+      templateUrl: '/views/templates/cmarks.html',
+      controller: 'CmarkController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -70,7 +66,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/manage-events', {
       templateUrl: '/views/templates/manage-events.html',
-      controller: 'InfoController as vm',
+      controller: 'ManageEventsController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();

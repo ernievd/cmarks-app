@@ -9,6 +9,9 @@ const sessionConfig = require('./modules/session-middleware');
 const linkedinRouter = require('./routes/linkedin.auth.router');
 const googleRouter = require('./routes/google.auth.router');
 const passportAuthRouter = require('./routes/passport.auth.router');
+const audioRouter = require('./routes/audio.router');
+const cmarkRouter = require('./routes/cmark.router');
+const eventRouter = require('./routes/event.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
