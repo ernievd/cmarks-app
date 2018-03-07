@@ -1,6 +1,7 @@
 const express = require('express');
+// const passport = require('passport');
 const passport = require('passport');
-const LinkedinStrategy = require('../lib').Strategy;
+const LinkedinStrategy = require('../strategies/sql.linkedInStrategy');
 
 const cookieParser = require('cookie-parser');
 // morgan replaces express.logger
@@ -15,7 +16,6 @@ const pool = require('../modules/pool.js');
 // https://www.linkedin.com/secure/developer
 const LINKEDIN_CLIENT_ID = process.env.LINKEDIN_API_KEY;
 const LINKEDIN_CLIENT_SECRET = process.env.LINKEDIN_SECRET_KEY;
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -39,7 +39,7 @@ passport.deserializeUser(function (obj, done) {
 passport.use(new LinkedinStrategy({
 	clientID: LINKEDIN_CLIENT_ID,
 	clientSecret: LINKEDIN_CLIENT_SECRET,
-	callbackURL: "http://localhost:3000/api/linked/auth/linkedin/callback",
+	callbackURL: process.env.CALLBACK,
 	scope: ['r_basicprofile', 'r_emailaddress'],
 	passReqToCallback: true
 },
@@ -93,40 +93,13 @@ passport.use(new LinkedinStrategy({
 ));
 
 
-var app = express();
+var app = express.Router();
 
-var envir = process.env.NODE_ENV || 'development';
-if ('development' == envir) {
-	// configure stuff here
-	app.set('views', __dirname + '/views');
-	app.set('view engine', 'ejs');
-	//app.use(express.logger());
-	//app.use(morgan());
-	app.use(cookieParser());
-	app.use(bodyParser.json()); // to support JSON-encoded bodies
-	app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
-	app.use(session({
-		secret: 'keyboard cat',
-		resave: false,
-		saveUninitialized: true //,
-		// cookie: { secure: true }
-	}));
-
-	// Initialize Passport!  Also use passport.session() middleware, to support
-	// persistent login sessions (recommended).
-	app.use(passport.initialize());
-	app.use(passport.session());
-	app.use(express.static(__dirname + '/public'));
-}
 
 
 app.get('/', function(req, res){
-	res.send({ user: req.user });
-});
-
-app.get('/account', ensureAuthenticated, function(req, res){
-	console.log('in /account');
-	res.send({ user: req.user });
+	console.log('req.body', req.body);
+	res.send();
 });
 
 // GET /auth/linkedin
@@ -134,7 +107,6 @@ app.get('/account', ensureAuthenticated, function(req, res){
 //   request.  The first step in Linkedin authentication will involve
 //   redirecting the user to linkedin.com.  After authorization, Linkedin
 //   will redirect the user back to this application at /auth/linkedin/callback
-//app.get('/auth/linkedin',
 app.get('/auth/linkedin',
 	passport.authenticate('linkedin', { state: 'SOME STATE' }),
 	function (req, res) {
@@ -170,4 +142,7 @@ function ensureAuthenticated(req, res, next) {
 	res.sendStatus(402);
 }
 
-module.exports = app;
+module.exports = {
+	app: app,
+	passport: passport
+}
