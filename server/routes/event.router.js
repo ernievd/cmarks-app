@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     let newCode = generateCode();
     console.log('in event router', req.body);
     const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
-    pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
+    pool.query(query, [req.user.id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
         .then((result) => {
             console.log('result:', result);
             res.sendStatus(200);

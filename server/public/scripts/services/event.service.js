@@ -56,15 +56,9 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     // add event
     self.addEvent = function (newEvent) {
         //hard code for now, later take in from input on DOM
-        let event = {
-            speaker_id: 1,
-            speaker_name: 'Amy Richardson',
-            title: 'Intro to Being the Best',
-            location: 'Prime Digital Academy',
-            date: '03/15/2018',
-            start_time: '01:00 PM'
-        } // end newEvent
-        $http.post('/event', event).then(function (response) {
+        console.log('new event: ', newEvent);
+        
+        $http.post('/event', newEvent).then(function (response) {
             console.log('event added!');
             //get events   
         })
