@@ -10,26 +10,27 @@
 
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
         <div flex-xs flex-gt-xs="80" layout="column">
-            <md-card layout="column">
+            <p ng-if="vm.upcomingEvents.list.length === 0">You don't currently have any upcoming events.</p>
+            <md-card layout="column" ng-repeat="event in vm.upcomingEvents.list">
                 <md-card-title>
                     <md-card-title-text layout="row" layout-align="center center">
-                            <span class="md-headline">JavaScript MN: Intro to React</span>
+                            <span class="md-headline">{{event.title}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <div layout="row" layout-align="space-around">
                     <md-card-content layout="column" class="event-details">
-                            <span>Speaker: Joe Karlsson</span>
-                            <span>Location: Prime Digital Academy</span>
-                            <span>Join Code: REACT</span>
+                            <span>Speaker: {{event.speaker_name}}</span>
+                            <span>Location: {{event.location}}</span>
+                            <span>Join Code: {{event.join_code}}</span>
                     </md-card-content>
                     <md-card-content layout="column" class="event-details">
-                            <span>Date: 3/7/2018</span>
-                            <span>Start Time: 3:00 PM</span>
+                            <span>Date: {{event.date}}</span>
+                            <span>Start Time: {{event.start_time}}</span>
                     </md-card-content>    
                 </div>
     
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-primary">Mark Complete</md-button>
+                    <md-button ng-click="vm.completeEvent(event.id)" class="md-primary">Mark Complete</md-button>
                     <md-button><i class="material-icons">mode_edit</i></md-button>
                 </md-card-actions>
             </md-card>
@@ -39,21 +40,20 @@
     <h2 class="subheading">Past Events</h2>
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
         <div flex-xs flex-gt-xs="80" layout="column">
-            <md-card layout="column">
+            <md-card layout="column" ng-repeat="event in vm.pastEvents.list">
                     <md-card-title>
                         <md-card-title-text layout="row" layout-align="center center">
-                                <span class="md-headline">JavaScript MN: Intro to React</span>
+                                <span class="md-headline">{{event.title}}</span>
                         </md-card-title-text>
                     </md-card-title>
                     <div layout="row" layout-align="space-around">
                         <md-card-content layout="column" class="event-details">
-                                <span>Speaker: Joe Karlsson</span>
-                                <span>Location: Prime Digital Academy</span>
-                                <span>Join Code: REACT</span>
+                                <span>Speaker: {{event.speaker_name}}</span>
+                                <span>Location: {{event.location}}</span>
                         </md-card-content>
                         <md-card-content layout="column" class="event-details">
-                                <span>Date: 3/7/2018</span>
-                                <span>Start Time: 3:00 PM</span>
+                                <span>Date: {{event.date}}</span>
+                                <span>Start Time: {{event.start_time}}</span>
                         </md-card-content>    
                     </div>
         
