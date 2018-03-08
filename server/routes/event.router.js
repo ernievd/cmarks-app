@@ -17,4 +17,32 @@ router.post('/', (req, res) => {
         })
 }) //end post
 
+// get upcoming events for a particular speaker
+router.get('/upcoming/:speaker_id', (req, res) => {
+    console.log('in event router', req.params);
+    const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = false`
+    pool.query(query, [req.params.speaker_id])
+        .then((result) => {
+            console.log('result: ', result.rows[0]);
+            res.send(result.rows[0])
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+        })
+}) // end get
+
+// get past events for a particular speaker
+router.get('/past/:speaker_id', (req, res) => {
+    console.log('in event router', req.params);
+    const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = true`
+    pool.query(query, [req.params.speaker_id])
+        .then((result) => {
+            console.log('result: ', result.rows[0]);
+            res.send(result.rows[0])
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+        })
+}) // end get
+
 module.exports = router;

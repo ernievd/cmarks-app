@@ -2,8 +2,17 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
   function (UserService, EventService, AudioService) {
     var self = this;
     self.userService = UserService;
-    self.addEvent = EventService.addEvent;
 
-    self.addEvent();
+    //EventService variables
+    self.upcomingEvents = EventService.upcomingEvents;
+
+    //EventService functions
+    self.addEvent = EventService.addEvent;
+    self.getUpcomingEvents = EventService.getUpcomingEvents;
+    self.getPastEvents = EventService.getPastEvents;
+
+    // self.addEvent();
+    self.getUpcomingEvents();
+    self.getPastEvents();
 
   }]);
