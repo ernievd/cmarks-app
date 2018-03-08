@@ -62,8 +62,7 @@ myApp.service('EventService', ['$http', '$location', function($http, $location){
             title: 'Intro to Being the Best',
             location: 'Prime Digital Academy',
             date: '03/15/2018',
-            start_time: '01:00 PM',
-            join_code: 'BEST',
+            start_time: '01:00 PM'
         } // end newEvent
         $http.post('/event', event).then(function(response) {
             console.log('event added!');
