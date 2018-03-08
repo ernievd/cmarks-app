@@ -1,7 +1,14 @@
 <div ng-include="'views/partials/header.html'"></div>
 
-<div class="container">
-  <p>
-    In event
-  </p>
+<div  ng-cloak layout="row">
+  <div class="flex">
+
+    <md-divider></md-divider>
+    <div flex layout="row">
+      <div flex layout="row" layout-align="center center" class="demo-swipe" md-swipe-up="vm.onSwipeUp($event, $target)">
+        <span class="no-select">Swipe me up</span>
+      </div>
+    </div>
+    <md-divider></md-divider>
+  </div>
 </div>
