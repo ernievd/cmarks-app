@@ -27,6 +27,10 @@ app.use(passportUtilities.session());
 app.use('/api/linked', linkedinRouter);
 app.use('/auth', googleRouter);
 app.use('/auth', passportAuthRouter);
+app.use('/audio', audioRouter);
+app.use('/event', eventRouter);
+app.use('/cmark', cmarkRouter);
+
 // Serve static files
 app.use(express.static('server/public'));
 
