@@ -60,10 +60,10 @@
 .event-list {
     clear: right;
 }
+/************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
 }
-  
 .swipedemoBasicUsage .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -71,4 +71,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none; 
+}
+.swipeContainer {
+    height: 100vh;
+    width: 100%;
+}
+.icon-arrow svg {
+    fill: green;
 }
