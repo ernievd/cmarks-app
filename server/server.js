@@ -27,6 +27,7 @@ app.use(passportUtilities.session());
 app.use('/api/linked', linkedinRouter);
 app.use('/auth', googleRouter);
 app.use('/auth', passportAuthRouter);
+app.use('/event', eventRouter);
 // Serve static files
 app.use(express.static('server/public'));
 

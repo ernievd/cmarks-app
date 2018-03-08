@@ -2,4 +2,8 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
   function (UserService, EventService, AudioService) {
     var self = this;
     self.userService = UserService;
+    self.addEvent = EventService.addEvent;
+
+    self.addEvent();
+
   }]);
