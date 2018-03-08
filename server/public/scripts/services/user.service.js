@@ -7,14 +7,7 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
   self.getuser = function(){
 
     console.log('UserService -- getuser');
-// <<<<<<< HEAD
-//     $http.get('/api/linked/')
-//     .then(function(response) {
-//         //Look at response
-//       console.log('Response is - ', response);
-// 	    if(response) {
-//             // user has a current session on the server
-// =======
+
     $http.get('/auth').then(function(response) {
         if(response.data.status) {
             // user has a curret session on the server
