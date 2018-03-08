@@ -45,4 +45,19 @@ router.get('/past/:speaker_id', (req, res) => {
         })
 }) // end get
 
+// update an event's 'complete' status to true
+router.put('/complete/:id', (req, res) => {
+    console.log('in event router', req.params);
+    const query = `UPDATE events SET completed = true WHERE id = $1`
+    pool.query(query, [req.params.id])
+        .then((result) => {
+            console.log('result: ', result);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error:', error);
+            res.sendStatus(500);
+        })
+}) //end put
+
 module.exports = router;

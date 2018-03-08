@@ -10,6 +10,7 @@
 
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
         <div flex-xs flex-gt-xs="80" layout="column">
+            <p ng-if="vm.upcomingEvents.list.length === 0">You don't currently have any upcoming events.</p>
             <md-card layout="column" ng-repeat="event in vm.upcomingEvents.list">
                 <md-card-title>
                     <md-card-title-text layout="row" layout-align="center center">
@@ -29,7 +30,7 @@
                 </div>
     
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-primary">Mark Complete</md-button>
+                    <md-button ng-click="vm.completeEvent(event.id)" class="md-primary">Mark Complete</md-button>
                     <md-button><i class="material-icons">mode_edit</i></md-button>
                 </md-card-actions>
             </md-card>
