@@ -8,8 +8,4 @@ myApp.controller('JoinEventController', ['UserService', 'EventService', function
     console.log(code);
   }
 
-  self.generateCode = function () {
-    EventService.generateCode();
-  }
-
 }]);
