@@ -7,11 +7,12 @@ const pool = require('../modules/pool');
 router.post('/swipe', (req, res) => {
     console.log('req.body', req.body);
     console.log('user', req.user);
+    let event_id = 1;
     let user_id = req.user.id;
     let timestamp = req.body.actualTime;
-    const queryText = 'INSERT INTO cmarks (timestamp, user_id) VALUES ($1, $2)'; 
+    const queryText = 'INSERT INTO cmarks (timestamp, user_id, event_id ) VALUES ($1, $2, $3)'; 
 
-    pool.query(queryText, [timestamp, user_id])
+    pool.query(queryText, [timestamp, user_id, event_id])
     .then((result) => {
         console.log('successful timestamp post', result);
         res.sendStatus(201);
