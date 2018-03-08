@@ -5,6 +5,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
 
     //EventService variables
     self.upcomingEvents = EventService.upcomingEvents;
+    self.pastEvents = EventService.pastEvents;
 
     //EventService functions
     self.addEvent = EventService.addEvent;

@@ -23,8 +23,8 @@ router.get('/upcoming/:speaker_id', (req, res) => {
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = false`
     pool.query(query, [req.params.speaker_id])
         .then((result) => {
-            console.log('result: ', result.rows[0]);
-            res.send(result.rows[0])
+            console.log('result: ', result.rows);
+            res.send(result.rows);
         })
         .catch((error) => {
             console.log('error: ', error);
@@ -37,8 +37,8 @@ router.get('/past/:speaker_id', (req, res) => {
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = true`
     pool.query(query, [req.params.speaker_id])
         .then((result) => {
-            console.log('result: ', result.rows[0]);
-            res.send(result.rows[0])
+            console.log('result: ', result.rows);
+            res.send(result.rows);
         })
         .catch((error) => {
             console.log('error: ', error);
