@@ -13,5 +13,6 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     self.getPastEvents = EventService.getPastEvents;
     self.completeEvent = EventService.completeEvent;
 
+    self.addEvent();
 
   }]);
