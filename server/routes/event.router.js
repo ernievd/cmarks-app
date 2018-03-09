@@ -8,26 +8,25 @@ const checkCode = require('../modules/check-code');
 router.post('/', (req, res) => {
     let newCode;
     let foundMatch = true;
-    newCode = generateCode();
     pool.query(`SELECT join_code FROM events`)
         .then((result) => {
-            checkCode(result);
+            newCode = checkCode(result);
+            const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
+            pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
+                .then((result) => {
+                    console.log('result:', result);
+                    res.sendStatus(200);
+                })
+                .catch((error) => {
+                    console.log('error: ', error);
+                    res.sendStatus(500);
+                })
         })
         .catch((error) => {
             console.log('Error');
             res.sendStatus(500);
         })
-    console.log('in event router', req.body);
-    const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
-    pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
-        .then((result) => {
-            console.log('result:', result);
-            res.sendStatus(200);
-        })
-        .catch((error) => {
-            console.log('error: ', error);
-            res.sendStatus(500);
-        })
+
 }) //end post
 
 // get upcoming events for a particular speaker
