@@ -4,7 +4,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     self.upcomingEvents = { list: [] };
     self.pastEvents = { list: [] };
     self.eventInfo = { list: [] };
-    self.wrongCode = {code:''};
+    self.wrongCode = {code:'', check: false};
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -69,6 +69,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         $http.post('/event', event).then(function (response) {
             console.log('event added!');
             //get events   
+            self.getUpcomingEvents();
         })
             .catch(function (error) {
                 console.log('uh oh, event did not add successfully');
@@ -87,10 +88,12 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             console.log('got join info', response.data);
             self.eventInfo.list = response.data;
             if(self.eventInfo.list[0] != undefined){
+                self.wrongCode.check = false;
                 $location.path(`/event`);
             } else {
                 console.log('Not correct code', code);
                 self.wrongCode.code = `${code} is not a valid event code, please try again`;
+                self.wrongCode.check = true;
             }
         })
         .catch(function(error){
@@ -107,15 +110,4 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             console.log('Error on deleting code');
         })
     }
-
-    self.test = function(){
-        $http.post('/event/get').then(function(response){
-            console.log('Noice');
-        })
-        .catch(function(error){
-            console.log('Not Noice');
-            
-        })
-    }
-    self.test();
 }]);
