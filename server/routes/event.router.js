@@ -2,21 +2,31 @@ const express = require('express');
 const router = express.Router();
 const generateCode = require('../modules/code-generation');
 const pool = require('../modules/pool');
+const checkCode = require('../modules/check-code');
 
 // add new event to database
 router.post('/', (req, res) => {
-    let newCode = generateCode();
-    console.log('in event router', req.body);
-    const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
-    pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
+    let newCode;
+    let foundMatch = true;
+    pool.query(`SELECT join_code FROM events`)
         .then((result) => {
-            console.log('result:', result);
-            res.sendStatus(200);
+            newCode = checkCode(result);
+            const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
+            pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
+                .then((result) => {
+                    console.log('result:', result);
+                    res.sendStatus(200);
+                })
+                .catch((error) => {
+                    console.log('error: ', error);
+                    res.sendStatus(500);
+                })
         })
         .catch((error) => {
-            console.log('error: ', error);
+            console.log('Error');
             res.sendStatus(500);
         })
+
 }) //end post
 
 // get upcoming events for a particular speaker
@@ -62,5 +72,26 @@ router.put('/complete/:id', (req, res) => {
         })
 }) //end put
 
+router.put('/join/:code', (req, res) => {
+    pool.query(`SELECT * FROM events WHERE join_code = $1`, [req.params.code])
+        .then((result) => {
+            console.log('GET event from join code', result);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log('Error on GET event from join code', error);
+            res.sendStatus(500);
+        })
+})
+
+router.delete(`/delete/:id`, (req, res) => {
+    pool.query(`UPDATE events SET join_code = null WHERE id = $1`, [req.params.id])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;
