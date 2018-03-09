@@ -72,7 +72,7 @@
     -ms-user-select: none;
     user-select: none; 
 }
-.swipeContainer {
+.no-select {
     height: 100vh;
     width: 100%;
 }

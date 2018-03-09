@@ -11,7 +11,7 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
 
         
         self.utcTimestamp = Date.UTC(self.now.getUTCFullYear(), self.now.getUTCMonth(), self.now.getUTCDate(),
-            self.now.getUTCHours(), self.now.getUTCMinutes(), self.now.getUTCSeconds(), self.now.getUTCMilliseconds());
+            self.now.getUTCHours(), self.now.getUTCMinutes());
 
         console.log('time', self.utcTimestamp);
 
