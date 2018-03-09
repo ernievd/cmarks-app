@@ -3,7 +3,8 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
     self.upcomingEvents = { list: [] };
     self.pastEvents = { list: [] };
-
+    self.eventInfo = { list: [] };
+    self.wrongCode = {code:''};
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -47,6 +48,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             console.log('event completed!');
             self.getPastEvents();
             self.getUpcomingEvents();
+            self.deleteCode(event_id);
         })
             .catch(function (error) {
                 console.log('error completing event');
@@ -80,4 +82,30 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
     // get audience member's events
 
+    // join event
+    self.joinEvent = function(code){
+        $http.put(`/event/join/${code}`).then(function(response){
+            console.log('got join info', response.data);
+            self.eventInfo.list = response.data;
+            if(self.eventInfo.list[0] != undefined){
+                $location.path(`/event`);
+            } else {
+                console.log('Not correct code', code);
+                self.wrongCode.code = `${code} is not a valid event code, please try again`;
+            }
+        })
+        .catch(function(error){
+            console.log('Error on get join info', error);
+            
+        })
+    }
+
+    self.deleteCode = function(eventId){
+        $http.delete(`/event/delete/${eventId}`).then(function(response){
+            console.log('Code Deleted');
+        })
+        .catch(function(error){
+            console.log('Error on deleting code');
+        })
+    }
 }]);
