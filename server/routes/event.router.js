@@ -73,7 +73,7 @@ router.put('/complete/:id', isAuthenticated, (req, res) => {
         })
 }) //end put
 
-router.put('/join/:code',isAuthenticated, (req, res) => {
+router.put('/join/:code', isAuthenticated, (req, res) => {
     pool.query(`SELECT * FROM events WHERE join_code = $1`, [req.params.code])
         .then((result) => {
             console.log('GET event from join code', result);
