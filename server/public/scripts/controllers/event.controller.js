@@ -16,4 +16,8 @@ myApp.controller('EventController', ['UserService', 'EventService', 'CmarkServic
       console.log('Original Current Target: ', target.current);
     };
 
+    self.finishEvent = function () {
+      CmarkService.finishEvent();
+    }
+    
   }]);

@@ -8,6 +8,7 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function () {
         self.now = new Date;
+
         
         self.utcTimestamp = Date.UTC(self.now.getUTCFullYear(), self.now.getUTCMonth(), self.now.getUTCDate(),
             self.now.getUTCHours(), self.now.getUTCMinutes(), self.now.getUTCSeconds(), self.now.getUTCMilliseconds());
@@ -47,6 +48,10 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
         }
 
         return self.postedTime;
+    }
+
+    self.finishEvent = function () {
+        $location.path('/my-events');
     }
 
 }]);
