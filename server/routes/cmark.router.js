@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
-const isAuthenticated = require('../modules/isAuthenticated');
+const isAuthenticated = require('../modules/isAuthenticated').isAuthenticated;
 
 
 router.post('/swipe', isAuthenticated, (req, res) => {
