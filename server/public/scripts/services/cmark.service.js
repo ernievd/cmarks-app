@@ -1,9 +1,10 @@
-myApp.service('CmarkService', ['$http', '$location', function ($http, $location) {
+myApp.service('CmarkService', ['$http', '$location', 'EventService', function ($http, $location, EventService) {
     var self = this;
     self.now;
     self.utcTimestamp;
     self.acutalTime;
-    self.postedTime;
+    self.swipeInfo;
+    self.eventInfo = EventService.eventInfo.list
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function () {
@@ -17,10 +18,10 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
 
         // converts milliseconds to time
         self.timeConversion(self.utcTimestamp);
-        console.log('posted time', self.postedTime);
+        console.log('posted time', self.swipeInfo);
 
         // posting to time to database. 
-        $http.post(`/cmark/swipe/`, self.postedTime )
+        $http.post(`/cmark/swipe/`, self.swipeInfo )
         .then(function(response) {
             console.log('successful post on cmark', response);
         })
@@ -42,9 +43,9 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
 
         let actualTime = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 
-        self.postedTime = {
+        self.swipeInfo = {
             actualTime,
-
+            event_id: self.eventInfo[0].id
         }
 
         return self.postedTime;
