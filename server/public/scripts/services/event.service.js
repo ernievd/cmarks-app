@@ -101,7 +101,8 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             
         })
     }
-
+    
+    //delete used code
     self.deleteCode = function(eventId){
         $http.delete(`/event/delete/${eventId}`).then(function(response){
             console.log('Code Deleted');
