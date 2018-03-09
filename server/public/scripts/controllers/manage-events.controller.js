@@ -42,8 +42,23 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
         $mdDialog.cancel();
       };
 
-      self.submitEvent = function(newEvent){
-        EventService.addEvent(newEvent);
+      self.submitEvent = function(newEvent){       
+        // format the start time to be saved in the database 
+        let start_time = moment(newEvent.start_time).format('h:mm:ss a');   
+        
+        // create event object with new start time
+        let eventToAdd = {
+          title: newEvent.title,
+          speaker_name: newEvent.speaker_name,
+          location: newEvent.location,
+          date: newEvent.date,
+          start_time: start_time 
+        }
+
+        //send eventToAdd to the service to add to db
+        EventService.addEvent(eventToAdd);
+        
+        // close dialog
         $mdDialog.hide();
       }
     }
