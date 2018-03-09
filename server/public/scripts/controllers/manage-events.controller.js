@@ -11,6 +11,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     self.getPastEvents = EventService.getPastEvents;
     self.completeEvent = EventService.completeEvent;
 
+
     self.showAdvanced = function(ev) {
       $mdDialog.show({
         controller: DialogController,
@@ -46,4 +47,4 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
         $mdDialog.hide();
       }
     }
-  }]);
+}]);

@@ -60,4 +60,39 @@
 .event-list {
     clear: right;
 }
->>>>>>> 82eabe5afbb2735fdeda820519f5f3e7f628188b
+/************ Swipe Styles ************/
+.swipedemoBasicUsage .demo-swipe {
+    padding: 20px 10px; 
+}
+.swipedemoBasicUsage .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+.no-select {
+    height: 100vh;
+    width: 100%;
+}
+.icon-arrow svg {
+    fill: green;
+}
+
+.join-input{
+    border: none;
+    border-bottom: 2px solid #F44336;
+    font-size: 24px;
+    text-align: center;
+    width: 152px;
+    background-color: #FAFAFA;
+}
+
+.join-btn {
+    margin-top: 25px !important;
+}
+
+.join-speaker {
+    margin-top: 100px !important;
+}

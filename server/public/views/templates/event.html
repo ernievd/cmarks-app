@@ -1,7 +1,15 @@
 <div ng-include="'views/partials/header.html'"></div>
 
-<div class="container">
-  <p>
-    In event
-  </p>
+<div ng-cloak layout="column" class="no-select"  md-swipe-up="vm.onSwipeUp($event, $target)">
+
+    <md-divider></md-divider>
+    <div flex layout="column" layout-align="center center">
+      <div layout="column" layout-align="center center" class="demo-swipe">
+        <label>Swipe me up</label>
+        <h1><md-icon class="large material-icons icon-arrow" md-svg-src="../../assets/cmarkArrow.svg"></md-icon></h1>
+      </div>
+    </div>
+    <md-button class="md-primary" ng-click="vm.finishEvent()">Finish Event</md-button>
+    <md-divider></md-divider>
+
 </div>
