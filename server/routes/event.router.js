@@ -3,9 +3,10 @@ const router = express.Router();
 const generateCode = require('../modules/code-generation');
 const pool = require('../modules/pool');
 const checkCode = require('../modules/check-code');
+const isAuthenticated = require('../modules/isAuthenticated');
 
 // add new event to database
-router.post('/', (req, res) => {
+router.post('/', isAuthenticated, (req, res) => {
     let newCode;
     let foundMatch = true;
     pool.query(`SELECT join_code FROM events`)
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
 }) //end post
 
 // get upcoming events for a particular speaker
-router.get('/upcoming/:speaker_id', (req, res) => {
+router.get('/upcoming/:speaker_id', isAuthenticated, (req, res) => {
     console.log('in event router', req.params);
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = false`
     pool.query(query, [req.params.speaker_id])
@@ -44,7 +45,7 @@ router.get('/upcoming/:speaker_id', (req, res) => {
 }) // end get
 
 // get past events for a particular speaker
-router.get('/past/:speaker_id', (req, res) => {
+router.get('/past/:speaker_id', isAuthenticated, (req, res) => {
     console.log('in event router', req.params);
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = true`
     pool.query(query, [req.params.speaker_id])
@@ -58,7 +59,7 @@ router.get('/past/:speaker_id', (req, res) => {
 }) // end get
 
 // update an event's 'complete' status to true
-router.put('/complete/:id', (req, res) => {
+router.put('/complete/:id', isAuthenticated, (req, res) => {
     console.log('in event router', req.params);
     const query = `UPDATE events SET completed = true WHERE id = $1`
     pool.query(query, [req.params.id])
@@ -72,7 +73,7 @@ router.put('/complete/:id', (req, res) => {
         })
 }) //end put
 
-router.put('/join/:code', (req, res) => {
+router.put('/join/:code',isAuthenticated, (req, res) => {
     pool.query(`SELECT * FROM events WHERE join_code = $1`, [req.params.code])
         .then((result) => {
             console.log('GET event from join code', result);
@@ -84,7 +85,7 @@ router.put('/join/:code', (req, res) => {
         })
 })
 
-router.delete(`/delete/:id`, (req, res) => {
+router.delete(`/delete/:id`, isAuthenticated, (req, res) => {
     pool.query(`UPDATE events SET join_code = null WHERE id = $1`, [req.params.id])
         .then((result) => {
             res.sendStatus(200);

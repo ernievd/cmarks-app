@@ -1,10 +1,10 @@
-
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
+const isAuthenticated = require('../modules/isAuthenticated');
 
 
-router.post('/swipe', (req, res) => {
+router.post('/swipe', isAuthenticated, (req, res) => {
     console.log('req.body', req.body);
     console.log('user', req.user);
     let event_id = req.body.event_id;
