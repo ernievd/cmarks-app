@@ -7,10 +7,16 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function () {
-        var now = moment().format('h:mm:ss a');
+        // let now = moment().format('h:mm:ss');
+        let now = moment().format();
+        let momentDate = moment(now);
+
+        console.log('to date', momentDate.toDate());
+
         self.postedTime = {
             now, 
         }
+        // converts milliseconds to time
 
         console.log('posted time', self.postedTime);
 
