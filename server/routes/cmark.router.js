@@ -9,7 +9,7 @@ router.post('/swipe', (req, res) => {
     console.log('user', req.user);
     let event_id = 1;
     let user_id = req.user.id;
-    let timestamp = req.body.actualTime;
+    let timestamp = req.body.now;
     const queryText = 'INSERT INTO cmarks (timestamp, user_id, event_id ) VALUES ($1, $2, $3)'; 
 
     pool.query(queryText, [timestamp, user_id, event_id])

@@ -1,4 +1,4 @@
-myApp.service('CmarkService', ['$http', '$location', function ($http, $location) {
+myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, $location, moment) {
     var self = this;
     self.now;
     self.utcTimestamp;
@@ -7,16 +7,11 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function () {
-        self.now = new Date;
+        var now = moment().format('h:mm:ss a');
+        self.postedTime = {
+            now, 
+        }
 
-        
-        self.utcTimestamp = Date.UTC(self.now.getUTCFullYear(), self.now.getUTCMonth(), self.now.getUTCDate(),
-            self.now.getUTCHours(), self.now.getUTCMinutes());
-
-        console.log('time', self.utcTimestamp);
-
-        // converts milliseconds to time
-        self.timeConversion(self.utcTimestamp);
         console.log('posted time', self.postedTime);
 
         // posting to time to database. 
@@ -29,26 +24,26 @@ myApp.service('CmarkService', ['$http', '$location', function ($http, $location)
         })
     }
 
-    // converts milliseconds to hours, minutes, seconds to store in SQL Database
-    self.timeConversion = function (milliseconds) {
-        let time = parseInt((milliseconds%1000)/100);
-        let seconds = parseInt((milliseconds/1000)%60);
-        let minutes = parseInt((milliseconds/(1000*60))%60);
-        let hours = parseInt((milliseconds/(1000*60*60))%24);
+    // // converts milliseconds to hours, minutes, seconds to store in SQL Database
+    // self.timeConversion = function (milliseconds) {
+    //     let time = parseInt((milliseconds%1000)/100);
+    //     let seconds = parseInt((milliseconds/1000)%60);
+    //     let minutes = parseInt((milliseconds/(1000*60))%60);
+    //     let hours = parseInt((milliseconds/(1000*60*60))%24);
 
-        hours = (hours < 10) ? "0" + hours : hours;
-        minutes = (minutes < 10) ? "0" + minutes : minutes;
-        seconds = (seconds < 10) ? "0" + seconds : seconds;
+    //     hours = (hours < 10) ? "0" + hours : hours;
+    //     minutes = (minutes < 10) ? "0" + minutes : minutes;
+    //     seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-        let actualTime = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    //     let actualTime = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 
-        self.postedTime = {
-            actualTime,
+    //     self.postedTime = {
+    //         actualTime,
 
-        }
+    //     }
 
-        return self.postedTime;
-    }
+    //     return self.postedTime;
+    // }
 
     self.finishEvent = function () {
         $location.path('/my-events');
