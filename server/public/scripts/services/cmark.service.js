@@ -48,7 +48,7 @@ myApp.service('CmarkService', ['$http', '$location', 'EventService', function ($
             event_id: self.eventInfo[0].id
         }
 
-        return self.postedTime;
+        return self.swipeInfo;
     }
 
     self.finishEvent = function () {
