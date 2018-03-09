@@ -72,6 +72,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             self.getUpcomingEvents();
         })
             .catch(function (error) {
+                //tell user something
                 console.log('uh oh, event did not add successfully');
             })
     } // end addEvent

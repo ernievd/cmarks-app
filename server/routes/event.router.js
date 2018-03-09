@@ -7,6 +7,7 @@ const isAuthenticated = require('../modules/isAuthenticated');
 
 // add new event to database
 router.post('/', isAuthenticated, (req, res) => {
+    // make sure only a logged in user can add event to their id (use req.user.id)
     let newCode;
     let foundMatch = true;
     pool.query(`SELECT join_code FROM events`)
