@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/user-header.html'"></div>
 
-<md-button ng-click="vm.showAdvanced($event)" class="new-btn">
+<md-button ng-click="vm.showAddEvent($event)" class="new-btn">
     <ng-md-icon icon="add_box" size="36" style="fill: #F44336"></ng-md-icon>
 </md-button>
 
@@ -32,7 +32,7 @@
     
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button ng-click="vm.completeEvent(event.id)" class="md-primary">Mark Complete</md-button>
-                    <md-button><i class="material-icons">mode_edit</i></md-button>
+                    <md-button ng-click="vm.showEditEvent($event)"><i class="material-icons">mode_edit</i></md-button>
                 </md-card-actions>
             </md-card>
         </div>
@@ -60,7 +60,7 @@
         
                     <md-card-actions layout="row" layout-align="end center">
                         <md-button class="md-primary">Upload Audio</md-button>
-                        <md-button><i class="material-icons">mode_edit</i></md-button>
+                        <md-button ng-click="vm.showEditEvent($event)"><i class="material-icons">mode_edit</i></md-button>
                     </md-card-actions>
                 </md-card>
         </div>
