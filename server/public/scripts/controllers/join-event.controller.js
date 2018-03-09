@@ -4,7 +4,7 @@ myApp.controller('JoinEventController', ['UserService', 'EventService', function
   self.joinCode = '';
   self.eventInfo = EventService.eventInfo.list;
   self.wrongCode = EventService.wrongCode;
-  
+
   self.joinEvent = function (code) {
     code = code.toUpperCase();
     EventService.joinEvent(code);
