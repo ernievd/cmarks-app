@@ -1,42 +1,44 @@
 myApp.service('CmarkService', ['$http', '$location', function($http, $location) {
 	var self = this;
-	self.bufferAmount = moment('10', 'ss');
 
-	var start = moment('11:20:00 AM', 'h:mm:ss a');
+	self.bufferAmount = 10;
+
 	// This is an object I created here just for test purposes
     //    I assume that I will be passed in an object like this from the database
 	self.testCmarkObject = {
 		mediaStartTime: "12:34:24 pm",
 		mediaFileName: "../assets/Spaghetti.mp3",
 		cmarkArray: [ "12:34:44 pm", "12:34:54 pm","12:35:44 pm"]
-	};
+	};// END self.testCmarkObject
 
 	// self.filestackAudioFile = "https://cdn.filestackcontent.com/CktcazQzRqmuBC9GblZh";
 	// self.localAudioFile = "../assets/Spaghetti.mp3";
 
 	self.playAudioSegment = function (mediaRealStartTime, cmark) {
 		let audio = document.getElementById('sample');
-		// cmark = new Date(cmark).getTime();
 		cmark = moment(cmark, 'h:mm:ss');
-		//mediaRealStartTime = new Date(mediaRealStartTime).getTime();
 		mediaRealStartTime = moment(mediaRealStartTime, 'h:mm:ss');
 
-		//let cmarkAdjustedTime = new Date(cmark - mediaRealStartTime).getSeconds();
 
+		// let cmarkAdjustedTime = moment.duration(moment(cmark).diff(mediaRealStartTime));
+		let cmarkAdjustedTime = moment.duration(cmark.diff(mediaRealStartTime));
+		//self.cmarkToSeconds = cmarkAdjustedTime;
+		let playStartTime = cmarkAdjustedTime.subtract(self.bufferAmount/2, 'seconds');
+		playStartTime = (playStartTime._data.minutes * 60) + playStartTime._data.seconds;
 
-		var cmarkAdjustedTime = moment.duration(moment(cmark).diff(mediaRealStartTime));
+		//Why can I not do this twice without it resetting - had to move the set???!!!???!!!!!!???!!
+		//let playEndTime = cmarkAdjustedTime.add(self.bufferAmount/2, 'seconds');
+		let playEndTime = cmarkAdjustedTime.add(self.bufferAmount, 'seconds');
+		playEndTime = (playEndTime._data.minutes * 60) + playEndTime._data.seconds;
 
-		console.log('cmarkAdjustedTime :', cmarkAdjustedTime._data.minutes + ':' + cmarkAdjustedTime._data.seconds);
-
-
-		// var __duration = moment.duration(moment(__endTime).diff(__startTime));
-		// var __hours = __duration.asHours();
-		// console.log(__hours);
-		self.bufferAmount
-		let playStartTime = cmarkAdjustedTime - (self.bufferAmount / 2);
-		let playEndTime = cmarkAdjustedTime + (self.bufferAmount / 2);
+		let end = playEndTime;
 
 		let segmentEnd;
+
+		// playStartTime = (playStartTime._data.minutes * 60) + playStartTime._data.seconds;
+		// playEndTime = (playEndTime._data.minutes * 60) + playEndTime._data.seconds;
+
+
 		audio.currentTime = playStartTime;
 
 		audio.addEventListener('timeupdate', function () {
@@ -52,7 +54,6 @@ myApp.service('CmarkService', ['$http', '$location', function($http, $location) 
 
 		audio.play();
 
-		//***  DO I NEED TO ADD THIS BACK AS A FUNCTION?
 		self.playSegment = function (PlayStartTime, PlayEndTime){
 		segmentEnd = playEndTime;
 		audio.currentTime = playStartTime;

@@ -4,4 +4,5 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
     self.userService = UserService;
 
     self.cmarkService = CmarkService;
+
   }]);
