@@ -1,3 +1,92 @@
 <div ng-include="'views/partials/user-header.html'"></div>
 
-<h1>User's CMarks for single event/Listen with CMarks</h1>
+
+<button ng-click="vm.cmarkService.playAudio()">play Audio> </button>
+
+
+
+<div>
+	<h3> Play your CMarks</h3>
+	<!--<audio id="sample" src="https://cdn.filestackcontent.com/CktcazQzRqmuBC9GblZh" controls preload></audio>-->
+	<!--<audio id="sample" src="{{vm.cmarkService.localAudioFile}}" controls preload></audio>-->
+	<br>
+	<!--Media Start Time: <input ng-model="vm.cmarkService.startTime">-->
+	<br>
+	<form>
+		Buffer Amount:
+		<input type="number" ng-model="vm.cmarkService.bufferAmount">
+	</form>
+	<form>
+		Start Time:
+		<input type="time">
+	</form>
+
+	<!--<button ng-click="vm.cmarkService.getAnotherTime()">get another time> </button>-->
+	<!--{{vm.cmarkService.anotherTime}}-->
+	<br>
+
+	<audio id="sample" src="{{vm.cmarkService.testCmarkObject.mediaFileName}}" controls preload></audio>
+	<br>
+	<br>
+	<div ng-repeat="cmark in vm.cmarkService.testCmarkObject.cmarkArray">
+		{{vm.cmarkService.convertToSeconds(cmark)}}
+		<br>
+		<button ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.testCmarkObject.mediaStartTime, cmark)">Play Cmark at at {{vm.cmarkService.cmarkToSeconds}} seconds> </button>
+		<br>
+		<!--<a href="{{vm.cmarkService.playAudioSegment(vm.cmarkService.testCmarkObject.mediaStartTime,vm.cmarkService.bufferAmount,cmark)}}:{{vm.cmarkService.playSegment}}">Play Cmark at at {{cmark}} seconds</a>&ndash;&gt;-->
+	<br>
+	</div>
+	<!--<a href="{{vm.cmarkService.playAudio()}}:playSegment(3, 6);">Start at 3 seconds and end at 6</a>-->
+
+	<!--<a href="javascript:playSegment(3, 6);">Start at 3 seconds and end at 6</a>-->
+	<!--<a href="javascript:playSegment(5.0);">Start at 5</a>-->
+
+	<!--<script>-->
+		<!--var audio = document.getElementById('sample2');-->
+		<!--var segmentEnd;-->
+
+		<!--audio.addEventListener('timeupdate', function (){-->
+			<!--if (segmentEnd && audio.currentTime >= segmentEnd) {-->
+				<!--audio.pause();-->
+			<!--}-->
+			<!--console.log(audio.currentTime);-->
+		<!--}, false);-->
+
+		<!--function playSegment(startTime, endTime){-->
+			<!--segmentEnd = endTime;-->
+			<!--audio.currentTime = startTime;-->
+			<!--audio.play();-->
+		<!--}-->
+	<!--</script>-->
+</div>
+
+<br>
+<br>
+
+
+<!--<div>-->
+
+<!--<h3>Local mp3</h3>-->
+<!--<audio id="sample3" src="sound-files/Spaghetti.mp3" controls preload></audio>-->
+
+<!--<a href="javascript:playSegment(55.0, 65.0);">55 seconds to 65 seconds</a>-->
+<!--<a href="javascript:playSegment(7.0);">start at 7 seconds</a>-->
+
+<!--<script>-->
+	<!--var audio = document.getElementById('sample3');-->
+	<!--var segmentEnd;-->
+
+	<!--audio.addEventListener('timeupdate', function (){-->
+		<!--if (segmentEnd && audio.currentTime >= segmentEnd) {-->
+			<!--audio.pause();-->
+		<!--}-->
+		<!--console.log(audio.currentTime);-->
+	<!--}, false);-->
+
+	<!--function playSegment(startTime, endTime){-->
+		<!--segmentEnd = endTime;-->
+		<!--audio.currentTime = startTime;-->
+		<!--audio.play();-->
+	<!--}-->
+<!--</script>-->
+<!--</div>-->
