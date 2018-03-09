@@ -1,0 +1,44 @@
+<md-dialog flex="80" layout-padding>
+    <h2>Edit Event</h2>
+    <md-content layout-padding layout="column">
+        <md-input-container>
+            <label>Event Title</label>
+            <input ng-model="editedEvent.title">
+        </md-input-container>
+        <md-input-container>
+            <label>Speaker</label>
+            <input ng-model="editedEvent.speaker_name" type="text">
+        </md-input-container>
+        <md-input-container>
+            <label>Location</label>
+            <input ng-model="editedEvent.location" type="text">
+        </md-input-container>
+        <div>
+        <md-content class="md-no-momentum">
+            <md-input-container class="md-icon-float md-block">
+                <label>Select a date...</label>
+                <md-icon md-font-library="material-icons">today</md-icon>
+                <input moment-picker="ctrl.stringDate"
+                        locale="en"
+                        format="YYYY-MM-DD"
+                        ng-model="ctrl.momentDate"
+                        ng-model-options="{ updateOn: 'blur' }">
+            </md-input-container>
+        </md-content>
+        <md-content class="md-no-momentum">
+            <md-input-container class="md-icon-float md-block">
+                <label>Select a time...</label>
+                <md-icon md-font-library="material-icons">today</md-icon>
+                <input moment-picker="ctrl.timepicker"
+                        locale="en"
+                        format="HH:mm:ss"
+                        ng-model="ctrl.timepicker"
+                        ng-model-options="{ updateOn: 'blur' }">
+            </md-input-container>
+        </md-content>
+
+
+        </div>
+    </md-content>
+    <md-button ng-click="vm.editEvent(editedEvent)">submit</md-button>
+</md-dialog>
