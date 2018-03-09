@@ -3,7 +3,8 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
     self.now;
     self.utcTimestamp;
     self.acutalTime;
-    self.postedTime;
+    self.swipeInfo;
+    self.eventInfo = EventService.eventInfo.list
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function () {
@@ -57,12 +58,12 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 
         let actualTime = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 
-        self.postedTime = {
+        self.swipeInfo = {
             actualTime,
-
+            event_id: self.eventInfo[0].id
         }
 
-        return self.postedTime;
+        return self.swipeInfo;
     }
 
     self.finishEvent = function () {

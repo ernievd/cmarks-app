@@ -79,3 +79,20 @@
 .icon-arrow svg {
     fill: green;
 }
+
+.join-input{
+    border: none;
+    border-bottom: 2px solid #F44336;
+    font-size: 24px;
+    text-align: center;
+    width: 152px;
+    background-color: #FAFAFA;
+}
+
+.join-btn {
+    margin-top: 25px !important;
+}
+
+.join-speaker {
+    margin-top: 100px !important;
+}
