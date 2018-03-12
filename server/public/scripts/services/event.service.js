@@ -5,7 +5,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     self.pastEvents = { list: [] };
     self.eventInfo = { list: [] };
     self.wrongCode = {code:'', check: false};
-
+    self.audienceEvents = { list: []};
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -74,6 +74,14 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
 
     // get audience member's events
+    self.getAudienceEvents = function() {
+        $http.get('/event/audience/all').then(function(response){
+            // console.log('got events!', response);
+            self.audienceEvents.list = response.data;
+            console.log('events:', self.audienceEvents.list);
+            
+        })
+    }
 
     // join event
     self.joinEvent = function(code){
