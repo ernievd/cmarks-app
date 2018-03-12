@@ -15,7 +15,7 @@
 
 .nav-link > a {
     text-decoration: none;
-    color: #212121;
+    color: #ffffff;
     width: 100%;
     text-align: center;
 }
@@ -79,14 +79,17 @@
 .icon-arrow svg {
     fill: green;
 }
-
+.md-toolbar-tools .eventTitle {
+    font-size: 48px;
+}
 .join-input{
     border: none;
     border-bottom: 2px solid #F44336;
     font-size: 24px;
     text-align: center;
     width: 152px;
-    background-color: #FAFAFA;
+    background-color: #303030;
+    color: #ffffff;
 }
 
 .join-btn {
@@ -94,5 +97,10 @@
 }
 
 .join-speaker {
+    color: #27e7de;
     margin-top: 100px !important;
+}
+
+.complete-audio:hover {
+    color: #F44336;
 }

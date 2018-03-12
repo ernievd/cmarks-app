@@ -5,11 +5,19 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     //EventService variables
     self.upcomingEvents = EventService.upcomingEvents;
     self.pastEvents = EventService.pastEvents;
-
+    console.log('pastEvents', self.pastEvents);
+    
     //EventService functions
     self.getUpcomingEvents = EventService.getUpcomingEvents;
     self.getPastEvents = EventService.getPastEvents;
     self.completeEvent = EventService.completeEvent;
+    console.log('completeEvent', self.completeEvent);
+    
+    // Filestack audio upload function 
+    self.openPicker = function (event_id, speaker_id) {
+      console.log('event id', event_id);
+      AudioService.openPicker(event_id, speaker_id);
+    }
 
 
     self.showAddEvent = function(ev) {
