@@ -4,6 +4,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
     self.utcTimestamp;
     self.acutalTime;
     self.postedTime;
+    self.audienceCmarks = { list: []};
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
@@ -34,4 +35,14 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
         $location.path('/my-events');
     }
 
+    self.getAudienceEvent = function(event_id) {
+        console.log('getting audience event', event_id);
+        
+        $http.get(`/event/audience/${event_id}`).then(function(response){
+            // console.log('got the event!', response);
+            self.audienceCmarks.list = response.data;
+            console.log(self.audienceCmarks);
+            
+        })
+    }
 }]);
