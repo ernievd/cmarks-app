@@ -1,4 +1,13 @@
-/************ Navigation Styles ************/
+
+html {
+    font-size: 28pt;
+}
+
+.app-heading {
+    font-size: 72pt;
+}
+
+
 .nav-container {
     padding: 0;
 }
@@ -7,7 +16,7 @@
     margin: 0 auto;
     margin-top: 20px;
     width: 80%;
-    font-size: 16pt;
+    font-size: 36pt;
     font-weight: bold;
     border-bottom: 1px solid #F44336;
     text-align: center;
@@ -39,7 +48,8 @@
 .heading {
     text-align: center;
     border-bottom: 1px solid #F44336;
-    width: 70%;
+    font-size: 64pt;
+    width: 80%;
     margin: 20px auto;
 }
 
@@ -52,11 +62,18 @@
 .subheading {
     margin: 0 auto;
     text-align: center;
+    font-size: 36pt;
     width: 100%;
 }
 
 .event-details > span {
     line-height: 2;
+}
+
+.event-title {
+    border-bottom: 1px solid #F44336;
+    width: 80%;
+    text-align: center;
 }
 
 .new-btn {

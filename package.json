@@ -15,6 +15,7 @@
     "angular-material": "^1.1.7",
     "angular-messages": "^1.6.9",
     "angular-moment": "^1.2.0",
+    "angular-moment-picker": "^0.10.2",
     "angular-route": "^1.6.9",
     "angularjs-social-login": "^2.6.1",
     "bad-words": "^1.6.1",

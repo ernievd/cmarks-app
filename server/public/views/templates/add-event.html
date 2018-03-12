@@ -13,16 +13,28 @@
             <label>Location</label>
             <input ng-model="newEvent.location" type="text">
         </md-input-container>
-        <div>
-            <md-input-container>
-                <label>Date</label>
-                <md-datepicker ng-model="newEvent.date" md-placeholder="Enter date"></md-datepicker>
-            </md-input-container>
-            <md-input-container>
-                <label>Start Time</label>
-                <input ng-model="newEvent.start_time" type="time">
-            </md-input-container>
-        </div>
+        <md-content class="md-no-momentum">
+                <md-input-container class="md-icon-float md-block">
+                    <label>Select a date...</label>
+                    <md-icon md-font-library="material-icons">today</md-icon>
+                    <input moment-picker="ctrl.stringDate"
+                            locale="en"
+                            format="YYYY-MM-DD"
+                            ng-model="newEvent.date"
+                            ng-model-options="{ updateOn: 'blur' }">
+                </md-input-container>
+            </md-content>
+            <md-content class="md-no-momentum">
+                <md-input-container class="md-icon-float md-block">
+                    <label>Select a time...</label>
+                    <md-icon md-font-library="material-icons">today</md-icon>
+                    <input moment-picker="ctrl.timepicker"
+                            locale="en"
+                            format="HH:mm:ss"
+                            ng-model="newEvent.start_time"
+                            ng-model-options="{ updateOn: 'blur' }">
+                </md-input-container>
+            </md-content>
     </md-content>
     <md-button ng-click="vm.submitEvent(newEvent)">submit</md-button>
 </md-dialog>

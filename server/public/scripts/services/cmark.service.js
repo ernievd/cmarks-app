@@ -44,7 +44,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
             // console.log('got the event!', response);
             self.audienceCmarks.list = response.data;
             console.log(self.audienceCmarks);
-
+			
         })
 	}
 	
