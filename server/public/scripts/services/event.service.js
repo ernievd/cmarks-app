@@ -83,6 +83,11 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         })
     }
 
+    //get event info to edit
+    self.getEventInfo = function() {
+        $http.get()
+    }
+
     // join event
     self.joinEvent = function(code){
         $http.put(`/event/join/${code}`).then(function(response){

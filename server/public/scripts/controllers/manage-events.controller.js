@@ -6,6 +6,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     self.upcomingEvents = EventService.upcomingEvents;
     self.pastEvents = EventService.pastEvents;
     console.log('pastEvents', self.pastEvents);
+    self.eventToEdit = { title: 'Hello'};
     
     //EventService functions
     self.getUpcomingEvents = EventService.getUpcomingEvents;
@@ -34,6 +35,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
 
     self.showEditEvent = function(ev) {
       $mdDialog.show({
+        locals: {eventToEdit: self.eventToEdit},                
         controller: EditEventController,
         controllerAs: 'vm',
         templateUrl: '/../../views/templates/edit-event.html',
@@ -78,11 +80,16 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
       }
     }
 
+    self.editEvent = function(event_id) {
+      self.showEditEvent();
+    }
+
       function EditEventController($mdDialog, EventService) {
         var self = this;
         self.editEvent = EventService.editEvent;
         self.getEvent = EventService.getEvent;
-  
+        self.eventInfo = EventService.eventInfo;
+          
         self.hide = function() {
           $mdDialog.hide();
         };
