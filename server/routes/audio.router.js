@@ -8,6 +8,7 @@ router.put('/audioUpload/:speaker_id', (req, res) => {
     let audio_url = req.body.audio_url;
     let event_id = req.body.event_id;
     let speaker_id = req.params.speaker_id;
+    console.log('body', req.body);
     
     const query = `UPDATE events SET audio_url = $1 WHERE speaker_id = $2 AND id = $3` 
     pool.query(query, [audio_url, speaker_id, event_id])

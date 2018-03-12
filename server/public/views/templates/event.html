@@ -7,10 +7,13 @@
   <div flex layout="column" layout-align="center center">
 
     <div layout="column" layout-align="center center" class="demo-swipe">
-      <p class="swipeDirections" ng-if="vm.count == 0"> Swipe up to save noteworthy points during the event!</p>
-      <ng-md-icon icon="arrow_upwards" style="fill:rgba(255,255,255,1.0)" size="200px"></ng-md-icon>
+      <p class="swipeDirections" ng-if="vm.count == 0" flex layout="column" layout-align="space-between"> 
+        Swipe up to save noteworthy points during the event!
+      </p>
     </div>
-
+    <div>
+        <ng-md-icon icon="arrow_upwards" style="fill:rgba(255,255,255,1.0)" size="200px"></ng-md-icon>
+    </div>
     <div ng-if="vm.count != 0">
       <h1 class="cmarkCount">{{vm.count}}</h1>
     </div>
