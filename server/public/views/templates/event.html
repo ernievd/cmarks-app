@@ -1,18 +1,25 @@
 <div ng-include="'views/partials/header.html'"></div>
 
 <div ng-cloak layout="column" class="no-select" md-swipe-up="vm.onSwipeUp($event, $target)">
+
   <md-divider></md-divider>
+
   <div flex layout="column" layout-align="center center">
+
     <div layout="column" layout-align="center center" class="demo-swipe">
-        <p class="swipeDirections" ng-if="vm.count == 0">Swipe up to save noteworthy points during the event!</p>
-      <ng-md-icon icon="arrow_upwards" style="fill:green" size="500px"></ng-md-icon> 
+      <p class="swipeDirections" ng-if="vm.count == 0"> Swipe up to save noteworthy points during the event!</p>
+      <ng-md-icon icon="arrow_upwards" style="fill:green" size="200px"></ng-md-icon>
     </div>
+
     <div ng-if="vm.count != 0">
       <h1 class="cmarkCount">{{vm.count}}</h1>
     </div>
+
   </div>
+
   <md-button class="md-primary swipeButton" ng-click="vm.finishEvent()">
     <strong>Finish Event</strong>
   </md-button>
   <md-divider></md-divider>
+  
 </div>

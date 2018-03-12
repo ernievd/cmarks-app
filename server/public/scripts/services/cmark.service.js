@@ -6,7 +6,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
     self.postedTime;
     self.audienceCmarks = { list: []};
 
-    self. count = 0;
+    self.count = 0;
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
@@ -46,7 +46,8 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
             console.log(self.audienceCmarks);
 
         })
-    }
+	}
+	
 	self.bufferAmount = 10;
 
 	// This is an object I created here just for test purposes
