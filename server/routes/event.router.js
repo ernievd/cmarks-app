@@ -111,9 +111,10 @@ router.get('/audience/all', (req, res) => {
         })
 })
 
-router.get('/audience/:id', (req, res) => {
+router.get('/audience/:id', isAuthenticated, (req, res) => {
     console.log('in event router', req.params.id);
-    pool.query(`SELECT * FROM events JOIN cmarks ON events.id = cmarks.event_id WHERE user_id = $1 AND event_id = $2`, [req.user.id, req.params.id])
+    pool.query(`SELECT * FROM events JOIN cmarks ON events.id = cmarks.event_id
+     WHERE user_id = $1 AND event_id = $2`, [req.user.id, req.params.id])
         .then((result) => {
             console.log('result from getting cmarks:', result);
             res.send(result.rows);
