@@ -1,5 +1,5 @@
-myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService',
-  function (UserService, CmarkService, AudioService, EventService) {
+myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams',
+  function (UserService, CmarkService, AudioService, EventService , $location, $routeParams) {
     var self = this;
     self.userService = UserService;
 
