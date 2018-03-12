@@ -77,11 +77,19 @@
     width: 100%;
 }
 .swipeDirections {
+    width: 100%;
+    margin: 0 auto;
     padding-bottom: 200px;
     font-size: 60px;
 }
 .swipeButton {
     font-size: 200px;
+}
+/************ Cmark Counter ************/
+.cmarkCount {
+    text-align: center;
+    font-size: 78px;
+    color: green;
 }
 .join-input{
     border: none;

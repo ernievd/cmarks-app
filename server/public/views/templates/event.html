@@ -4,11 +4,11 @@
   <md-divider></md-divider>
   <div flex layout="column" layout-align="center center">
     <div layout="column" layout-align="center center" class="demo-swipe">
-      <h1 class="swipeDirections">Swipe up</h1>
+      <h1 class="swipeDirections" ng-if="vm.count == 0">Swipe up</h1>
       <!-- <img class="large material-icons icon-arrow" ng-src="../../assets/cmarksA"></img> -->
     </div>
-    <div class="cmarkCount">
-      <p> {{vm.count}} Cmarks!</p>
+    <div ng-if="vm.count != 0">
+      <h1 class="cmarkCount">{{vm.count}}</h1>
     </div>
   </div>
   <md-button class="md-primary swipeButton" ng-click="vm.finishEvent()">
