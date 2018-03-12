@@ -1,0 +1,28 @@
+<md-dialog flex="80" layout-padding>
+    <h2>Add Event</h2>
+    <md-content layout-padding layout="column">
+        <md-input-container>
+            <label>Event Title</label>
+            <input ng-model="newEvent.title">
+        </md-input-container>
+        <md-input-container>
+            <label>Speaker</label>
+            <input ng-model="newEvent.speaker_name" type="text">
+        </md-input-container>
+        <md-input-container>
+            <label>Location</label>
+            <input ng-model="newEvent.location" type="text">
+        </md-input-container>
+        <div>
+            <md-input-container>
+                <label>Date</label>
+                <md-datepicker ng-model="newEvent.date" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container>
+            <md-input-container>
+                <label>Start Time</label>
+                <input ng-model="newEvent.start_time" type="time">
+            </md-input-container>
+        </div>
+    </md-content>
+    <md-button ng-click="vm.submitEvent(newEvent)">submit</md-button>
+</md-dialog>

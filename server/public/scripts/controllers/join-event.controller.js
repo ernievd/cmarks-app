@@ -2,10 +2,12 @@ myApp.controller('JoinEventController', ['UserService', 'EventService', function
   var self = this;
   self.userService = UserService;
   self.joinCode = '';
+  self.eventInfo = EventService.eventInfo.list;
+  self.wrongCode = EventService.wrongCode;
 
   self.joinEvent = function (code) {
     code = code.toUpperCase();
-    console.log(code);
+    EventService.joinEvent(code);
   }
 
 }]);

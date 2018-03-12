@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/header.html'"></div>
 
-<div ng-cloak layout="column" class="swipeContainer">
-
+<div ng-cloak layout="column" class="no-select" md-swipe-up="vm.onSwipeUp($event, $target)">
   <md-divider></md-divider>
   <div flex layout="column" layout-align="center center">
     <div layout="column" layout-align="center center" class="demo-swipe">

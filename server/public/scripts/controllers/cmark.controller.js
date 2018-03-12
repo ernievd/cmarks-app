@@ -2,4 +2,5 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
   function (UserService, CmarkService, AudioService, EventService) {
     var self = this;
     self.userService = UserService;
+    
   }]);

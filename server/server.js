@@ -30,6 +30,7 @@ app.use('/auth', passportAuthRouter);
 app.use('/audio', audioRouter);
 app.use('/event', eventRouter);
 app.use('/cmark', cmarkRouter);
+
 // Serve static files
 app.use(express.static('server/public'));
 

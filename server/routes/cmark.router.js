@@ -1,15 +1,15 @@
-
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
+const isAuthenticated = require('../modules/isAuthenticated').isAuthenticated;
 
 
-router.post('/swipe', (req, res) => {
+router.post('/swipe', isAuthenticated, (req, res) => {
     console.log('req.body', req.body);
     console.log('user', req.user);
-    let event_id = 1;
+    let event_id = req.body.event_id;
     let user_id = req.user.id;
-    let timestamp = req.body.actualTime;
+    let timestamp = req.body.now;
     const queryText = 'INSERT INTO cmarks (timestamp, user_id, event_id ) VALUES ($1, $2, $3)'; 
 
     pool.query(queryText, [timestamp, user_id, event_id])
