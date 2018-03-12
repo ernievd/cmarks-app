@@ -25,7 +25,7 @@
                             <span>Join Code: {{event.join_code}}</span>
                     </md-card-content>
                     <md-card-content layout="column" class="event-details">
-                            <span>Date: {{event.date}}</span>
+                            <span>Date: {{event.date | date: fullDate}}</span>
                             <span>Start Time: {{event.start_time}}</span>
                     </md-card-content>    
                 </div>
@@ -53,7 +53,7 @@
                                 <span>Location: {{event.location}}</span>
                         </md-card-content>
                         <md-card-content layout="column" class="event-details">
-                                <span>Date: {{event.date}}</span>
+                                <span>Date: {{event.date | date: fullDate}}</span>
                                 <span>Start Time: {{event.start_time}}</span>
                         </md-card-content>    
                     </div>

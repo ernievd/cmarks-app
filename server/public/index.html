@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Solo Project</title>
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/angular-material.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
-        <script type="text/javascript" src="vendors/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="vendors/angular-animate.js"></script>
-        <script type="text/javascript" src="vendors/angular-aria.js"></script>
-        <script type="text/javascript" src="vendors/angular-material.min.js"></script>
-        <script type="text/javascript" src="vendors/angular-messages.min.js"></script>
-        <script type="text/javascript" src="vendors/moment.min.js"></script>
-        <script type="text/javascript" src="vendors/angular-moment.min.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script type="text/javascript" src="vendors/filestack.js"></script>
-        <script type="text/javascript" src="scripts/client.js"></script>
-        <script type="text/javascript" src="scripts/controllers/cmark.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/event.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/join-event.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/manage-events.controller.js"></script>
-        <script type="text/javascript" src="scripts/controllers/my-events.controller.js"></script>
-        <script type="text/javascript" src="scripts/services/user.service.js"></script>
-        <script type="text/javascript" src="scripts/services/audio.service.js"></script>
-        <script type="text/javascript" src="scripts/services/cmark.service.js"></script>
-        <script type="text/javascript" src="scripts/services/event.service.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script> 
-        <script src="vendors/moment.js"></script>
-        <script src="vendors/angular-moment.min.js"></script>
-    
 
-    </head>
+<head>
+    <title>CMarks</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Angular Material -->
+    <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-animate.js"></script>
+    <script type="text/javascript" src="vendors/angular-aria.js"></script>
+    <script type="text/javascript" src="vendors/angular-material.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-messages.min.js"></script>
+
+    <!-- Moment JS -->
+    <script type="text/javascript" src="vendors/moment.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-moment.min.js"></script>
+
+    <!-- Sweet Alert & Icons -->
+    <script type="text/javascript" src="vendors/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+
+    <!-- Filestack -->
+    <script type="text/javascript" src="vendors/filestack.js"></script>
+
+    <!-- Controllers & Services -->
+    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/controllers/cmark.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/event.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/join-event.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/manage-events.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/my-events.controller.js"></script>
+    <script type="text/javascript" src="scripts/services/user.service.js"></script>
+    <script type="text/javascript" src="scripts/services/audio.service.js"></script>
+    <script type="text/javascript" src="scripts/services/cmark.service.js"></script>
+    <script type="text/javascript" src="scripts/services/event.service.js"></script>
+
+</head>
 
 
-    <body ng-app="myApp">
+<body ng-app="myApp">
 
-      <main ng-view></main>
+    <main ng-view></main>
 
-    </body>
+</body>
+
 </html>
