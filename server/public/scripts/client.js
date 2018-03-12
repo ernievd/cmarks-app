@@ -12,10 +12,10 @@ myApp.config(function($mdThemingProvider) {
       'default': '500'
     })
     .accentPalette('grey', {
-      'default': '900'
-    });
+      'default': '700'
+    })
+    .dark();
 });
-
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
