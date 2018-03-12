@@ -10,7 +10,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
-
+		self.count += 1;
         //this is what ian posts to the db for a cmark
         let now = moment().format('h:mm:ss a');
 

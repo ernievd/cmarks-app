@@ -33,6 +33,23 @@ router.post('/', isAuthenticated, (req, res) => {
 
 }) //end post
 
+//edit an event in db
+router.put('/edit/', isAuthenticated, (req, res) => {
+    // console.log('in event router editing:', req.params.id);
+    console.log('event to edit:', req.body.title);
+    const query = `UPDATE events SET title = $1, speaker_name = $2, location = $3, date = $4, start_time = $5 WHERE id = $6`
+    pool.query(query, [req.body.title, req.body.speaker_name, req.body.location, req.body.date, req.body.start_time, req.body.id])
+        .then((result) => {
+            console.log('edited successfully:', result);  
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error editing event:', error); 
+            res.sendStatus(500);
+        })
+    
+})
+
 // get upcoming events for a particular speaker
 
 router.get('/upcoming/', isAuthenticated, (req, res) => {
@@ -111,9 +128,10 @@ router.get('/audience/all', (req, res) => {
         })
 })
 
-router.get('/audience/:id', (req, res) => {
+router.get('/audience/:id', isAuthenticated, (req, res) => {
     console.log('in event router', req.params.id);
-    pool.query(`SELECT * FROM events JOIN cmarks ON events.id = cmarks.event_id WHERE user_id = $1 AND event_id = $2`, [req.user.id, req.params.id])
+    pool.query(`SELECT * FROM events JOIN cmarks ON events.id = cmarks.event_id
+     WHERE user_id = $1 AND event_id = $2`, [req.user.id, req.params.id])
         .then((result) => {
             console.log('result from getting cmarks:', result);
             res.send(result.rows);

@@ -71,7 +71,18 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
 
     // edit event
-
+    self.editEvent = function(eventToEdit) {
+        console.log('in service with:', eventToEdit);
+        $http.put(`/event/edit`, eventToEdit).then(function(response) {
+            console.log('event edited!', response);
+            //get events from database to ensure they are updated on DOM
+            self.getUpcomingEvents();
+            self.getPastEvents();
+        })
+        .catch(function(error) {
+            console.log('error editing event:', error);
+        })
+    }
 
     // get audience member's events
     self.getAudienceEvents = function() {
@@ -81,6 +92,11 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
             console.log('events:', self.audienceEvents.list);
             
         })
+    }
+
+    //get event info to edit
+    self.getEventInfo = function() {
+        $http.get()
     }
 
     // join event
