@@ -1,4 +1,4 @@
-
+/************ Navigation Styles ************/
 .nav-container {
     padding: 0;
 }
@@ -29,7 +29,13 @@
     bottom: 30px;
     right: 30px;
 }
-
+/************ Login Styles ************/
+.login-btn {
+    height: 100px;
+    width: 500px;
+    object-fit: cover;
+}
+/************ Manage Events Styles ************/
 .heading {
     text-align: center;
     border-bottom: 1px solid #F44336;
@@ -60,6 +66,7 @@
 .event-list {
     clear: right;
 }
+
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
@@ -95,6 +102,8 @@
 .md-toolbar-tools .eventTitle {
     font-size: 48px;
 }
+
+/************ Join Event Styles ************/
 .join-input{
     border: none;
     border-bottom: 2px solid #F44336;
