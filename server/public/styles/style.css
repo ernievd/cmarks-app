@@ -102,17 +102,14 @@ html {
 }
 .swipeDirections {
     text-align: center;
-    width: 100%;
-    /* margin: 0 auto;
-    padding: 80px; */
-    font-size: 20px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding: 80px;
     font-size: 50px;
 
 }
+
 .swipeButton {
-    font-size: 200px;
+    font-size: 50px;
 }
 /************ Cmark Counter ************/
 .cmarkCount {
@@ -134,7 +131,9 @@ html {
     background-color: #303030;
     color: #ffffff;
 }
-
+.lead {
+    text-align: center;
+}
 .join-btn {
     margin-top: 25px !important;
 }
