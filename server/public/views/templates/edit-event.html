@@ -3,15 +3,15 @@
     <md-content layout-padding layout="column">
         <md-input-container>
             <label>Event Title</label>
-            <input ng-model="editedEvent.title">
+            <input ng-model="editedEvent.title" placeholder="Intro to JavaScript">
         </md-input-container>
         <md-input-container>
             <label>Speaker</label>
-            <input ng-model="editedEvent.speaker_name" type="text">
+            <input ng-model="editedEvent.speaker_name" type="text" placeholder="Joe Karlsson">
         </md-input-container>
         <md-input-container>
             <label>Location</label>
-            <input ng-model="editedEvent.location" type="text">
+            <input ng-model="editedEvent.location" type="text" placeholder="Prime Digital Academy">
         </md-input-container>
         <div>
         <md-content class="md-no-momentum">
@@ -22,7 +22,8 @@
                         locale="en"
                         format="YYYY-MM-DD"
                         ng-model="ctrl.momentDate"
-                        ng-model-options="{ updateOn: 'blur' }">
+                        ng-model-options="{ updateOn: 'blur' }"
+                        placeholder="2018-03-18">
             </md-input-container>
         </md-content>
         <md-content class="md-no-momentum">
@@ -33,7 +34,8 @@
                         locale="en"
                         format="HH:mm:ss"
                         ng-model="ctrl.timepicker"
-                        ng-model-options="{ updateOn: 'blur' }">
+                        ng-model-options="{ updateOn: 'blur' }"
+                        placeholder="01:20:22">
             </md-input-container>
         </md-content>
 

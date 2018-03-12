@@ -80,8 +80,8 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
 
       function EditEventController($mdDialog, EventService) {
         var self = this;
-        self.addEvent = EventService.addEvent;
-        
+        self.editEvent = EventService.editEvent;
+        self.getEvent = EventService.getEvent;
   
         self.hide = function() {
           $mdDialog.hide();
