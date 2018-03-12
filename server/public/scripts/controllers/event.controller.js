@@ -6,7 +6,7 @@ myApp.controller('EventController', ['UserService', 'EventService', 'CmarkServic
 
     self.userService = UserService;
     self.userObject = UserService.userObject;
-    self.eventInfo = EventService.eventInfo.list;
+    self.eventInfo = EventService.eventInfo.list[0];
     console.log('event', self.eventInfo);
     
     // Allows user to use swipe functionality on mobile (difficult on desktop)

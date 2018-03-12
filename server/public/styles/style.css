@@ -79,7 +79,9 @@
 .icon-arrow svg {
     fill: green;
 }
-
+.md-toolbar-tools .eventTitle {
+    font-size: 48px;
+}
 .join-input{
     border: none;
     border-bottom: 2px solid #F44336;
