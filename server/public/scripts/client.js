@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMdIcons', 'angularMoment']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMdIcons', 'angularMoment', 'moment-picker']);
 
 myApp.controller('NavController', function($scope, $mdSidenav) {
   $scope.openRightMenu = function() {
@@ -16,6 +16,7 @@ myApp.config(function($mdThemingProvider) {
     })
     .dark();
 });
+
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

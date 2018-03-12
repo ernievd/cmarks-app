@@ -6,6 +6,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     self.upcomingEvents = EventService.upcomingEvents;
     self.pastEvents = EventService.pastEvents;
     console.log('pastEvents', self.pastEvents);
+    self.eventToEdit = { title: 'Hello'};
     
     //EventService functions
     self.getUpcomingEvents = EventService.getUpcomingEvents;
@@ -29,18 +30,15 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
         targetEvent: ev,
         clickOutsideToClose:true,
         fullscreen: self.customFullscreen // Only for -xs, -sm breakpoints.
-      })
-      // .then(function(answer) {
-      //   self.status = 'You said the information was "' + answer + '".';
-      // }, function() {
-      //   self.status = 'You cancelled the dialog.';
-      // });
+      });
     };
+
+
   
     function AddEventController($mdDialog, EventService) {
       var self = this;
       self.addEvent = EventService.addEvent;
-
+      
 
       self.hide = function() {
         $mdDialog.hide();
@@ -70,4 +68,60 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
         $mdDialog.hide();
       }
     }
+    
+    self.showEditEvent = function(event, ev) {
+      $mdDialog.show({
+        controller: EditEventController,
+        controllerAs: 'vm',
+        templateUrl: '/../../views/templates/edit-event.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: self.customFullscreen, // Only for -xs, -sm breakpoints.
+        resolve: {
+          event: function() {
+            return event;
+          }
+        }
+      });
+    };
+
+    function EditEventController($mdDialog, event, EventService) {
+      var self = this;
+
+      // self.eventToEdit = event;
+      let eventDate = moment(event.date).format('YYYY-MM-DD');
+      let start_time = moment(event.start_time).format('h:mm:ss a');   
+
+      self.eventToEdit = {
+        id: event.id,
+        title: event.title,
+        speaker_name: event.speaker_name,
+        location: event.location,
+        date: eventDate,
+        start_time: start_time
+      }
+
+      console.log('eventToEdit :', self.eventToEdit);
+      
+
+      self.hide = function() {
+        $mdDialog.hide();
+      };
+  
+      self.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      self.editEvent = function(eventToEdit){       
+
+        console.log('event: ', eventToEdit);
+        //send eventToAdd to the service to edit in db
+        EventService.editEvent(eventToEdit);
+        
+        // close dialog
+        $mdDialog.hide();
+      }
+
+  }
 }]);
