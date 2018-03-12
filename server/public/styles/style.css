@@ -76,8 +76,21 @@
     height: 100vh;
     width: 100%;
 }
-.icon-arrow svg {
-    fill: green;
+.swipeDirections {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px;
+    font-size: 60px;
+}
+.swipeButton {
+    font-size: 200px;
+}
+/************ Cmark Counter ************/
+.cmarkCount {
+    text-align: center;
+    font-size: 78px;
+    color: green;
 }
 .md-toolbar-tools .eventTitle {
     font-size: 48px;

@@ -1,10 +1,12 @@
 myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, $location, moment) {
-    let self = this;
+    var self = this;
 
     self.postedTime;
     self.audienceCmarks = { list: []};
     self.adjustedCmarks = [];
 	self.bufferAmount = 10;
+
+    self. count = 0;
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
@@ -83,5 +85,6 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		audio.currentTime = playStartTime;
 		audio.play();
 	}
+
 
 }]);
