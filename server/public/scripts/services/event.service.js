@@ -7,6 +7,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     self.wrongCode = {code:'', check: false};
     self.audienceEvents = { list: []};
     self.audienceCmarks = { list: []};
+
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
         $http.get(`/event/upcoming/`)
