@@ -4,6 +4,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
     self.utcTimestamp;
     self.acutalTime;
     self.postedTime;
+    self. count = 0;
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
@@ -29,7 +30,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
         })
         
     }
-
+    
     self.finishEvent = function () {
         $location.path('/my-events');
     }
