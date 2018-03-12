@@ -3,7 +3,7 @@
     <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
         <div flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
             <h1>Join an Event</h1>
-            <p class="lead">Please enter the 4 character code given by the speaker</p>
+            <p class="lead" >Please enter the 4 character code given by the speaker</p>
             <h3 ng-if="vm.wrongCode.check">{{vm.wrongCode.code}}</h3>
             <form flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
                 <input class="join-input"  ng-model="vm.joinCode" type="text" pattern="[A-Za-z]{4}" maxlength="4" style="text-transform:uppercase">

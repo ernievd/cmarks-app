@@ -17,6 +17,7 @@ myApp.config(function($mdThemingProvider) {
     .dark();
 });
 
+
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   console.log('myApp -- config')
