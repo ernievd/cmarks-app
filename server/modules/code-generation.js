@@ -18,6 +18,4 @@ function generateCode() {
     return text;
 }
 
-generateCode();
-
 module.exports = generateCode;
