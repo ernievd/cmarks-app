@@ -58,7 +58,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         console.log('new event: ', newEvent);
         
         $http.post('/event', newEvent).then(function (response) {
-            console.log('event added!');
+            console.log('event added!', response);
             //get events   
             self.getUpcomingEvents();
         })
