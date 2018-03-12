@@ -20,9 +20,9 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     }
 
 
-    self.showAdvanced = function(ev) {
+    self.showAddEvent = function(ev) {
       $mdDialog.show({
-        controller: DialogController,
+        controller: AddEventController,
         controllerAs: 'vm',
         templateUrl: '/../../views/templates/add-event.html',
         parent: angular.element(document.body),
@@ -37,7 +37,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
       // });
     };
   
-    function DialogController($mdDialog, EventService) {
+    function AddEventController($mdDialog, EventService) {
       var self = this;
       self.addEvent = EventService.addEvent;
 

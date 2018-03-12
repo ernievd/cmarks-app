@@ -32,10 +32,10 @@ router.post('/', speakerAuthenticated, (req, res) => {
 }) //end post
 
 // get upcoming events for a particular speaker
-router.get('/upcoming/:speaker_id', speakerAuthenticated, (req, res) => {
-    console.log('in event router', req.params);
+
+router.get('/upcoming/', isAuthenticated, (req, res) => {
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = false`
-    pool.query(query, [req.params.speaker_id])
+    pool.query(query, [req.user.id])
         .then((result) => {
             console.log('result: ', result.rows);
             res.send(result.rows);
@@ -46,10 +46,10 @@ router.get('/upcoming/:speaker_id', speakerAuthenticated, (req, res) => {
 }) // end get
 
 // get past events for a particular speaker
-router.get('/past/:speaker_id', speakerAuthenticated, (req, res) => {
-    console.log('in event router', req.params);
+
+router.get('/past/', isAuthenticated, (req, res) => {
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = true`
-    pool.query(query, [req.params.speaker_id])
+    pool.query(query, [req.user.id])
         .then((result) => {
             console.log('result: ', result.rows);
             res.send(result.rows);
