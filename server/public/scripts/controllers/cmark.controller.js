@@ -1,8 +1,8 @@
-myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams',
-  function (UserService, CmarkService, AudioService, EventService, $location, $routeParams) {
+myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService',
+  function (UserService, CmarkService, AudioService, EventService) {
     var self = this;
     self.userService = UserService;
-    
+
     //get all events audience member has attended
     self.getAudienceEvents = EventService.getAudienceEvents;
 
@@ -19,5 +19,8 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
     } else {
         self.getAudienceEvents();
     }
+
+
+    self.cmarkService = CmarkService;
 
   }]);
