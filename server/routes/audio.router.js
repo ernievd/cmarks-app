@@ -9,6 +9,7 @@ router.put('/audioUpload/:speaker_id', isAuthenticated, (req, res) => {
     let audio_url = req.body.audio_url;
     let event_id = req.body.event_id;
     let speaker_id = req.params.speaker_id;
+    console.log('body', req.body);
     
     //check to make sure that speaker_id = req.user.id (query db)
 

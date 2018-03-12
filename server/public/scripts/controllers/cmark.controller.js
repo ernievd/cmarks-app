@@ -6,7 +6,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
     //get all events audience member has attended
     self.getAudienceEvents = EventService.getAudienceEvents;
     self.audienceEvents = EventService.audienceEvents;
-
+    
     //get one event
     self.getAudienceEvent = CmarkService.getAudienceEvent;
 
