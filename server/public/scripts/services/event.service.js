@@ -6,7 +6,6 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
     self.eventInfo = { list: [] };
     self.wrongCode = {code:'', check: false};
     self.audienceEvents = { list: []};
-    self.audienceCmarks = { list: []};
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -79,18 +78,7 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
         $http.get('/event/audience/all').then(function(response){
             // console.log('got events!', response);
             self.audienceEvents.list = response.data;
-            console.log(self.audienceEvents.list);
-            
-        })
-    }
-
-    self.getAudienceEvent = function(event_id) {
-        console.log('getting audience event', event_id);
-        
-        $http.get(`/event/audience/${event_id}`).then(function(response){
-            // console.log('got the event!', response);
-            self.audienceCmarks.list = response.data;
-            console.log(self.audienceCmarks);
+            console.log('events:', self.audienceEvents.list);
             
         })
     }
