@@ -3,17 +3,18 @@ const router = express.Router();
 const generateCode = require('../modules/code-generation');
 const pool = require('../modules/pool');
 const checkCode = require('../modules/check-code');
-const isAuthenticated = require('../modules/isAuthenticated');
+const isAuthenticated = require('../modules/isAuthenticated').isAuthenticated;
+const speakerAuthenticated = require('../modules/isAuthenticated').speakerAuthenticated;
 
 // add new event to database
-router.post('/', isAuthenticated, (req, res) => {
+router.post('/', speakerAuthenticated, (req, res) => {
     let newCode;
     let foundMatch = true;
     pool.query(`SELECT join_code FROM events`)
         .then((result) => {
             newCode = checkCode(result);
             const query = `INSERT INTO events (speaker_id, speaker_name, title, location, date, start_time, join_code) VALUES ($1, $2, $3, $4, $5, $6, $7)`
-            pool.query(query, [req.body.speaker_id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
+            pool.query(query, [req.user.id, req.body.speaker_name, req.body.title, req.body.location, req.body.date, req.body.start_time, newCode])
                 .then((result) => {
                     console.log('result:', result);
                     res.sendStatus(200);
@@ -31,7 +32,7 @@ router.post('/', isAuthenticated, (req, res) => {
 }) //end post
 
 // get upcoming events for a particular speaker
-router.get('/upcoming/:speaker_id', isAuthenticated, (req, res) => {
+router.get('/upcoming/:speaker_id', speakerAuthenticated, (req, res) => {
     console.log('in event router', req.params);
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = false`
     pool.query(query, [req.params.speaker_id])
@@ -45,7 +46,7 @@ router.get('/upcoming/:speaker_id', isAuthenticated, (req, res) => {
 }) // end get
 
 // get past events for a particular speaker
-router.get('/past/:speaker_id', isAuthenticated, (req, res) => {
+router.get('/past/:speaker_id', speakerAuthenticated, (req, res) => {
     console.log('in event router', req.params);
     const query = `SELECT * FROM events WHERE speaker_id = $1 AND completed = true`
     pool.query(query, [req.params.speaker_id])
