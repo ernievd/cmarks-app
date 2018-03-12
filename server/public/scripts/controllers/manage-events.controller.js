@@ -60,7 +60,8 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
           date: newEvent.date,
           start_time: start_time 
         }
-
+        console.log('event to add:', eventToAdd);
+        
         //send eventToAdd to the service to add to db
         EventService.addEvent(eventToAdd);
         
@@ -89,17 +90,15 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     function EditEventController($mdDialog, event, EventService) {
       var self = this;
 
-      // self.eventToEdit = event;
       let eventDate = moment(event.date).format('YYYY-MM-DD');
-      let start_time = moment(event.start_time).format('h:mm:ss a');   
-
+      
       self.eventToEdit = {
         id: event.id,
         title: event.title,
         speaker_name: event.speaker_name,
         location: event.location,
         date: eventDate,
-        start_time: start_time
+        start_time: event.start_time
       }
 
       console.log('eventToEdit :', self.eventToEdit);
@@ -114,10 +113,23 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
       };
 
       self.editEvent = function(eventToEdit){       
-
-        console.log('event: ', eventToEdit);
+        // let start_time = moment(eventToEdit.start_time).format('h:mm:ss a');
+        let editedEvent = {};
+        if(typeof(eventToEdit.start_time) == 'string') {
+          editedEvent = eventToEdit;
+        } else {
+          editedEvent = {
+            id: eventToEdit.id,
+            title: eventToEdit.title,
+            speaker_name: eventToEdit.speaker_name,
+            location: eventToEdit.location,
+            date: eventToEdit.date,
+            start_time: moment(eventToEdit.start_time).format('h:mm:ss a')
+          }
+        }
+        console.log('edited event: ', editedEvent);
         //send eventToAdd to the service to edit in db
-        EventService.editEvent(eventToEdit);
+        EventService.editEvent(editedEvent);
         
         // close dialog
         $mdDialog.hide();

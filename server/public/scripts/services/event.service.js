@@ -1,4 +1,4 @@
-myApp.service('EventService', ['$http', '$location', function ($http, $location) {
+myApp.service('EventService', ['$http', '$location', 'moment', function ($http, $location, moment) {
     var self = this;
 
     self.upcomingEvents = { list: [] };
@@ -71,9 +71,10 @@ myApp.service('EventService', ['$http', '$location', function ($http, $location)
 
 
     // edit event
-    self.editEvent = function(eventToEdit) {
-        console.log('in service with:', eventToEdit);
-        $http.put(`/event/edit`, eventToEdit).then(function(response) {
+    self.editEvent = function(editedEvent) {
+ 
+    
+        $http.put(`/event/edit`, editedEvent).then(function(response) {
             console.log('event edited!', response);
             //get events from database to ensure they are updated on DOM
             self.getUpcomingEvents();
