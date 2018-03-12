@@ -98,4 +98,29 @@ router.delete(`/delete/:id`, isAuthenticated, (req, res) => {
         })
 })
 
+router.get('/audience/all', (req, res) => {
+    console.log('in event router');
+
+    pool.query(`SELECT event_id, title, speaker_name, location, date FROM events JOIN cmarks ON events.id = cmarks.event_id WHERE user_id = $1 GROUP BY event_id, title, speaker_name, location, date`, [req.user.id])
+        .then((result) => {
+            console.log('result from getting events:', result);
+            res.send(result.rows)
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        })
+})
+
+router.get('/audience/:id', (req, res) => {
+    console.log('in event router', req.params.id);
+    pool.query(`SELECT * FROM events JOIN cmarks ON events.id = cmarks.event_id WHERE user_id = $1 AND event_id = $2`, [req.user.id, req.params.id])
+        .then((result) => {
+            console.log('result from getting cmarks:', result);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

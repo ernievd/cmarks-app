@@ -48,14 +48,14 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/my-events', {
       templateUrl: '/views/templates/my-events.html',
-      controller: 'MyEventsController as vm',
+      controller: 'CmarkController as vm',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
         }
       }
     })
-    .when('/cmarks', {
+    .when('/my-events/:id', {
       templateUrl: '/views/templates/cmarks.html',
       controller: 'CmarkController as vm',
       resolve: {

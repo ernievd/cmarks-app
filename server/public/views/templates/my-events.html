@@ -1,3 +1,25 @@
 <div ng-include="'views/partials/user-header.html'"></div>
 
 <h1>My Events</h1>
+
+<md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
+    <div flex-xs flex-gt-xs="80" layout="column">
+        <p ng-if="vm.audienceEvents.list.length === 0">You don't currently have any events.</p>
+        <md-card ng-click="vm.redirectTo(event.event_id)" layout="column" ng-repeat="event in vm.audienceEvents.list">
+            <md-card-title>
+                <md-card-title-text layout="row" layout-align="center center">
+                        <span class="md-headline">{{event.title}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <div layout="row" layout-align="space-around">
+                <md-card-content layout="column" class="event-details">
+                        <span>Speaker: {{event.speaker_name}}</span>
+                        <span>Location: {{event.location}}</span>
+                </md-card-content>
+                <md-card-content layout="column" class="event-details">
+                        <span>Date: {{event.date}}</span>
+                </md-card-content>    
+            </div>
+        </md-card>
+    </div>
+</md-content>
