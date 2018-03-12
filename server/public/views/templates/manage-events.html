@@ -1,7 +1,7 @@
 <div ng-include="'views/partials/user-header.html'"></div>
 
 <md-button ng-click="vm.showAddEvent($event)" class="new-btn">
-    <ng-md-icon icon="add_box" size="36" style="fill: #F44336"></ng-md-icon>
+    <ng-md-icon icon="add_box" size="76" style="fill: #F44336"></ng-md-icon>
 </md-button>
 
 <h1 class="heading">Manage Events</h1>
@@ -10,29 +10,34 @@
     <h2 class="subheading">Upcoming Events</h2>
 
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
-        <div flex-xs flex-gt-xs="80" layout="column">
+        <div flex-xs flex-gt-xs="100" layout="column">
             <p ng-if="vm.upcomingEvents.list.length === 0">You don't currently have any upcoming events.</p>
             <md-card layout="column" ng-repeat="event in vm.upcomingEvents.list">
                 <md-card-title>
                     <md-card-title-text layout="row" layout-align="center center">
-                            <span class="md-headline">{{event.title}}</span>
+                            <span class="event-title">{{event.title}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <div layout="row" layout-align="space-around">
                     <md-card-content layout="column" class="event-details">
                             <span>Speaker: {{event.speaker_name}}</span>
                             <span>Location: {{event.location}}</span>
-                            <span>Join Code: {{event.join_code}}</span>
                     </md-card-content>
                     <md-card-content layout="column" class="event-details">
-                            <span>Date: {{event.date}}</span>
+                            <span>Date: {{event.date | date: fullDate}}</span>
                             <span>Start Time: {{event.start_time}}</span>
                     </md-card-content>    
+
                 </div>
+                <md-card-content layout="column" layout-align="center center" class="event-details">
+                    <span>Join Code: {{event.join_code}}</span>
+
+                </md-card-content>  
+
     
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ng-click="vm.completeEvent(event.id)" class="complete-audio">Mark Complete</md-button>
-                    <md-button ng-click="vm.showEditEvent(event, ev)"><i class="material-icons">mode_edit</i></md-button>
+                    <md-button flex ng-click="vm.completeEvent(event.id)" class="complete-audio">Mark Complete</md-button>
+                    <md-button flex ng-click="vm.showEditEvent(event, ev)"><i class="material-icons">mode_edit</i></md-button>
                 </md-card-actions>
             </md-card>
         </div>
@@ -40,11 +45,11 @@
     
     <h2 class="subheading">Past Events</h2>
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
-        <div flex-xs flex-gt-xs="80" layout="column">
+        <div flex-xs flex-gt-xs="100" layout="column">
             <md-card layout="column" ng-repeat="event in vm.pastEvents.list">
                     <md-card-title>
                         <md-card-title-text layout="row" layout-align="center center">
-                                <span class="md-headline">{{event.title}}</span>
+                                <span class="event-title">{{event.title}}</span>
                         </md-card-title-text>
                     </md-card-title>
                     <div layout="row" layout-align="space-around">
@@ -53,14 +58,14 @@
                                 <span>Location: {{event.location}}</span>
                         </md-card-content>
                         <md-card-content layout="column" class="event-details">
-                                <span>Date: {{event.date}}</span>
+                                <span>Date: {{event.date | date: fullDate}}</span>
                                 <span>Start Time: {{event.start_time}}</span>
                         </md-card-content>    
                     </div>
         
                     <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-primary" ng-click="vm.openPicker(event.id, event.speaker_id)">Upload Audio</md-button>
-                        <md-button ng-click="vm.showEditEvent($event)"><i class="material-icons">mode_edit</i></md-button>
+                        <md-button flex class="md-raised" ng-click="vm.openPicker(event.id, event.speaker_id)">Upload Audio</md-button>
+                        <md-button flex ng-click="vm.showEditEvent($event)"><i class="material-icons">mode_edit</i></md-button>
                     </md-card-actions>
                 </md-card>
         </div>
