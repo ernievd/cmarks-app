@@ -7,7 +7,9 @@ const isAuthenticated = require('../modules/isAuthenticated').isAuthenticated;
 const speakerAuthenticated = require('../modules/isAuthenticated').speakerAuthenticated;
 
 // add new event to database
-router.post('/', speakerAuthenticated, (req, res) => {
+router.post('/', isAuthenticated, (req, res) => {
+    console.log('in post to new event', req.body);
+    
     let newCode;
     let foundMatch = true;
     pool.query(`SELECT join_code FROM events`)
