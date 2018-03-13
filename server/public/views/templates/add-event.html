@@ -22,15 +22,6 @@
                     ng-model="newEvent.date"
                     ng-model-options="{ updateOn: 'blur' }">
         </md-input-container>
-        <!-- <md-input-container class="md-icon-float md-block">
-            <label>Select a time...</label>
-            <md-icon md-font-library="material-icons">today</md-icon>
-            <input moment-picker="ctrl.timepicker"
-                    locale="en"
-                    format="HH:mm:ss"
-                    ng-model="newEvent.start_time"
-                    ng-model-options="{ updateOn: 'blur' }">
-        </md-input-container> -->
         <md-input-container>
             <label>Enter a time...</label>
             <input type="time" ng-model="newEvent.start_time">

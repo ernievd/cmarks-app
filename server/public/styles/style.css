@@ -7,6 +7,13 @@ html {
     font-size: 72pt;
 }
 
+md-sidenav,
+md-sidenav.md-locked-open-add-active,
+md-sidenav.md-closed.md-locked-open-add-active,
+md-sidenav.md-locked-open {
+  width: 200%;
+  min-width: 600px;
+}
 
 .nav-container {
     padding: 0;
@@ -15,11 +22,13 @@ html {
 .nav-divider {
     margin: 0 auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 80%;
-    font-size: 36pt;
+    font-size: 42pt;
     font-weight: bold;
     border-bottom: 1px solid #F44336;
     text-align: center;
+    padding: 40px;
 }
 
 .nav-link > a {
@@ -27,6 +36,7 @@ html {
     color: #ffffff;
     width: 100%;
     text-align: center;
+    padding: 40px;
 }
 
 .nav-link > a:hover {
@@ -37,6 +47,7 @@ html {
     position: absolute !important;
     bottom: 30px;
     right: 30px;
+    font-size: 24pt;
 }
 /************ Login Styles ************/
 .login-btn {
@@ -260,3 +271,4 @@ md-dialog {
 .md-datepicker {
     width: 300px;
 }
+
