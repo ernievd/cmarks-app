@@ -84,6 +84,13 @@ html {
     clear: right;
 }
 
+.audio-upload {
+    width: 50%;
+}
+
+.event-edit {
+    width: 50%;
+}
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
@@ -102,19 +109,20 @@ html {
 }
 .swipeDirections {
     text-align: center;
-    width: 100%;
     margin: 0 auto;
-    padding-top: 80px;
+    padding: 80px;
     font-size: 50px;
+
 }
+
 .swipeButton {
-    font-size: 200px;
+    font-size: 50px;
 }
 /************ Cmark Counter ************/
 .cmarkCount {
     text-align: center;
     font-size: 78px;
-    color: green;
+    color: rgba(255,255,255,1.0);
 }
 .md-toolbar-tools .eventTitle {
     font-size: 48px;
@@ -130,7 +138,9 @@ html {
     background-color: #303030;
     color: #ffffff;
 }
-
+.lead {
+    text-align: center;
+}
 .join-btn {
     margin-top: 25px !important;
 }
