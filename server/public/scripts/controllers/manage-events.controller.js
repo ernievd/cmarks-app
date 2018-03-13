@@ -91,6 +91,10 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
       var self = this;
 
       let eventDate = moment(event.date).format('YYYY-MM-DD');
+      console.log('start time:', moment(event.start_time));
+    
+
+      
       
       self.eventToEdit = {
         id: event.id,
@@ -114,22 +118,22 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
 
       self.editEvent = function(eventToEdit){       
         // let start_time = moment(eventToEdit.start_time).format('h:mm:ss a');
-        let editedEvent = {};
-        if(typeof(eventToEdit.start_time) == 'string') {
-          editedEvent = eventToEdit;
-        } else {
-          editedEvent = {
-            id: eventToEdit.id,
-            title: eventToEdit.title,
-            speaker_name: eventToEdit.speaker_name,
-            location: eventToEdit.location,
-            date: eventToEdit.date,
-            start_time: moment(eventToEdit.start_time).format('h:mm:ss a')
-          }
-        }
-        console.log('edited event: ', editedEvent);
+        // let editedEvent = {};
+        // if(typeof(eventToEdit.start_time) == 'string') {
+        //   editedEvent = eventToEdit;
+        // } else {
+        //   editedEvent = {
+        //     id: eventToEdit.id,
+        //     title: eventToEdit.title,
+        //     speaker_name: eventToEdit.speaker_name,
+        //     location: eventToEdit.location,
+        //     date: eventToEdit.date,
+        //     start_time: moment(eventToEdit.start_time).format('h:mm:ss a')
+        //   }
+        // }
+        console.log('edited event: ', eventToEdit);
         //send eventToAdd to the service to edit in db
-        EventService.editEvent(editedEvent);
+        EventService.editEvent(eventToEdit);
         
         // close dialog
         $mdDialog.hide();
