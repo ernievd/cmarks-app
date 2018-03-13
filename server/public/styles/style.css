@@ -40,9 +40,49 @@ html {
 }
 /************ Login Styles ************/
 .login-btn {
-    height: 50px;
-    width: 300px;
-    object-fit: cover;
+    text-align: center;
+    height: 100px;
+    width: 750px;
+    border-radius: 5px;
+}
+.socialLogin {
+    text-decoration: none;
+}
+.socialLoginContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px;
+}
+
+.loginContainer {
+    text-align: center;
+    height: 100vh;
+    margin: auto 0;
+    background-image: url('../assets/christian-fregnan-339342-unsplash.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
+.cmarkHeading {
+
+}
+.loginHeadingContainer {
+    font-size: 75px;
+    background-color: #F44336;
+    width: 100%;
+    opacity: .8;
+}
+.loginIcon {
+    text-align: center;
+    padding-right: 30px;
+}
+.loginHeader {
+    width: 100%;
+    font-size: 40px;
+    padding-left: 30px;
+    border-left: 1px solid black;
 }
 /************ Manage Events Styles ************/
 .heading {
@@ -84,6 +124,13 @@ html {
     clear: right;
 }
 
+.audio-upload {
+    width: 50%;
+}
+
+.event-edit {
+    width: 50%;
+}
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
@@ -127,7 +174,8 @@ html {
     border-bottom: 2px solid #F44336;
     font-size: 24px;
     text-align: center;
-    width: 152px;
+    height: 100px;
+    width: 300px;
     background-color: #303030;
     color: #ffffff;
 }
@@ -137,7 +185,16 @@ html {
 .join-btn {
     margin-top: 25px !important;
 }
-
+.joinEventContainer {
+    height: 100vh;
+    text-align: center;
+    margin: auto 0;
+    background-image: url('../assets/antenna-502680-unsplash.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
 .join-speaker {
     color: #27e7de;
     margin-top: 100px !important;
@@ -146,3 +203,42 @@ html {
 .complete-audio:hover {
     color: #F44336;
 }
+
+.cmark-card {
+    font-size: 40px !important;
+    padding-right: 55px;
+}
+
+audio {
+    width: 80%;
+}
+
+.audio-div{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.cmark-heading {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 36pt;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cmark-noaudio {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 27pt;
+}
+
+/*.subheading {*/
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+    /*font-size: 36pt;*/
+    /*width: 100%;*/
+/*}*/
