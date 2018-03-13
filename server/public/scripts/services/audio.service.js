@@ -17,15 +17,15 @@ myApp.service('AudioService', ['$http', '$location', function ($http, $location)
     }
 
     // Requests an update for the Audio URL 
-    self.addAudio = function (/*response, event_id, speaker_id*/) {
-        // let audio_url = response.filesUploaded[0].url;
+    self.addAudio = function (response, event_id, speaker_id) {
+        let audio_url = response.filesUploaded[0].url;
         
-        // let audioPost = {
-        //     audio_url,
-        //     event_id,
-        // };
+        let audioPost = {
+            audio_url,
+            event_id,
+        };
 
-        $http.put(`/audio/audioUpload/${/*speaker_id*/1}`/*, audioPost*/)
+        $http.put(`/audio/audioUpload/${speaker_id}`, audioPost)
         .then((result) => {
             console.log('succesful put on audio post', result);
         })
@@ -33,5 +33,4 @@ myApp.service('AudioService', ['$http', '$location', function ($http, $location)
             console.log('error on put of audio post', error);
         })
     }
-self.addAudio();
 }]);
