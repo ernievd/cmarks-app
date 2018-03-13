@@ -161,7 +161,6 @@ html {
 
 audio {
     width: 80%;
-    background-color: #666666 !important;
 }
 
 .audio-div{
@@ -179,9 +178,17 @@ audio {
     padding-bottom: 15px;
 }
 
-
-
-.track.playable {
-    color: red;
-    font-style: italic;
+.cmark-noaudio {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 27pt;
 }
+
+/*.subheading {*/
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+    /*font-size: 36pt;*/
+    /*width: 100%;*/
+/*}*/
