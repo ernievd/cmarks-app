@@ -1,16 +1,39 @@
-<div ng-include="'views/partials/header.html'"></div>
 
-<h1>Please Login to start</h1>
-<div>
-    <a class="linkedLogin" href="/api/linked/auth/linkedin">
-        <button linked-in type="button">LinkedIn Login</button>
-        <!-- <img class="login-btn" src="../../assets/btn-linkedin-blue.png" /> -->
-    </a>
-</div>
+<div class="loginContainer" layout="column" layout-align="center center">
+    <h1 class="cmarkHeading">CMarks</h1>
+    <div class="layer">
+    <h1>Please Login to start</h1>
 
-<div>
-    <a href="/auth/google">
-        <button g-login type="button">Google Login</button>
-        <!-- <button class="login-btn" src="../../assets/btn_google_signin_dark_normal_web.png" /> -->
-    </a>
+    <div class="socialLoginContainer">
+        <a class="socialLogin" href="/api/linked/auth/linkedin">
+            <md-button class='md-raised login-btn' layout="row" layout-align="center center">
+                <!-- <div class="iconContainer"> -->
+                <div>
+                    <ng-md-icon class="loginIcon" icon="linkedin" style="fill:#303030" size="60px"></ng-md-icon>
+                </div>
+                <div>
+                    <h2 class="loginHeader">Sign in with Linkedin</h2>
+                </div>
+                <!-- </div> -->
+            </md-button>
+            <!-- <button linked-in type="button">LinkedIn Login</button> -->
+            <!-- <img class="login-btn" src="../../assets/btn-linkedin-blue.png" /> -->
+        </a>
+
+        <div class="socialLoginContainer">
+            <a href="/auth/google" class="socialLogin">
+                <md-button class="md-raised login-btn" layout="row" layout-align="center center">
+                    <div>
+                        <ng-md-icon class="loginIcon" icon="google-plus" style="fill: #303030" size="60px"></ng-md-icon>
+                    </div>
+                    <div>
+                        <h2 class="loginHeader">Login with Google</h2>
+                    </div>
+                </md-button>
+                <!-- <button g-login type="button">Google Login</button> -->
+                <!-- <button class="login-btn" src="../../assets/btn_google_signin_dark_normal_web.png" /> -->
+            </a>
+        </div>
+    </div>
+    </div>
 </div>
