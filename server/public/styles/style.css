@@ -84,6 +84,13 @@ html {
     clear: right;
 }
 
+.audio-upload {
+    width: 50%;
+}
+
+.event-edit {
+    width: 50%;
+}
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
