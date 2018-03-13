@@ -33,5 +33,4 @@ myApp.service('AudioService', ['$http', '$location', function ($http, $location)
             console.log('error on put of audio post', error);
         })
     }
-
 }]);
