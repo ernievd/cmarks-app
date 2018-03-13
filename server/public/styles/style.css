@@ -153,3 +153,35 @@ html {
 .complete-audio:hover {
     color: #F44336;
 }
+
+.cmark-card {
+    font-size: 40px !important;
+    padding-right: 55px;
+}
+
+audio {
+    width: 80%;
+    background-color: #666666 !important;
+}
+
+.audio-div{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.cmark-heading {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 36pt;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+
+.track.playable {
+    color: red;
+    font-style: italic;
+}

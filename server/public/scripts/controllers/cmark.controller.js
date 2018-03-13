@@ -26,4 +26,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
         self.getAudienceEvents();
     }
 
+
+    self.cmarkService = CmarkService;
+
   }]);
