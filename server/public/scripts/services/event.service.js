@@ -73,7 +73,8 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     // edit event
     self.editEvent = function(editedEvent) {
  
-    
+        console.log('in service with event to edit: ', editedEvent);
+        
         $http.put(`/event/edit`, editedEvent).then(function(response) {
             console.log('event edited!', response);
             //get events from database to ensure they are updated on DOM

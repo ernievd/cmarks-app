@@ -36,7 +36,7 @@ router.post('/', isAuthenticated, (req, res) => {
 //edit an event in db
 router.put('/edit/', isAuthenticated, (req, res) => {
     // console.log('in event router editing:', req.params.id);
-    console.log('event to edit:', req.body.title);
+    console.log('event to edit:', req.body.date);
     const query = `UPDATE events SET title = $1, speaker_name = $2, location = $3, date = $4, start_time = $5 WHERE id = $6`
     pool.query(query, [req.body.title, req.body.speaker_name, req.body.location, req.body.date, req.body.start_time, req.body.id])
         .then((result) => {
