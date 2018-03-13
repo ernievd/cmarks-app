@@ -1,25 +1,25 @@
 <div ng-include="'views/partials/user-header.html'"></div>
 
-<h1>My Events</h1>
-<label>Search: <input ng-model="searchText"></label>
-
-<md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
+<h1 class="heading">My Events</h1>
+<h2 class="manage-info">Tap attended events to view your CMarks.</h2>
+<div class="search-bar">
+    <input placeholder="Search Events" ng-model="searchText">
+</div>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <div flex-xs flex-gt-xs="80" layout="column">
         <p ng-if="vm.audienceEvents.list.length === 0">You don't currently have any events.</p>
-        <md-card ng-click="vm.redirectTo(event.event_id)" layout="column" ng-repeat="event in vm.audienceEvents.list | filter:searchText">
+        <md-card class="event-cards" ng-click="vm.redirectTo(event.event_id)" layout="column" ng-repeat="event in vm.audienceEvents.list | orderBy: '-date' | filter:searchText">
             <md-card-title>
-                <md-card-title-text layout="row" layout-align="center center">
-                        <span class="md-headline">{{event.title}}</span>
-                </md-card-title-text>  
+                <md-card-title-text layout="column" layout-align="center center">
+                    <span class="md-headline my-event-head">{{event.title}}</span>
+                    <span>{{event.speaker_name}}</span>
+                </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="space-around">
-                <md-card-content layout="column" class="event-details">
-                        <span>Speaker: {{event.speaker_name}}</span>
-                        <span>Location: {{event.location}}</span>
+                <md-card-content layout="column" class="event-details" layout-align="center center">
+                    <span>Location: {{event.location}}</span>
+                    <span>Date: {{event.date | date: 'MM/dd/yyyy'}}</span>
                 </md-card-content>
-                <md-card-content layout="column" class="event-details">
-                        <span>Date: {{event.date}}</span>
-                </md-card-content>  
             </div>
         </md-card>
     </div>
