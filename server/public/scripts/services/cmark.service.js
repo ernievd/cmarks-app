@@ -5,19 +5,21 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
     self.audienceCmarks = { list: []};
     self.adjustedCmarks = [];
 	self.bufferAmount = 10;
-
-    self. count = 0;
+    self.count = 0;
 
     // getting time upon swipe and posting to the database
     self.timestampSwipe = function (event_id) {
 		self.count += 1;
         //this is what ian posts to the db for a cmark
-        let now = moment().format('h:mm:ss a');
+        var now = moment().format('h:mm:ss a');
 
         self.postedTime = {
             now, 
             event_id
-        };
+        }
+        // converts milliseconds to time
+
+        console.log('posted time', self.postedTime);
 
         // posting to time to database. 
         $http.post(`/cmark/swipe/`, self.postedTime )
@@ -27,11 +29,12 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
         .catch(function (error) {
             console.log('error on post of cmark', error);
         })
-    };
-
+        
+    }
+    
     self.finishEvent = function () {
         $location.path('/my-events');
-    };
+    }
 
     self.getAudienceEvent = function(event_id) {
         console.log('getting audience event', event_id);
@@ -57,6 +60,9 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		mediaFileName: "../assets/Spaghetti.mp3",
 		cmarkArray: [ "12:34:44 pm", "12:34:54 pm","12:35:44 pm"]
 	};// END self.testCmarkObject
+
+	// self.filestackAudioFile = "https://cdn.filestackcontent.com/CktcazQzRqmuBC9GblZh";
+	// self.localAudioFile = "../assets/Spaghetti.mp3";
 
 	self.playAudioSegment = function (mediaRealStartTime, cmark) {
 		let audio = document.getElementById('sample');
