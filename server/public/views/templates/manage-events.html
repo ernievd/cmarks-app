@@ -47,7 +47,7 @@
     <h2 class="subheading">Past Events</h2>
     <md-content class="md-padding" layout-xs="column" layout="row"  layout-align="center center">
         <div flex-xs flex-gt-xs="100" layout="column">
-            <md-card layout="column" ng-repeat="event in vm.pastEvents.list">
+            <md-card layout="column" ng-repeat="event in vm.pastEvents.list | filter:searchText">
 
                     <md-card-title>
                         <md-card-title-text layout="row" layout-align="center center">
