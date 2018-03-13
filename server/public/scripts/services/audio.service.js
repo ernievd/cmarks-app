@@ -2,7 +2,7 @@ myApp.service('AudioService', ['$http', '$location', function ($http, $location)
     var self = this;
 
     // filestack api
-    var fsClient = filestack.init('Ap5iwWk6nRwOwoqPQ3vZ9z');
+    var fsClient = filestack.init('AdBSk5gzuSiiQo0vc5eMOz');
 
     // filestack audio upload
     self.openPicker = function (event_id, speaker_id) {
