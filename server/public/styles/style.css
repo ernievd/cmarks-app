@@ -86,10 +86,12 @@ html {
 
 .audio-upload {
     width: 50%;
+    font-size: 25px;
 }
 
 .event-edit {
     width: 50%;
+    font-size: 25px;
 }
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
@@ -132,9 +134,9 @@ html {
 .join-input{
     border: none;
     border-bottom: 2px solid #F44336;
-    font-size: 24px;
+    font-size: 56px;
+    width: 225px;
     text-align: center;
-    width: 152px;
     background-color: #303030;
     color: #ffffff;
 }
@@ -142,7 +144,12 @@ html {
     text-align: center;
 }
 .join-btn {
-    margin-top: 25px !important;
+    background-color: rgba(244, 67, 54, 0.171);
+    font-size: 30px;
+    margin-top: 55px !important;
+    padding: 10px 7px;
+    /* border: 1px solid #F44336; */
+    /* box-shadow: 0 2px 7px 0 rgba(244, 67, 54, 0.171), 0 2px 7px 0 rgba(244, 67, 54, 0.171); */
 }
 
 .join-speaker {
@@ -152,4 +159,24 @@ html {
 
 .complete-audio:hover {
     color: #F44336;
+}
+
+.complete-audio {
+    font-size: 25px;
+}
+
+/************ Search Bar ************/
+.search-bar > input {
+    border: none;
+    border-bottom: 2px solid #F44336;
+    font-size: 35px;
+    text-align: center;
+    background-color: #303030;
+    color: #ffffff;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
 }
