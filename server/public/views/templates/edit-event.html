@@ -1,37 +1,37 @@
-<md-dialog flex="90" layout-padding layout-align="center center">
-    <h2 class="heading">Edit Event</h2>
-        <div>
-            <md-input-container>
-                <label>Event Title</label>
-                <input ng-model="vm.eventToEdit.title" type="text">
-            </md-input-container>
-        </div>
-
-        <div>
-            <md-input-container>
-                <label>Speaker</label>
-                <input ng-model="vm.eventToEdit.speaker_name" type="text">
-            </md-input-container>
-            <md-input-container>
-                <label>Location</label>
-                <input ng-model="vm.eventToEdit.location" type="text">
-            </md-input-container>
-        </div>
-        <md-input-container class="md-icon-float md-block">
-                <label>Select new date...</label>
-                <md-icon md-font-library="material-icons">today</md-icon>
-                <input moment-picker="ctrl.stringDate"
-                        locale="en"
-                        format="YYYY-MM-DD"
-                        ng-model="vm.eventToEdit.date"
-                        ng-model-options="{ updateOn: 'blur' }"
-                        placeholder="{{vm.eventToEdit.date}}">
-        </md-input-container>
-            <md-input-container class="md-icon-float md-block">
-                <label>Adjust start time...(hh:mm:ss)</label>
-                <input  type="text"
-                        ng-model="vm.eventToEdit.start_time"
-                        placeholder="{{vm.eventToEdit.start_time}}">
-            </md-input-container>
-    <md-button ng-click="vm.editEvent(vm.eventToEdit)">submit</md-button>
+<md-dialog flex="90" layout-padding>
+    <h2 class="heading" layout-align="center center">Edit Event</h2>
+    <form class="event-form">  
+    <md-input-container>
+        <label>Event Title</label>
+        <input ng-model="vm.eventToEdit.title" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Speaker</label>
+        <input ng-model="vm.eventToEdit.speaker_name" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Location</label>
+        <input ng-model="vm.eventToEdit.location" type="text">
+    </md-input-container> 
+    <md-input-container class="md-icon-float md-block">
+            <label>Select new date...</label>
+            <md-icon md-font-library="material-icons">today</md-icon>
+            <input moment-picker="ctrl.stringDate"
+                    locale="en"
+                    format="YYYY-MM-DD"
+                    ng-model="vm.eventToEdit.date"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    placeholder="{{vm.eventToEdit.date}}">
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block">
+        <label>Adjust start time...(hh:mm:ss)</label>
+        <input  type="text"
+                ng-model="vm.eventToEdit.start_time"
+                placeholder="{{vm.eventToEdit.start_time}}">
+    </md-input-container>
+    <div class="form-action" layout="row" layout-align="end center">
+        <md-button flex class="form-button" ng-click="vm.hide()">Cancel</md-button>
+        <md-button flex class="form-button md-primary md-raised" ng-click="vm.editEvent(vm.eventToEdit)">Update Event</md-button>
+    </div>
+    </form>         
 </md-dialog>

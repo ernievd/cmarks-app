@@ -242,3 +242,21 @@ audio {
     /*font-size: 36pt;*/
     /*width: 100%;*/
 /*}*/
+
+/* Dialog Styles */
+md-dialog {
+    border: 2px solid #F44336;
+    padding: 40px;
+}
+
+.event-form {
+    padding: 60px;
+}
+
+.form-button {
+    font-size: 18pt;
+}
+
+.md-datepicker {
+    width: 300px;
+}
