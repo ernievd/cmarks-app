@@ -1,17 +1,18 @@
 <div ng-include="'views/partials/user-header.html'"></div>
-<div class="container">
-    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+
+<div class="joinEventContainer" layout="column" layout-align="center center">
+    <div class="md-padding" layout="column" layout-align="center center">
         <div flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
             <h1>Join an Event</h1>
             <p class="lead" >Please enter the 4 character code given by the speaker</p>
             <h3 ng-if="vm.wrongCode.check">{{vm.wrongCode.code}}</h3>
             <form flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
                 <input class="join-input"  ng-model="vm.joinCode" type="text" pattern="[A-Za-z]{4}" maxlength="4" style="text-transform:uppercase">
-                <md-button type="submit" class="join-btn" ng-click="vm.joinEvent(vm.joinCode)">Join Event</md-button>
+                <md-button type="submit" class="md-raised join-btn" ng-click="vm.joinEvent(vm.joinCode)">Join Event</md-button>
             </form>
             <a href="#!/manage-events" class="join-speaker">
                 <p>Click Here if you are a speaker</p>
             </a>
         </div>
-    </md-content>
+    </div>
 </div>

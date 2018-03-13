@@ -6,8 +6,14 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
     //get all events audience member has attended
     self.getAudienceEvents = EventService.getAudienceEvents;
     self.audienceEvents = EventService.audienceEvents;
-    
-    //get one event
+
+	  self.cmarkService = CmarkService;
+	  self.audienceCmarks = CmarkService.audienceCmarks;
+	  self.adjustedCmarks = CmarkService.adjustedCmarks;
+	  console.log('self.adjustedCmarks is ', self.adjustedCmarks);
+
+	  //get one event
+
     self.getAudienceEvent = CmarkService.getAudienceEvent;
 
     self.redirectTo = function(event_id) {
