@@ -6,6 +6,9 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 	self.adjustedCmarks = [];
 	self.bufferAmount = 10;
 	self.count = 0;
+	self.displayCmark = [];
+	self.cmarkArr = {list: []};
+
 
 	// getting time upon swipe and posting to the database
 	self.timestampSwipe = function (event_id) {
@@ -31,24 +34,48 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 				console.log('error on post of cmark', error);
 			})
 
-	};
+	};// End self.timestampSwipe
+
+	self.finishEvent = function () {
+		$location.path('/my-events');
+	};// End self.finishEvent
 
 	self.getAudienceEvent = function (event_id) {
-		console.log('getting audience event', event_id);
+		//console.log('getting audience event', event_id);
 
 		$http.get(`/event/audience/${event_id}`).then(function (response) {
-			// console.log('got the event!', response);
 			self.audienceCmarks.list = response.data;
-			console.log(self.audienceCmarks);
+			//console.log(self.audienceCmarks);
 			// Convert the time
 			for (i = 0; i < self.audienceCmarks.list.length; i++) {
 				let cmark = moment(self.audienceCmarks.list[i].timestamp, 'h:mm:ss');
 				let mediaRealStartTime = moment(self.audienceCmarks.list[i].start_time, 'h:mm:ss');
 				let cmarkAdjustedTime = moment.duration(cmark.diff(mediaRealStartTime));
-				self.adjustedCmarks.push(cmarkAdjustedTime);
+
+				var seconds = moment.duration(cmarkAdjustedTime).seconds();
+				if (seconds < 10) {
+					seconds = '0' + seconds
+				}
+				var minutes = moment.duration(cmarkAdjustedTime).minutes();
+				if (minutes < 10) {
+					minutes = ' ' + minutes
+				}
+				displayFriendly = minutes + ':' + seconds;
+
+				var convertedCmark = moment.duration({
+					seconds: parseInt(seconds),
+					minutes: parseInt(minutes),
+				});
+
+				if (cmarkAdjustedTime._milliseconds > 0) {
+					cmarkData = {displayCmark: displayFriendly, cmarkAdjustedTime: cmarkAdjustedTime}
+					self.adjustedCmarks.push(cmarkAdjustedTime);
+					self.cmarkArr.list.push(cmarkData);
+				}
+
 			}
 		})
-	};
+	}; // End self.getAudienceEvent
 
 	// This is an object I created here just for test purposes
 	//    I assume that I will be passed in an object like this from the database
@@ -87,7 +114,6 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		segmentEnd = playEndTime;
 		audio.currentTime = playStartTime;
 		audio.play();
-	}
-
+	} //End self.playSegment
 
 }]);
