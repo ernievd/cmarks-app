@@ -34,7 +34,7 @@
 			<div flex-xs flex-gt-xs="60" layout="column">
 				<h2 class="subheading">Play CMarks</h2>
 				<p class="manage-info">Click on a CMark below to play audio.</p>
-				<md-card layout="column" ng-repeat="cmark in vm.cmarkArr | orderBy : 'displayCmark'">
+				<md-card class="event-cards" layout="column" ng-repeat="cmark in vm.cmarkArr | orderBy : 'displayCmark'">
 					<md-card-actions layout="row" layout-align="center" class="cmark-card">
 						<md-button flex class="cmark-card"
 						           ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark.cmarkAdjustedTime)">
