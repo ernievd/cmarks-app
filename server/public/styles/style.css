@@ -357,3 +357,9 @@ md-dialog {
     width: 300px;
 }
 
+.main-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18pt;
+    padding: 20px;
+}
