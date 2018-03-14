@@ -67,9 +67,12 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 					minutes: parseInt(minutes),
 				});
 
-				let cmarkData = {displayCmark: displayFriendly, cmarkAdjustedTime: cmarkAdjustedTime};
-				self.cmarkArr.list.push(cmarkData);
-				self.adjustedCmarks.push(cmarkAdjustedTime);
+				if (cmarkAdjustedTime._milliseconds > 0) {
+					cmarkData = {displayCmark: displayFriendly, cmarkAdjustedTime: cmarkAdjustedTime}
+					self.adjustedCmarks.push(cmarkAdjustedTime);
+					self.cmarkArr.list.push(cmarkData);
+				}
+
 			}
 		})
 	}; // End self.getAudienceEvent
