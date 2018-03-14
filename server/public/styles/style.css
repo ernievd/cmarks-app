@@ -204,6 +204,10 @@ md-sidenav.md-locked-open {
     width: 70%;
 }
 
+.content-clear {
+    background-color: #33333300
+}
+
 .join-input > input::placeholder {
     color: #ffffffc7;
     text-transform: none;
@@ -228,7 +232,9 @@ md-sidenav.md-locked-open {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
+    overflow: scroll;
 }
+
 .join-speaker {
     text-decoration: none;
     font-size: 28pt;

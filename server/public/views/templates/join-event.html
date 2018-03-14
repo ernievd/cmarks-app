@@ -1,23 +1,21 @@
 <div ng-include="'views/partials/user-header.html'"></div>
-
-
-<div class="joinEventContainer" layout="column" layout-align="center space-between">
+<md-content class="joinEventContainer" layout="column" layout-align="center space-between">
     <!-- <div class="md-padding" layout="column" layout-align="center space-between"> -->
         <!-- <div flex-xs flex-gt-xs="80" layout="column" layout-align="center center"> -->
-            <h1 class="heading" id="first-divider">Join an Event</h1>
-            <p class="manage-info">Enter the 4 character code given by the speaker.</p>
-            <h3 ng-if="vm.wrongCode.check">{{vm.wrongCode.code}}</h3>
-            <form flex layout="column" layout-align="center-center">
-                    <div class="join-input">
-                        <input  ng-model="vm.joinCode" type="text" pattern="[A-Za-z]{4}" maxlength="4" placeholder="Enter Code Here">
-                    </div>
-                    <div class="joinBtnContainer">
-                        <md-button type="submit" class="md-raised join-btn" ng-click="vm.joinEvent(vm.joinCode)">Join Event</md-button>
-                    </div>
-            </form>
-            <a href="#!/manage-events" class="join-speaker">
-                <p>Click here if you are a speaker</p>
-            </a>
+        <h1 class="heading" id="first-divider">Join an Event</h1>
+        <p class="manage-info">Enter the 4 character code given by the speaker.</p>
+        <h3 ng-if="vm.wrongCode.check">{{vm.wrongCode.code}}</h3>
+        <md-content class="content-clear" flex layout="column" layout-align="center center">
+            <md-content class="join-input content-clear">
+                <input  ng-model="vm.joinCode" type="text" pattern="[A-Za-z]{4}" maxlength="4" placeholder="Enter Code Here">
+            </md-content>
+            <md-content class="joinBtnContainer">
+                <md-button type="submit" class="md-raised join-btn" ng-click="vm.joinEvent(vm.joinCode)">Join Event</md-button>
+            </md-content>
+        </md-content>
+        <a href="#!/manage-events" class="join-speaker">
+            <p>Click here if you are a speaker</p>
+        </a>
         <!-- </div> -->
     <!-- </div> -->
-</div>
+</md-content>
