@@ -153,6 +153,7 @@ md-sidenav.md-locked-open {
     text-align: center;
     margin: 20px auto;
 }
+
 /************ Swipe Styles ************/
 .swipedemoBasicUsage .demo-swipe {
     padding: 20px 10px; 
@@ -184,6 +185,7 @@ md-sidenav.md-locked-open {
     height: 100px;
     line-height: none;
 }
+
 /************ Cmark Counter ************/
 .cmarkCount {
     text-align: center;
