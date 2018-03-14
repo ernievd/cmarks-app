@@ -2,9 +2,9 @@
 
 <div class="joinEventContainer" layout="column" layout-align="start space-between">
     <div class="md-padding" layout="column" layout-align="end center">
-        <h1 class="joinEventHeader">Join an Event</h1>
+        <h1 class="heading" id="first-divider">Join an Event</h1>
         <div flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
-            <p class="lead" >Please enter the 4 character code given by the speaker</p>
+            <p class="manage-info" >Please enter the 4 character code given by the speaker</p>
             <h3 ng-if="vm.wrongCode.check">{{vm.wrongCode.code}}</h3>
             <form class="inputContainer" flex-xs flex-gt-xs="80" layout="column" layout-align="center-center">
                 <md-input-container class="join-input">
@@ -15,7 +15,7 @@
                 </div>
             </form>
             <a href="#!/manage-events" class="join-speaker">
-                <p>Click Here if you are a speaker</p>
+                <p>Click here if you are a speaker</p>
             </a>
         </div>
     </div>
