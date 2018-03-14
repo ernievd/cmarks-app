@@ -4,23 +4,28 @@
 
   <md-divider></md-divider>
 
-  <div flex layout="column" layout-align="center center">
+  <div flex layout="column" layout-align="center space-between">
 
     <div layout="column" class="demo-swipe">
       <p class="swipeDirections" ng-if="vm.count == 0" layout-align="space-between center"> 
         Swipe up to save noteworthy points during the event!
       </p>
     </div>
+
     <div layout="column">
         <ng-md-icon layout-align="space-around center" icon="arrow_upwards" style="fill:rgba(255,255,255,1.0)" size="200%"></ng-md-icon>
     </div>
+
     <div ng-if="vm.count != 0">
       <h1 class="cmarkCount">{{vm.count}}</h1>
     </div>
 
+    <div class="swipeButtonContainer" layout="column" layout-align="center center">
+      <md-button class="swipeButton" type="button" ng-click="vm.confirmFinish()">
+          Finish Event
+      </md-button>
+    </div>
+
   </div>
-  <md-button class="swipeButton" type="button" ng-click="vm.finishEvent()">
-      Finish Event
-  </md-button>
   <md-divider></md-divider>
 </div>

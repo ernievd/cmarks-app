@@ -2,7 +2,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 	var self = this;
 
 	self.postedTime;
-	self.audienceCmarks = {list: []};
+	self.audienceCmarks = { list: [] };
 	self.adjustedCmarks = [];
 	self.bufferAmount = 10;
 	self.count = 0;
@@ -31,10 +31,6 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 				console.log('error on post of cmark', error);
 			})
 
-	};
-
-	self.finishEvent = function () {
-		$location.path('/my-events');
 	};
 
 	self.getAudienceEvent = function (event_id) {
