@@ -37,15 +37,9 @@
 			<div flex-xs flex-gt-xs="60" layout="column">
 				<h2 class="subheading">Play CMarks</h2>
 				<p class="manage-info">Click on a CMark below to play audio.</p>
-				<md-card layout="column" ng-repeat="cmark in vm.adjustedCmarks"
-				">
-				<!--<md-card-title>-->
-				<!--<md-card-title-text layout="row" layout-align="center center">-->
-				<!--<span class="event-title">Play Cmark at {{cmark._data.minutes}}:{{cmark._data.seconds}}</span>-->
-				<!--</md-card-title-text>-->
-				<!--</md-card-title>-->
-
-				<md-card-actions layout="row" layout-align="center" class="cmark-card">
+				<md-card class="event-cards" layout="column" layout-align="center center" ng-repeat="cmark in vm.adjustedCmarks">
+		
+				<md-card-actions layout="row" class="cmark-card">
 					<md-button flex class="cmark-card"
 					           ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark)">
 						<i class="material-icons cmark-card" style="font-size: 50px">play_circle_outline</i>{{cmark._data.minutes}}:{{cmark._data.seconds}}
