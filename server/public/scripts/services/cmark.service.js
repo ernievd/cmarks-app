@@ -32,7 +32,6 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 			})
 
 	};
-
 	self.finishEvent = function () {
 		$location.path('/my-events');
 	};
