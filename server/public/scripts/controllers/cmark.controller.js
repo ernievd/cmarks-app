@@ -9,17 +9,18 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 
 		self.cmarkService = CmarkService;
 		self.audienceCmarks = CmarkService.audienceCmarks;
-	    //clear out the adjusted cmarks array on page load to prevent it from appending on each load
+		//clear out the adjusted cmarks array on page load to prevent it from appending on each load
 		CmarkService.adjustedCmarks = [];
-		self.adjustedCmarks = CmarkService.adjustedCmarks;
-		console.log('self.adjustedCmarks is ', self.adjustedCmarks);
+		CmarkService.cmarkArr.list = [];
 
+		self.adjustedCmarks = CmarkService.adjustedCmarks;
+		self.cmarkArr = CmarkService.cmarkArr.list;
 		//get one event
 		self.getAudienceEvent = CmarkService.getAudienceEvent;
 
 		self.redirectTo = function (event_id) {
 			$location.path(`/my-events/${event_id}`);
-		}
+		};
 
 		if ($routeParams.id) {
 			self.getAudienceEvent($routeParams.id);
