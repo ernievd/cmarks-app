@@ -1,19 +1,19 @@
 <md-dialog flex="90" layout-padding>
     <h2 class="heading" layout-align="center center">Add Event</h2>
     <form class="event-form">
-        <md-input-container>
+        <md-input-container class="event-input">
             <label>Event Title</label>
             <input ng-model="newEvent.title">
         </md-input-container>
-        <md-input-container>
+        <md-input-container class="event-input">
             <label>Speaker</label>
             <input ng-model="newEvent.speaker_name" type="text">
         </md-input-container>
-        <md-input-container>
+        <md-input-container class="event-input">
             <label>Location</label>
             <input ng-model="newEvent.location" type="text">
         </md-input-container>
-        <md-input-container class="md-icon-float md-block">
+        <md-input-container class="md-icon-float md-block event-input">
             <label>Select a date...</label>
             <md-icon md-font-library="material-icons">today</md-icon>
             <input moment-picker="ctrl.stringDate"
@@ -22,7 +22,7 @@
                     ng-model="newEvent.date"
                     ng-model-options="{ updateOn: 'blur' }">
         </md-input-container>
-        <md-input-container>
+        <md-input-container class="event-input">
             <label>Enter a time...</label>
             <input type="time" ng-model="newEvent.start_time">
         </md-input-container>
