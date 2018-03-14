@@ -191,9 +191,8 @@ md-sidenav.md-locked-open {
 /************ Join Event Styles ************/
 .join-input{
     border: none;
-    border-bottom: 2px solid #F44336;
     font-size: 56px;
-    width: 225px;
+    width: 500px;
 }
 
 .inputContainer {
