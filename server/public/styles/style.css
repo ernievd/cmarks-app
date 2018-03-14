@@ -189,6 +189,7 @@ md-sidenav.md-locked-open {
     border: none;
     font-size: 56px;
     width: 500px;
+    outline: none;
 }
 
 .inputContainer {
