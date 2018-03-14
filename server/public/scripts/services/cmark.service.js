@@ -17,7 +17,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		self.postedTime = {
 			now,
 			event_id
-		}
+		};
 		// converts milliseconds to time
 
 		console.log('posted time', self.postedTime);
@@ -31,11 +31,11 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 				console.log('error on post of cmark', error);
 			})
 
-	}
+	};
 
 	self.finishEvent = function () {
 		$location.path('/my-events');
-	}
+	};
 
 	self.getAudienceEvent = function (event_id) {
 		console.log('getting audience event', event_id);
