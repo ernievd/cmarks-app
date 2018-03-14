@@ -188,22 +188,27 @@ md-sidenav.md-locked-open {
 .swipeButton {
     font-size: 60px;
     line-height: none;
+    bottom: 110px;
 }
 .swipeButtonContainer .md-button{
     height: 100px;
     line-height: none;
 }
-
+.swipeScreen {
+    height: 100vh;
+}
 /************ Cmark Counter ************/
+.countContainer {
+    line-height: 50px;
+    font-size: 50px;
+}
 .cmarkCount {
     text-align: center;
-    font-size: 78px;
-    color: rgba(255,255,255,1.0);
+    color: rgba(255,255,255,.5);
 }
 .md-toolbar-tools .eventTitle {
     font-size: 48px;
 }
-
 /************ Join Event Styles ************/
 .join-input > input {
     border: none;
