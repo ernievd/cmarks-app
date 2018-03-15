@@ -11,7 +11,7 @@ passport.use('google', new GoogleStrategy({
   // identify ourselves to Google and request Google user data
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: process.env.CALLBACK_URL || process.env.HEROKU-GOOGLE,
+  callbackURL: process.env.CALLBACK_URL || process.env.HEROKU_GOOGLE,
 }, function (token, refreshToken, profile, done) {
   // Google has responded
   console.log(profile);
