@@ -31,22 +31,22 @@
 		</div>
 
 		<md-content class="md-padding" layout="row" layout-align="center center">
-			<div flex-xs flex-gt-xs="60" layout="column">
+			<div flex-xs flex-gt-xs="30" layout="column">
 				<h2 class="subheading">Play CMarks</h2>
-				<p class="manage-info">Click on a CMark below to play audio.</p>
+				<p class="manage-info">Click on a CMark below to play an audio clip surrounding your swipe.</p>
 				<md-card class="event-cards" layout="column" ng-repeat="cmark in vm.cmarkArr.list | orderBy : 'displayCmark'">
-					<md-card-actions layout="row" layout-align="center center" class="cmark-card">
+					<md-card-actions layout="row" layout-align="space-between" class="cmark-card">
 						<md-button layout="row" layout-align="center center" class="cmark-card" ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark.cmarkAdjustedTime)">
 							<i class="material-icons cmark-card" style="font-size: 50px">play_circle_outline</i>
 							<span class="cmark-time">{{cmark.displayCmark}}</span>
 						</md-button>
-						<md-button ng-click="vm.showAddComment(cmark, ev)">
-							<ng-md-icon icon="comment" size="48" style="fill: white"></ng-md-icon>
+						<md-button class="comment-icon" ng-click="vm.showAddComment(cmark, ev)">
+							<ng-md-icon  icon="comment" size="24" style="fill: white"></ng-md-icon>
 						</md-button>
 					</md-card-actions>
-					<md-card-text layout="row" layout-align="center center" ng-if="cmark.comment !== null">
-						<p>{{cmark.comment}}</p>
-					</md-card-text>
+					<div layout="row">
+						<span class="cmark-comment" ng-if="cmark.comment !== null">Comments: {{cmark.comment}}</span>
+					</div>
 				</md-card>
 			</div>
 		</md-content>

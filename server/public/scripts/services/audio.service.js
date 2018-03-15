@@ -1,8 +1,9 @@
-myApp.service('AudioService', ['$http', '$location', function ($http, $location) {
+myApp.service('AudioService', ['$http', '$location', 'EventService', function ($http, $location, EventService) {
     var self = this;
 
     // filestack api
     var fsClient = filestack.init('AdBSk5gzuSiiQo0vc5eMOz');
+    self.getPastEvents = EventService.getPastEvents;
 
     // filestack audio upload
     self.openPicker = function (event_id, speaker_id) {
@@ -28,6 +29,7 @@ myApp.service('AudioService', ['$http', '$location', function ($http, $location)
         $http.put(`/audio/audioUpload/${speaker_id}`, audioPost)
         .then((result) => {
             console.log('succesful put on audio post', result);
+            self.getPastEvents();
         })
         .catch((error) => {
             console.log('error on put of audio post', error);

@@ -372,8 +372,14 @@ md-dialog {
 
 .cmark-time {
     font-size: 24pt;
+    margin-left: 30px;
 }
 
 .join-code {
     border-bottom: 2px solid #F44336;
+}
+
+.cmark-comment {
+    font-size: 14pt;
+    padding: 20px;
 }
