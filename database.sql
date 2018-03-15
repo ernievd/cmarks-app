@@ -20,5 +20,6 @@ CREATE TABLE cmarks (
 	id serial primary key,
 	user_id int references users(id) not null,
 	event_id int references events(id) not null,
-	timestamp time not null
+	timestamp time not null,
+	comment varchar(255) default null
 );
