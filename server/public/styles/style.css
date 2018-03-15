@@ -199,7 +199,7 @@ md-sidenav.md-locked-open {
     color: rgba(255,255,255,.5);
 }
 .md-toolbar-tools .eventTitle {
-    font-size: 48px;
+    font-size: 36px;
 }
 /************ Join Event Styles ************/
 .join-input > input {
