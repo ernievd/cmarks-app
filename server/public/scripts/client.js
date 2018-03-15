@@ -43,7 +43,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: 'EventController as vm',
       resolve: {
         getuser : function(UserService){
-          return UserService.getuser();
+          return UserService.getuser()
         }
       }
     })
