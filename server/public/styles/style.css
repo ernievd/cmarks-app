@@ -289,7 +289,7 @@ md-sidenav.md-locked-open {
 
 .cmark-card {
     font-size: 40px !important;
-    padding-right: 55px;
+    /* padding-right: 55px; */
 }
 
 audio {

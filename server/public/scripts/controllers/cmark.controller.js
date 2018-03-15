@@ -1,5 +1,5 @@
-myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams',
-	function (UserService, CmarkService, AudioService, EventService, $location, $routeParams) {
+myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams', '$mdDialog',
+	function (UserService, CmarkService, AudioService, EventService, $location, $routeParams, $mdDialog) {
 		var self = this;
 		self.userService = UserService;
 
@@ -14,7 +14,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 		CmarkService.cmarkArr.list = [];
 
 		self.adjustedCmarks = CmarkService.adjustedCmarks;
-		self.cmarkArr = CmarkService.cmarkArr.list;
+		self.cmarkArr = CmarkService.cmarkArr;
 		//get one event
 		self.getAudienceEvent = CmarkService.getAudienceEvent;
 
@@ -28,6 +28,55 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 			self.getAudienceEvents();
 		}
 
+		self.showAddComment = function (cmark, ev) {
+			$mdDialog.show({
+				controller: AddCommentController,
+				controllerAs: 'vm',
+				templateUrl: '/../../views/templates/add-comment.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true,
+				fullscreen: self.customFullscreen, // Only for -xs, -sm breakpoints.
+				resolve: {
+					cmark: function () {
+						return cmark;
+					}
+				}
+			});
+		};
+
+		function AddCommentController($mdDialog, cmark, CmarkService) {
+			var self = this;
+			self.addComment = CmarkService.addComment;
+			
+			self.singleCmark = { 
+				id: cmark.id,
+				comment: cmark.comment,
+				event_id: cmark.event_id
+			 }
+			 
+
+			self.hide = function () {
+				$mdDialog.hide();
+			};
+
+			self.cancel = function () {
+				$mdDialog.cancel();
+			};
+
+			self.insertComment = function (singleCmark) {
+
+				// create cmark object with comment
+				
+				console.log('cmark to add:', singleCmark);
+
+				//send cmark to the service to add to db
+				CmarkService.insertComment(singleCmark);
+
+				// close dialog
+				$mdDialog.hide();
+			}
+		}
 
 		self.cmarkService = CmarkService;
 
