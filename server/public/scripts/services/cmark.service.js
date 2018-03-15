@@ -8,6 +8,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 	self.count = 0;
 	self.displayCmark = [];
 	self.cmarkArr = {list: []};
+     var noSleep = new NoSleep;
 
 
 	// getting time upon swipe and posting to the database
@@ -89,6 +90,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 	// self.localAudioFile = "../assets/Spaghetti.mp3";
 
 	self.playAudioSegment = function (mediaRealStartTime, cmark) {
+
 		let audio = document.getElementById('sample');
 		let playStartTime = (cmark._data.minutes * 60) + cmark._data.seconds;
 
@@ -115,5 +117,8 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		audio.currentTime = playStartTime;
 		audio.play();
 	} //End self.playSegment
+
+
+
 
 }]);
