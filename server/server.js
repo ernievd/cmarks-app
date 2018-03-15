@@ -34,7 +34,7 @@ app.use('/cmark', cmarkRouter);
 // Serve static files
 app.use(express.static('server/public'));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 /** Listen * */
 app.listen(port, () => {
