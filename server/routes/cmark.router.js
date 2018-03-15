@@ -23,5 +23,15 @@ router.post('/swipe', isAuthenticated, (req, res) => {
     })
 });
 
+router.put('/comment', isAuthenticated, (req, res) => {
+    pool.query(`UPDATE cmarks SET comment = $1 WHERE id = $2`, [req.body.comment, req.body.id])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        })
+})
+
 
 module.exports = router;

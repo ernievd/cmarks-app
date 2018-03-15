@@ -1,4 +1,4 @@
-myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, $location, moment) {
+myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', function ($http, $location, moment, $routeParams) {
 	var self = this;
 
 	self.postedTime;
@@ -46,7 +46,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 
 		$http.get(`/event/audience/${event_id}`).then(function (response) {
 			self.audienceCmarks.list = response.data;
-			//console.log(self.audienceCmarks);
+			console.log(self.audienceCmarks);
 			// Convert the time
 			for (i = 0; i < self.audienceCmarks.list.length; i++) {
 				let cmark = moment(self.audienceCmarks.list[i].timestamp, 'h:mm:ss');
@@ -69,9 +69,17 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 				});
 
 				if (cmarkAdjustedTime._milliseconds > 0) {
-					cmarkData = {displayCmark: displayFriendly, cmarkAdjustedTime: cmarkAdjustedTime}
+					cmarkData = {
+						displayCmark: displayFriendly,
+						cmarkAdjustedTime: cmarkAdjustedTime,
+						id: self.audienceCmarks.list[i].id,
+						comment: self.audienceCmarks.list[i].comment,
+						event_id: self.audienceCmarks.list[i].event_id
+					}
 					self.adjustedCmarks.push(cmarkAdjustedTime);
 					self.cmarkArr.list.push(cmarkData);
+					console.log(self.cmarkArr);
+					
 				}
 
 			}
@@ -118,7 +126,15 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, 
 		audio.play();
 	} //End self.playSegment
 
-
-
+	self.insertComment = function (singleCmark) {
+		$http.put(`/cmark/comment`, singleCmark).then((response) => {
+			console.log('Successful comment put:', response);
+			self.cmarkArr.list = [];
+			self.getAudienceEvent(singleCmark.event_id);
+		})
+		.catch((error) => {
+			console.log('Error on comment put:', error);
+		})
+	}
 
 }]);
