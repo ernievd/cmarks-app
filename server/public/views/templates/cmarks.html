@@ -1,0 +1,61 @@
+<div ng-include="'views/partials/user-header.html'"></div>
+
+
+<div>
+	<div id="first-divider">
+		<a href="#!/my-events" class="main-link">Back to My Events</a>
+		<h1 class="heading">{{vm.cmarkService.audienceCmarks.list[0].title}}</h1>
+	</div>
+	<div>
+		<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].speaker_name}} - {{vm.cmarkService.audienceCmarks.list[0].date | date: fullDate}}</p>
+		<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].location}}</p>
+	</div>
+
+	<!--Commented out for now - might want to add buffer back in later-->
+	<!--<form>-->
+	<!--Buffer Amount in Seconds:-->
+	<!--<input type="number" value=10 ng-model="vm.cmarkService.bufferAmount">-->
+	<!--</form>-->
+
+
+	<div ng-show="vm.audienceCmarks.list[0].audio_url != null">
+
+		<!--<form>-->
+		<!--Start Time:-->
+		<!--<input ng-model="vm.audienceCmarks.list[0].start_time">-->
+		<!--</form>-->
+
+		<div class="audio-div">
+
+			<audio id="sample" src="{{vm.audienceCmarks.list[0].audio_url}}" controls preload controlsList="nodownload"></audio>
+		</div>
+
+		<md-content class="md-padding" layout="row" layout-align="center center">
+			<div flex-xs flex-gt-xs="30" layout="column">
+				<h2 class="subheading">Play CMarks</h2>
+				<p class="manage-info">Click on a CMark below to play an audio clip surrounding your swipe.</p>
+				<md-card class="event-cards" layout="column" ng-repeat="cmark in vm.cmarkArr.list | orderBy : 'displayCmark'">
+					<md-card-actions layout="row" layout-align="space-between" class="cmark-card">
+						<md-button layout="row" layout-align="center center" class="cmark-card" ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark.cmarkAdjustedTime)">
+							<i class="material-icons cmark-card" style="font-size: 50px">play_circle_outline</i>
+							<span class="cmark-time">{{cmark.displayCmark}}</span>
+						</md-button>
+						<md-button class="comment-icon" ng-click="vm.showAddComment(cmark, ev)">
+							<ng-md-icon  icon="comment" size="24" style="fill: white"></ng-md-icon>
+						</md-button>
+					</md-card-actions>
+					<div layout="row">
+						<span class="cmark-comment" ng-if="cmark.comment !== null">Comments: {{cmark.comment}}</span>
+					</div>
+				</md-card>
+			</div>
+		</md-content>
+
+	</div>
+
+	<div class="cmark-noaudio" ng-if="vm.audienceCmarks.list[0].audio_url == null">
+
+		<p class="noEvents">CMarks are not available. The presenter has not uploaded the media for this event</p>
+	</div>
+
+</div>

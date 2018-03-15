@@ -1,0 +1,13 @@
+<md-dialog flex="90" layout-padding>
+    <h2 class="heading" layout-align="center center">Comment on this CMark</h2>
+    <form class="event-form">
+        <md-input-container class="event-input">
+            <!-- <label>Event Title</label> -->
+            <input ng-model="vm.singleCmark.comment">
+        </md-input-container>
+        <div class="form-action" layout="row" layout-align="end center">
+            <md-button flex class="form-button" ng-click="vm.hide()">Cancel</md-button>
+            <md-button flex class="md-primary md-raised form-button" ng-click="vm.insertComment(vm.singleCmark)">Submit</md-button>
+        </div>
+    </form>
+</md-dialog>

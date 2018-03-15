@@ -1,80 +1,385 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
+/************ CMarks Header ************/
+.user-header {
+    height: 75px;
+    position: fixed;
 }
 
-.instructions .container h1 {
-  font-size: 32px;
-  font-weight: 600;
+.app-heading {
+    font-size: 48px;
 }
 
-.instructions {
-  background-color: #333333;
-  color: #DDDDDD;
-  padding: 15px;
+/************ Side Navigation ************/
+.md-sidenav-right {
+    position: fixed;
 }
 
-#entryForm {
-  margin-top: 14px;
+md-backdrop {
+    position: fixed;
 }
 
-#container {
-  margin-top: 10px;
+md-sidenav,
+md-sidenav.md-locked-open-add-active,
+md-sidenav.md-closed.md-locked-open-add-active,
+md-sidenav.md-locked-open {
+  /* width: 200%; 
+  min-width: 600px;  */
 }
 
-.container p{
-  margin-top : 14px;
+.nav-divider {
+    margin: 0 auto;
+    width: 80%;
+    font-size: 18pt;
+    font-weight: bold;
+    border-bottom: 1px solid #F44336;
+    text-align: center;
+    padding: 20px;
 }
 
-.message {
-  padding: 10px 0;
+#first-divider {
+    margin-top: 100px;
 }
 
-.message p {
-  margin-left: 10px;
+#add-event {
+    margin-top: 90px;
 }
 
-.message:nth-child(odd) {
-   background-color: #eeeeee;
+.nav-link > a {
+    text-decoration: none;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 14pt;
 }
 
-.message:nth-child(even) {
-  background-color: #f8f8f8;
+.nav-link > a:hover {
+    color: #F44336;
 }
 
-.btn-danger{
-  margin-left: 10px;
+.logout-btn {
+    position: absolute !important;
+    bottom: 30px;
+    right: 30px;
+    font-size: 14pt;
 }
 
-.navbar {
-  background-color: #333333;
-  width: 100%;
-  border-radius: 0px;
+/************ Login Styles ************/
+.login-btn {
+    text-align: center;
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+}
+.socialLogin {
+    text-decoration: none;
+}
+.socialLoginContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.loginContainer {
+    text-align: center;
+    height: 100vh;
+    margin: auto 0;
+    background-image: url('../assets/christian-fregnan-339342-unsplash.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
+.loginHeadingContainer {
+    font-size: 46px;
+    background-color: #F44336;
+    width: 100%;
+    opacity: .8;
+}
+.loginIcon {
+    text-align: center;
+    padding-right: 30px;
+}
+.loginHeader {
+    width: 100%;
+    font-size: 14px;
+    padding-left: 30px;
+    border-left: 1px solid black;
 }
 
-li {
-  float: left;
+/************ Manage Events Styles ************/
+.heading {
+    text-align: center;
+    border-bottom: 1px solid #F44336;
+    font-size: 24pt;
+    width: 90%;
+    margin: 20px auto;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.subheading {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18pt;
+    width: 100%;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  text-decoration: underline;
-  color: #eee;
+.event-details > span {
+    line-height: 1.5;
+}
+
+.event-title {
+    border-bottom: 1px solid #F44336;
+    width: 80%;
+    text-align: center;
+}
+
+.new-btn {
+    float: right;
+}
+
+.event-list {
+    clear: right;
+}
+
+.audio-upload {
+    width: 50%;
+    font-size: 14px;
+}
+
+.event-edit {
+    /* width: 50%; */
+    font-size: 14px;
+}
+
+.manage-info {
+    font-size: 14pt;
+    width: 80%;
+    text-align: center;
+    margin: 0px auto;
+}
+
+/************ Swipe Styles ************/
+.swipedemoBasicUsage .demo-swipe {
+    padding: 20px 10px; 
+}
+.swipedemoBasicUsage .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+.no-select {
+    height: 100vh;
+    width: 100%;
+}
+.swipeDirections {
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px;
+    font-size: 24px;
+
+}
+.swipeButton {
+    font-size: 16px;
+    line-height: none;
+    bottom: 100px;
+}
+.swipeButtonContainer .md-button{
+    height: 100px;
+    line-height: none;
+}
+.swipeScreen {
+    height: 100vh;
+}
+/************ Cmark Counter ************/
+.countContainer {
+    line-height: 50px;
+    font-size: 50px;
+}
+.cmarkCount {
+    text-align: center;
+    color: rgba(255,255,255,.5);
+}
+.md-toolbar-tools .eventTitle {
+    font-size: 36px;
+}
+
+/************ Join Event Styles ************/
+.join-input > input {
+    border: none;
+    border-bottom: 2px solid #F44336;
+    font-size: 28px;
+    text-align: center;
+    background-color: #30303000;
+    margin: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    outline: none;
+    padding: 10px;
+    width: 70%;
+}
+
+.content-clear {
+    background-color: #33333300
+}
+
+.join-input > input::placeholder {
+    color: #ffffffc7;
+    text-transform: none;
+}
+
+.join-input > input:focus::-webkit-input-placeholder, .search-bar > input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+.join-btn {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.joinEventContainer {
+    height: 100vh;
+    text-align: center;
+    margin: auto 0;
+    background-image: url('../assets/antenna-502680-unsplash.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
+    overflow: scroll;
+}
+
+.join-speaker {
+    text-decoration: none;
+    font-size: 14pt;
+    padding: 10px;
+    color: #F44336;
+    margin-top: 100px !important;
+}
+
+.complete-audio:hover {
+    color: #F44336;
+}
+
+.complete-audio {
+    font-size: 14px;
+}
+
+/************ Search Bar ************/
+.search-bar > input {
+    border: none;
+    border-bottom: 2px solid #F44336;
+    font-size: 16px;
+    text-align: center;
+    background-color: #303030;
+    color: #ffffff;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+    margin-top: 10px;
+}
+
+/************ Audio ************/
+.cmark-card {
+    font-size: 40px !important;
+    /* padding-right: 55px; */
+}
+
+audio {
+    width: 80%;
+}
+
+.audio-div{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.cmark-heading {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 36pt;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cmark-noaudio {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 27pt;
+}
+
+/************ My Events ************/
+.event-cards {
+    font-size: 14pt;
+    border: 1px solid #F44336;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.my-event-head {
+    padding-bottom: 5px;
+    font-size: 18pt;
+    border-bottom: 2px solid #F44336;
+}
+.noEvents {
+    font-size: 18px;
+}
+
+/* Dialog Styles */
+md-dialog {
+    border: 2px solid #F44336;
+    /* padding: 20px; */
+}
+
+.event-input {
+    margin: 5px;
+}
+
+
+.event-input > .md-input {
+    font-size: 18px;
+}
+
+.join-input > .md-placeholder, md-input-container label:not(.md-no-float):not(.md-container-ignore){
+    font-size: 18px;
+}
+
+.form-button {
+    font-size: 14pt;
+    /* padding: 10px; */
+}
+
+.md-datepicker {
+    width: 300px;
+}
+
+.main-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14pt;
+    padding: 20px;
+}
+
+.cmark-time {
+    font-size: 24pt;
+    margin-left: 30px;
+}
+
+.join-code {
+    border-bottom: 2px solid #F44336;
+}
+
+.cmark-comment {
+    font-size: 14pt;
+    padding: 20px;
 }

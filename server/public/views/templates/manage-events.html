@@ -1,0 +1,74 @@
+<div ng-include="'views/partials/user-header.html'"></div>
+
+<md-button id="add-event" ng-click="vm.showAddEvent($event)" class="new-btn">
+    <ng-md-icon icon="add_box" size="48" style="fill: #F44336"></ng-md-icon>
+</md-button>
+
+<h1 class="heading" id="first-divider">Manage Events</h1>
+<h2 class="manage-info">Add, edit, review, and upload audio to your events.</h2>
+<div class="search-bar">
+    <input placeholder="Search Events" ng-model="searchText" style="outline: none">
+</div>
+
+<div class="event-list">
+    <h2 class="subheading">Upcoming Events</h2>
+
+    <md-content class="md-padding" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="70" layout="column">
+            <p class="manage-info" ng-if="vm.upcomingEvents.list.length === 0">You don't have any upcoming events.</p>
+            <md-card class="event-cards" layout="column" ng-repeat="event in vm.upcomingEvents.list | orderBy: '-date' |filter:searchText">
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="my-event-head">{{event.title}}</span>
+                        <span>{{event.speaker_name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div layout="row" layout-align="space-around">
+                    <md-card-content layout="column" class="event-details" layout-align="center center">
+                        <span>Location: {{event.location}}</span>
+                        <span>Date: {{event.date | date: 'MM/dd/yyyy'}}</span>
+                        <span>Start Time: {{event.start_time}}</span>
+                        <span>Join Code: <span class="join-code">{{event.join_code}}</span></span>
+                    </md-card-content>
+                </div>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button flex ng-click="vm.completeEvent(event.id)" class="complete-audio">Mark Complete</md-button>
+                    <md-button flex ng-click="vm.showEditEvent(event, ev)">
+                        <i class="material-icons">mode_edit</i>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+
+    <h2 class="subheading">Past Events</h2>
+    <md-content class="md-padding" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="70" layout="column">
+            <p class="manage-info" ng-if="vm.pastEvents.list.length === 0">You don't have any past events yet.</p>
+            <md-card class="event-cards" layout="column" ng-repeat="event in vm.pastEvents.list | orderBy: '-date' | filter:searchText">
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="my-event-head">{{event.title}}</span>
+                        <span>{{event.speaker_name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div layout="row" layout-align="space-around">
+                    <md-card-content layout="column" class="event-details" layout-align="center center">
+                        <span>Location: {{event.location}}</span>
+                        <span>Date: {{event.date | date: 'MM/dd/yyyy'}}</span>
+                        <span>Start Time: {{event.start_time}}</span>
+                    </md-card-content>
+                </div>
+
+                <md-card-actions layout="row" layout-align="space-around">
+                    <md-button ng-hide="event.audio_url !== null" class="md-raised audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Upload Audio</md-button>
+                    <md-button ng-show="event.audio_url !== null" class="md-raised audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Edit Audio</md-button>
+                    <md-button class="event-edit" ng-click="vm.showEditEvent(event, ev)">
+                        <i class="material-icons">mode_edit</i>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+
+</div>
