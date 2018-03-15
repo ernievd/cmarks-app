@@ -6,9 +6,10 @@
 		<a href="#!/my-events" class="main-link">Back to My Events</a>
 		<h1 class="heading" >{{vm.cmarkService.audienceCmarks.list[0].title}}</h1>
 	</div>
-	
-	<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].speaker_name}} - {{vm.cmarkService.audienceCmarks.list[0].date | date: fullDate}}</p>
-	<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].location}}</p>
+	<div>
+		<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].speaker_name}} - {{vm.cmarkService.audienceCmarks.list[0].date | date: fullDate}}</p>
+		<p class="manage-info">{{vm.cmarkService.audienceCmarks.list[0].location}}</p>
+	</div>
 
 	<!--Commented out for now - might want to add buffer back in later-->
 	<!--<form>-->
@@ -30,15 +31,16 @@
 			       controlsList="nodownload"></audio>
 		</div>
 
-		<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+		<md-content class="md-padding" layout="row" layout-align="center center">
 			<div flex-xs flex-gt-xs="60" layout="column">
 				<h2 class="subheading">Play CMarks</h2>
 				<p class="manage-info">Click on a CMark below to play audio.</p>
 				<md-card class="event-cards" layout="column" ng-repeat="cmark in vm.cmarkArr | orderBy : 'displayCmark'">
-					<md-card-actions layout="row" layout-align="center" class="cmark-card">
-						<md-button flex class="cmark-card"
+					<md-card-actions layout="row" layout-align="center center" class="cmark-card">
+						<md-button layout="row" layout-align="center center" class="cmark-card"
 						           ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark.cmarkAdjustedTime)">
-							<i class="material-icons cmark-card" style="font-size: 50px">play_circle_outline</i>{{cmark.displayCmark}}
+							<i class="material-icons cmark-card" style="font-size: 50px">play_circle_outline</i>
+							<span class="cmark-time">{{cmark.displayCmark}}</span>
 						</md-button>
 					</md-card-actions>
 				</md-card>

@@ -1,4 +1,4 @@
-<md-dialog flex="90" layout-padding>
+<md-dialog flex-xs flex-gt-xs="60" layout-padding>
     <h2 class="heading" layout-align="center center">Add Event</h2>
     <form class="event-form">
         <md-input-container class="event-input">
@@ -28,7 +28,7 @@
         </md-input-container>
         <div class="form-action" layout="row" layout-align="end center">
             <md-button flex class="form-button" ng-click="vm.hide()">Cancel</md-button>
-            <md-button flex class="md-primary md-raised form-button" ng-click="vm.submitEvent(newEvent)">Add Event</md-button>
+            <md-button flex class="md-primary md-raised form-button" ng-click="vm.submitEvent(newEvent)">Add</md-button>
         </div>
     </form>
 </md-dialog>

@@ -9,9 +9,9 @@
             <md-content class="join-input content-clear">
                 <input  ng-model="vm.joinCode" type="text" pattern="[A-Za-z]{4}" maxlength="4" placeholder="Enter Code Here">
             </md-content>
-            <md-content class="joinBtnContainer">
+            <div class="joinBtnContainer">
                 <md-button type="submit" class="md-raised join-btn" ng-click="vm.joinEvent(vm.joinCode)">Join Event</md-button>
-            </md-content>
+            </div>
         </md-content>
         <a href="#!/manage-events" class="join-speaker">
             <p>Click here if you are a speaker</p>
