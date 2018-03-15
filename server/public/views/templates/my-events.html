@@ -5,8 +5,9 @@
 <div class="search-bar">
     <input placeholder="Search Events" ng-model="searchText" style="outline: none">
 </div>
-<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
-    <div flex-xs flex-gt-xs="80" layout="column">
+
+<md-content class="md-padding" layout="row" layout-align="center center">
+    <div flex-xs flex-gt-xs="70" layout="column">
         <p ng-if="vm.audienceEvents.list.length === 0">You don't currently have any events.</p>
         <md-card class="event-cards" ng-click="vm.redirectTo(event.event_id)" layout="column" ng-repeat="event in vm.audienceEvents.list | orderBy: '-date' | filter:searchText">
             <md-card-title>

@@ -13,29 +13,24 @@
 <div class="event-list">
     <h2 class="subheading">Upcoming Events</h2>
 
-    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
-        <div flex-xs flex-gt-xs="100" layout="column">
+    <md-content class="md-padding" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="70" layout="column">
             <p class="manage-info" ng-if="vm.upcomingEvents.list.length === 0">You don't have any upcoming events.</p>
             <md-card class="event-cards" layout="column" ng-repeat="event in vm.upcomingEvents.list | orderBy: '-date' |filter:searchText">
                 <md-card-title>
                     <md-card-title-text layout="column" layout-align="center center">
-                        <span class="event-title">{{event.title}}</span>
+                        <span class="my-event-head">{{event.title}}</span>
                         <span>{{event.speaker_name}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <div layout="row" layout-align="space-around">
-                    <md-card-content layout="column" class="event-details">
-
+                    <md-card-content layout="column" class="event-details" layout-align="center center">
                         <span>Location: {{event.location}}</span>
-                        <!-- </md-card-content>
-                    <md-card-content layout="column" class="event-details"> -->
                         <span>Date: {{event.date | date: 'MM/dd/yyyy'}}</span>
                         <span>Start Time: {{event.start_time}}</span>
+                        <span>Join Code: <span class="join-code">{{event.join_code}}</span></span>
                     </md-card-content>
                 </div>
-                <md-card-content layout="column" layout-align="center center" class="event-details">
-                    <span>Join Code: {{event.join_code}}</span>
-                </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button flex ng-click="vm.completeEvent(event.id)" class="complete-audio">Mark Complete</md-button>
                     <md-button flex ng-click="vm.showEditEvent(event, ev)">
@@ -47,21 +42,19 @@
     </md-content>
 
     <h2 class="subheading">Past Events</h2>
-    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
-        <div flex-xs flex-gt-xs="100" layout="column">
+    <md-content class="md-padding" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="70" layout="column">
             <p class="manage-info" ng-if="vm.pastEvents.list.length === 0">You don't have any past events yet.</p>
             <md-card class="event-cards" layout="column" ng-repeat="event in vm.pastEvents.list | orderBy: '-date' | filter:searchText">
                 <md-card-title>
                     <md-card-title-text layout="column" layout-align="center center">
-                        <span class="event-title">{{event.title}}</span>
+                        <span class="my-event-head">{{event.title}}</span>
                         <span>{{event.speaker_name}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <div layout="row" layout-align="space-around">
-                    <md-card-content layout="column" class="event-details">
+                    <md-card-content layout="column" class="event-details" layout-align="center center">
                         <span>Location: {{event.location}}</span>
-                        <!-- </md-card-content>
-                    <md-card-content layout="column" class="event-details"> -->
                         <span>Date: {{event.date | date: 'MM/dd/yyyy'}}</span>
                         <span>Start Time: {{event.start_time}}</span>
                     </md-card-content>

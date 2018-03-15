@@ -139,11 +139,11 @@ md-sidenav.md-locked-open {
 
 .audio-upload {
     width: 50%;
-    font-size: 25px;
+    font-size: 14px;
 }
 
 .event-edit {
-    width: 50%;
+    /* width: 50%; */
     font-size: 14px;
 }
 
@@ -151,7 +151,7 @@ md-sidenav.md-locked-open {
     font-size: 14pt;
     width: 80%;
     text-align: center;
-    margin: 20px auto;
+    margin: 0px auto;
 }
 
 /************ Swipe Styles ************/
@@ -173,14 +173,14 @@ md-sidenav.md-locked-open {
 .swipeDirections {
     text-align: center;
     margin: 0 auto;
-    padding: 80px;
-    font-size: 50px;
+    padding: 40px;
+    font-size: 24px;
 
 }
 .swipeButton {
-    font-size: 60px;
+    font-size: 16px;
     line-height: none;
-    bottom: 110px;
+    bottom: 100px;
 }
 .swipeButtonContainer .md-button{
     height: 100px;
@@ -205,7 +205,7 @@ md-sidenav.md-locked-open {
 .join-input > input {
     border: none;
     border-bottom: 2px solid #F44336;
-    font-size: 60px;
+    font-size: 28px;
     text-align: center;
     background-color: #30303000;
     margin: 30px;
@@ -230,9 +230,9 @@ md-sidenav.md-locked-open {
 }
 
 .join-btn {
-    padding: 30px;
+    padding: 5px;
     border-radius: 5px;
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .joinEventContainer {
@@ -249,25 +249,25 @@ md-sidenav.md-locked-open {
 
 .join-speaker {
     text-decoration: none;
-    font-size: 28pt;
-    padding: 30px;
-    color: #F44346;
+    font-size: 14pt;
+    padding: 10px;
+    color: #F44336;
     margin-top: 100px !important;
 }
 
 .complete-audio:hover {
-    color: #F44346;
+    color: #F44336;
 }
 
 .complete-audio {
-    font-size: 25px;
+    font-size: 14px;
 }
 
 /************ Search Bar ************/
 .search-bar > input {
     border: none;
     border-bottom: 2px solid #F44336;
-    font-size: 35px;
+    font-size: 16px;
     text-align: center;
     background-color: #303030;
     color: #ffffff;
@@ -277,6 +277,7 @@ md-sidenav.md-locked-open {
     display: flex;
     justify-content: center;
     padding-bottom: 25px;
+    margin-top: 10px;
 }
 
 .cmark-card {
@@ -337,25 +338,25 @@ audio {
 /* Dialog Styles */
 md-dialog {
     border: 2px solid #F44336;
-    padding: 40px;
+    /* padding: 20px; */
 }
 
-.event-form {
-    padding: 60px;
+.event-input {
+    margin: 5px;
 }
 
 
 .event-input > .md-input {
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .join-input > .md-placeholder, md-input-container label:not(.md-no-float):not(.md-container-ignore){
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .form-button {
-    font-size: 24pt;
-    padding: 10px;
+    font-size: 14pt;
+    /* padding: 10px; */
 }
 
 .md-datepicker {
@@ -365,6 +366,14 @@ md-dialog {
 .main-link {
     color: #ffffff;
     text-decoration: none;
-    font-size: 18pt;
+    font-size: 14pt;
     padding: 20px;
+}
+
+.cmark-time {
+    font-size: 24pt;
+}
+
+.join-code {
+    border-bottom: 2px solid #F44336;
 }
