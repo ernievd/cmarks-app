@@ -15,7 +15,7 @@ const router = express.Router();
 passport.use(new LinkedinStrategy({
 	clientID: process.env.LINKEDIN_API_KEY,
 	clientSecret: process.env.LINKEDIN_SECRET_KEY,
-	callbackURL: process.env.CALLBACK,
+	callbackURL: process.env.CALLBACK || process.env.HEROKU-LINKEDIN,
 	scope: ['r_basicprofile', 'r_emailaddress'],
 	passReqToCallback: true
 },
