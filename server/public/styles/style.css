@@ -1,3 +1,4 @@
+/************ CMarks Header ************/
 .user-header {
     height: 75px;
     position: fixed;
@@ -7,6 +8,7 @@
     font-size: 48px;
 }
 
+/************ Side Navigation ************/
 .md-sidenav-right {
     position: fixed;
 }
@@ -60,6 +62,7 @@ md-sidenav.md-locked-open {
     right: 30px;
     font-size: 14pt;
 }
+
 /************ Login Styles ************/
 .login-btn {
     text-align: center;
@@ -103,6 +106,7 @@ md-sidenav.md-locked-open {
     padding-left: 30px;
     border-left: 1px solid black;
 }
+
 /************ Manage Events Styles ************/
 .heading {
     text-align: center;
@@ -201,6 +205,7 @@ md-sidenav.md-locked-open {
 .md-toolbar-tools .eventTitle {
     font-size: 48px;
 }
+
 /************ Join Event Styles ************/
 .join-input > input {
     border: none;
@@ -280,6 +285,7 @@ md-sidenav.md-locked-open {
     margin-top: 10px;
 }
 
+/************ Audio ************/
 .cmark-card {
     font-size: 40px !important;
     padding-right: 55px;
@@ -312,13 +318,6 @@ audio {
     font-size: 27pt;
 }
 
-/* .subheading { */
-    /* margin: 0 auto;*/
-    /*text-align: center;*/
-    /*font-size: 36pt;*/
-    /*width: 100%; */
-/*} */
-
 /************ My Events ************/
 .event-cards {
     font-size: 14pt;
@@ -332,8 +331,9 @@ audio {
     font-size: 18pt;
     border-bottom: 2px solid #F44336;
 }
-    /*width: 100%;*/
-/*}*/
+.noEvents {
+    font-size: 18px;
+}
 
 /* Dialog Styles */
 md-dialog {
