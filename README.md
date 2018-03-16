@@ -61,7 +61,9 @@ CREATE TABLE cmarks (
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-16%20at%208.13.53%20AM.png "Landing Page")
+![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-16%20at%208.14.14%20AM.png "Join Event Page")
+![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-16%20at%208.14.46%20AM.png "Manage Events Page")
 
 ### Completed Features
 
