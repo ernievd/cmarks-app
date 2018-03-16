@@ -1,11 +1,16 @@
 /************ CMarks Header ************/
 .user-header {
-    height: 75px;
+    min-height: 75px;
     position: fixed;
 }
 
 .app-heading {
     font-size: 48px;
+}
+
+.title-header {
+    min-height: 75px;
+    position: fixed;
 }
 
 /************ Side Navigation ************/
@@ -146,8 +151,12 @@ md-sidenav.md-locked-open {
     font-size: 14px;
 }
 
+.audio-upload:hover {
+    color: #F44336;
+}
+
 .event-edit {
-    /* width: 50%; */
+    width: 50%;
     font-size: 14px;
 }
 
@@ -203,7 +212,7 @@ md-sidenav.md-locked-open {
     color: rgba(255,255,255,.5);
 }
 .md-toolbar-tools .eventTitle {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 /************ Join Event Styles ************/
@@ -235,7 +244,7 @@ md-sidenav.md-locked-open {
 }
 
 .join-btn {
-    padding: 5px;
+    padding: 5px 25px 5px 25px;
     border-radius: 5px;
     font-size: 18px;
 }
@@ -288,7 +297,7 @@ md-sidenav.md-locked-open {
 /************ Audio ************/
 .cmark-card {
     font-size: 40px !important;
-    /* padding-right: 55px; */
+    display: flex;
 }
 
 audio {
@@ -371,8 +380,7 @@ md-dialog {
 }
 
 .cmark-time {
-    font-size: 24pt;
-    margin-left: 30px;
+    font-size: 12pt;
 }
 
 .join-code {
@@ -381,5 +389,10 @@ md-dialog {
 
 .cmark-comment {
     font-size: 14pt;
-    padding: 20px;
+}
+
+.comment-container {
+    display: flex;
+    justify-content: center;
+
 }
