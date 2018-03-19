@@ -2,16 +2,14 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 	var self = this;
 
 	self.postedTime;
-	self.audienceCmarks = {
-		list: []
-	};
+	self.audienceCmarks = {list: []};
+
 	self.adjustedCmarks = [];
 	self.bufferAmount = 10;
 	self.count = 0;
 	self.displayCmark = [];
-	self.cmarkArr = {
-		list: []
-	};
+	self.cmarkArr = {list: []};
+
 	var noSleep = new NoSleep;
 
 
@@ -19,6 +17,8 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 	self.timestampSwipe = function (event_id) {
 		self.count += 1;
 		var now = moment().format('h:mm:ss a');
+		console.log('now', now);
+		
 		self.postedTime = {
 			now,
 			event_id
@@ -40,20 +40,29 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 	self.getAudienceEvent = function (event_id) {
 		$http.get(`/event/audience/${event_id}`).then(function (response) {
 			self.audienceCmarks.list = response.data;
+			console.log('time', self.audienceCmarks.list);
+			
 			// Convert the time
 			for (i = 0; i < self.audienceCmarks.list.length; i++) {
 				let cmark = moment(self.audienceCmarks.list[i].timestamp, 'h:mm:ss');
+				
 				let mediaRealStartTime = moment(self.audienceCmarks.list[i].start_time, 'h:mm:ss');
+				
+				
 				let cmarkAdjustedTime = moment.duration(cmark.diff(mediaRealStartTime));
+				
+
 				var seconds = moment.duration(cmarkAdjustedTime).seconds();
+				
 				if (seconds < 10) {
 					seconds = '0' + seconds
 				}
-				var minutes = moment.duration(cmarkAdjustedTime).minutes();
+				var minutes = moment.duration(cmarkAdjustedTime).minutes();	
 				if (minutes < 10) {
-					minutes = ' ' + minutes
+					minutes = '0' + minutes
 				}
-				displayFriendly = minutes + ':' + seconds;
+				let displayFriendly = minutes + ':' + seconds;
+				
 				var convertedCmark = moment.duration({
 					seconds: parseInt(seconds),
 					minutes: parseInt(minutes),
@@ -72,17 +81,6 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 			}
 		})
 	}; // End self.getAudienceEvent
-
-	// This is an object I created here just for test purposes
-	//    I assume that I will be passed in an object like this from the database
-	self.testCmarkObject = {
-		mediaStartTime: "12:34:24 pm",
-		mediaFileName: "../assets/Spaghetti.mp3",
-		cmarkArray: ["12:34:44 pm", "12:34:54 pm", "12:35:44 pm"]
-	}; // END self.testCmarkObject
-
-	// self.filestackAudioFile = "https://cdn.filestackcontent.com/CktcazQzRqmuBC9GblZh";
-	// self.localAudioFile = "../assets/Spaghetti.mp3";
 
 	self.playAudioSegment = function (mediaRealStartTime, cmark) {
 		let audio = document.getElementById('sample');
