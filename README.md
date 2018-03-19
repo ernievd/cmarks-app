@@ -64,6 +64,7 @@ CREATE TABLE cmarks (
 ![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-19%20at%207.38.30%20AM.png "Landing Page")
 ![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-19%20at%207.38.41%20AM.png "Join Event Page")
 ![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-19%20at%207.46.14%20AM.png "Manage Events Page")
+![alt text](https://github.com/ernievd/cmarks-app/blob/master/Screen%20Shot%202018-03-19%20at%207.53.48%20AM.png "Events Page")
 
 ### Completed Features
 
