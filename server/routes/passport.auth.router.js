@@ -6,7 +6,7 @@ const router = express.Router();
  * 
  * Checks if the user is logged in
  * 
- * @return status: false - if unsuccessful
+ * assigns status as false if unsuccessful
  */
 router.get('/', function (req, res) {
     if (req.isAuthenticated()) {

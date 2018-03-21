@@ -4,8 +4,8 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     self.upcomingEvents = { list: [] };
     self.pastEvents = { list: [] };
     self.eventInfo = { list: [] };
-    self.wrongCode = {code:'', check: false};
-    self.audienceEvents = { list: []};
+    self.wrongCode = { code: '', check: false };
+    self.audienceEvents = { list: [] };
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -57,7 +57,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     self.addEvent = function (newEvent) {
         //hard code for now, later take in from input on DOM
         console.log('new event: ', newEvent);
-        
+
         $http.post('/event', newEvent).then(function (response) {
             console.log('event added!', response);
             //get events   
@@ -71,63 +71,59 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
 
 
     // edit event
-    self.editEvent = function(editedEvent) {
- 
+    self.editEvent = function (editedEvent) {
+
         console.log('in service with event to edit: ', editedEvent);
-        
-        $http.put(`/event/edit`, editedEvent).then(function(response) {
+
+        $http.put(`/event/edit`, editedEvent).then(function (response) {
             console.log('event edited!', response);
             //get events from database to ensure they are updated on DOM
             self.getUpcomingEvents();
             self.getPastEvents();
         })
-        .catch(function(error) {
-            console.log('error editing event:', error);
-        })
+            .catch(function (error) {
+                console.log('error editing event:', error);
+            })
     }
 
     // get audience member's events
-    self.getAudienceEvents = function() {
-        $http.get('/event/audience/all').then(function(response){
+    self.getAudienceEvents = function () {
+        $http.get('/event/audience/all').then(function (response) {
             // console.log('got events!', response);
             self.audienceEvents.list = response.data;
             console.log('events:', self.audienceEvents.list);
-            
+
         })
     }
 
     //get event info to edit
-    self.getEventInfo = function() {
+    self.getEventInfo = function () {
         $http.get()
     }
 
-    // join event
-    self.joinEvent = function(code){
-        $http.put(`/event/join/${code}`).then(function(response){
-            console.log('got join info', response.data);
+    // join event with a code, displays a message if the code is invalid
+    self.joinEvent = function (code) {
+        $http.put(`/event/join/${code}`).then(function (response) {
             self.eventInfo.list = response.data;
-            if(self.eventInfo.list[0] != undefined){
+            if (self.eventInfo.list[0] != undefined) {
                 self.wrongCode.check = false;
                 $location.path(`/event`);
             } else {
-                console.log('Not correct code', code);
+                console.error('Not correct code', code);
                 self.wrongCode.code = `${code} is not a valid event code, please try again`;
                 self.wrongCode.check = true;
             }
         })
-        .catch(function(error){
-            console.log('Error on get join info', error);
-            
-        })
+            .catch(function (error) {
+                console.error('Error on get join info', error);
+            })
     }
-    
+
     //delete used code
-    self.deleteCode = function(eventId){
-        $http.delete(`/event/delete/${eventId}`).then(function(response){
-            console.log('Code Deleted');
-        })
-        .catch(function(error){
-            console.log('Error on deleting code');
-        })
+    self.deleteCode = function (eventId) {
+        $http.delete(`/event/delete/${eventId}`).then(function (response) { })
+            .catch(function (error) {
+                console.error('Error on deleting code');
+            })
     }
 }]);
