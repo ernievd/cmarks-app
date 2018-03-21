@@ -1,5 +1,10 @@
 myApp.controller('EventController', ['UserService', 'EventService', 'CmarkService', '$location',
 	function (UserService, EventService, CmarkService) {
+
+		// let preventOverscroll = require('prevent-overscroll');
+		// let domElement = document.getElementById('noOverscroll');
+		// let cleanup = preventOverscroll(domElement);
+
 		let self = this;
 
 		self.userService = UserService;

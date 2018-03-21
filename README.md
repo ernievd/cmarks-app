@@ -21,16 +21,12 @@ When attending lectures, conferences, or any event where audience members are le
 
 - Fork and clone
 - ```npm install```
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/en/)
-- PostgreSQL (https://www.postgresql.org/)
-
-
-### Installing
-
-Steps to get the development environment running.
+- Use port number 5000.
+- Get linkedin API key and Secret here (https://www.linkedin.com/developer/apps). 
+- Get google API Key and Secret here (https://console.developers.google.com/apis/credentials).
+- The database name is "cmarks-app" 
+- Use the tables below to set up database. 
+- see ".env-dist" file for specific variable names.
 
 ```sql
 CREATE TABLE users (
@@ -59,6 +55,12 @@ CREATE TABLE cmarks (
 	comment varchar(255) default null
 );
 ```
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/)
+- postgres
+
 
 ## Screen Shot
 
