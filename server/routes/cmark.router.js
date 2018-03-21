@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 const isAuthenticated = require('../modules/isAuthenticated').isAuthenticated;
 
-
+// Posts timestamps to database
 router.post('/swipe', isAuthenticated, (req, res) => {
     let event_id = req.body.event_id;
     let user_id = req.user.id;
@@ -19,6 +19,7 @@ router.post('/swipe', isAuthenticated, (req, res) => {
         })
 });
 
+// posts comment to database.
 router.put('/comment', isAuthenticated, (req, res) => {
     pool.query(`UPDATE cmarks SET comment = $1 WHERE id = $2`, [req.body.comment, req.body.id])
         .then((result) => {
