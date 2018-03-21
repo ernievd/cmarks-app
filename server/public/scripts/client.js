@@ -27,7 +27,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/login', {
       templateUrl: '/views/templates/login.html',
-      controller: 'LoginController as vm',
+      controller: 'JoinEventController as vm',
     })
     .when('/join-event', {
       templateUrl: '/views/templates/join-event.html',
