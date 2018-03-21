@@ -11,7 +11,6 @@ myApp.service('AudioService', ['$http', '$location', 'EventService', function ($
             fromSources: ["local_file_system", "imagesearch", "facebook", "instagram", "dropbox"],
             accept: ["audio/*"]
         }).then(function (response) {
-
             // addAudio handles openPicker response
             self.addAudio(response, event_id, speaker_id);
         });
@@ -28,11 +27,10 @@ myApp.service('AudioService', ['$http', '$location', 'EventService', function ($
 
         $http.put(`/audio/audioUpload/${speaker_id}`, audioPost)
         .then((result) => {
-            console.log('succesful put on audio post', result);
             self.getPastEvents();
         })
         .catch((error) => {
-            console.log('error on put of audio post', error);
+            console.error();
         })
     }
 }]);

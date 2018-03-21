@@ -1,6 +1,7 @@
 myApp.controller('EventController', ['UserService', 'EventService', 'CmarkService', '$location',
 	function (UserService, EventService, CmarkService, $location) {
 		var self = this;
+
 		self.userService = UserService;
 		self.userObject = UserService.userObject;
 		self.eventInfo = EventService.eventInfo.list[0];
@@ -16,16 +17,15 @@ myApp.controller('EventController', ['UserService', 'EventService', 'CmarkServic
 			CmarkService.timestampSwipe(self.eventInfo.id);
 		};
 
-
+		// Confirming if you want to finish an event
 		self.confirmFinish = function () {
 			swal({
-					title: "Are you sure?",
-					buttons: ['No', 'Yes I want to leave.'],
-					dangerMode: true,
-				})
+				title: "Are you sure?",
+				buttons: ['No', 'Yes I want to leave.'],
+				dangerMode: true,
+			})
 				.then((willDelete) => {
 					if (willDelete) {
-						// self.finishEvent();//Disable the noSleep on the mobile device when we leave the page
 						noSleep.disable();
 						window.location.href = '#!/my-events';
 					} else {

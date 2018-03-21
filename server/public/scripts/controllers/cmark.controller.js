@@ -1,6 +1,7 @@
 myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams', '$mdDialog',
 	function (UserService, CmarkService, AudioService, EventService, $location, $routeParams, $mdDialog) {
 		var self = this;
+
 		self.userService = UserService;
 
 		//get all events audience member has attended
@@ -9,18 +10,20 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 
 		self.cmarkService = CmarkService;
 		self.audienceCmarks = CmarkService.audienceCmarks;
+
 		//clear out the adjusted cmarks array on page load to prevent it from appending on each load
 		CmarkService.adjustedCmarks = [];
 		CmarkService.cmarkArr.list = [];
-
 		self.adjustedCmarks = CmarkService.adjustedCmarks;
 		self.cmarkArr = CmarkService.cmarkArr;
-		//get one event
+
 		self.getAudienceEvent = CmarkService.getAudienceEvent;
 
+		
 		self.redirectTo = function (event_id) {
 			$location.path(`/my-events/${event_id}`);
 		};
+
 
 		if ($routeParams.id) {
 			self.getAudienceEvent($routeParams.id);
@@ -28,6 +31,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 			self.getAudienceEvents();
 		}
 
+		// Brings up Modal when pressing add comment icon.
 		self.showAddComment = function (cmark, ev) {
 			$mdDialog.show({
 				controller: AddCommentController,
@@ -45,6 +49,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 			});
 		};
 
+		// Dialog Controller for Adding Comments for CMarks. 
 		function AddCommentController($mdDialog, cmark, CmarkService) {
 			var self = this;
 			self.addComment = CmarkService.addComment;
@@ -65,19 +70,11 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 			};
 
 			self.insertComment = function (singleCmark) {
-
-				// create cmark object with comment
-				
-				console.log('cmark to add:', singleCmark);
-
 				//send cmark to the service to add to db
 				CmarkService.insertComment(singleCmark);
-
 				// close dialog
 				$mdDialog.hide();
 			}
 		}
-
-		self.cmarkService = CmarkService;
 
 	}]);

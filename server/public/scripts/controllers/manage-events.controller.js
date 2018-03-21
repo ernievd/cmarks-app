@@ -1,6 +1,7 @@
 myApp.controller('ManageEventsController', ['UserService', 'EventService', 'AudioService', '$mdDialog',
   function (UserService, EventService, AudioService, $mdDialog) {
     var self = this;
+
     self.userService = UserService;
 
     //EventService variables
@@ -13,9 +14,8 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     self.getPastEvents = EventService.getPastEvents;
     self.completeEvent = EventService.completeEvent;
     
-    // Filestack audio upload function 
+    // Filestack audio upload modal 
     self.openPicker = function (event_id, speaker_id) {
-      console.log('event id', event_id);
       AudioService.openPicker(event_id, speaker_id);
     }
 
