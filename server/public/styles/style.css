@@ -192,8 +192,8 @@ md-backdrop {
 }
 
 #noOverscroll {
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 }
 /************ Cmark Counter ************/
 .countContainer {
