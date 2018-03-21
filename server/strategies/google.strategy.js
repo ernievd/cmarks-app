@@ -5,54 +5,13 @@ var GoogleStrategy = require('passport-google-oauth2').Strategy;
 const express = require('express');
 const pool = require('../modules/pool.js');
 const router = express.Router();
-/** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
-// // serialize the user onto the session
-// passport.serializeUser(function (user, done) {
-//   done(null, user.id);
-// });
-
-// // deserialize the user from the session and provide user object
-// passport.deserializeUser(function (id, done) {
-//   pool.connect(function (err, client, release) {
-//     if (err) {
-//       console.log('connection err ', err);
-//       release();
-//       done(err);
-//     }
-
-//     var user = {};
-
-//     client.query("SELECT * FROM users WHERE id = $1", [id], function (err, result) {
-
-//       // Handle Errors
-//       if (err) {
-//         console.log('query err ', err);
-//         done(err);
-//         release();
-//       }
-
-//       user = result.rows[0];
-//       release();
-
-//       if (!user) {
-//         // user not found
-//         return done(null, false, { message: 'Incorrect credentials.' });
-//       } else {
-//         // user found
-//         console.log('User row ', user);
-//         done(null, user);
-//       }
-
-//     });
-//   });
-// });
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
 passport.use('google', new GoogleStrategy({
   // identify ourselves to Google and request Google user data
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: process.env.CALLBACK_URL,
+  callbackURL: process.env.CALLBACK_URL || process.env.HEROKU_GOOGLE,
 }, function (token, refreshToken, profile, done) {
   // Google has responded
   console.log(profile);

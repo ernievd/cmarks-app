@@ -61,8 +61,8 @@
                 </div>
 
                 <md-card-actions layout="row" layout-align="space-around">
-                    <md-button ng-hide="event.audio_url !== null" class="md-raised audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Upload Audio</md-button>
-                    <md-button ng-show="event.audio_url !== null" class="md-raised audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Edit Audio</md-button>
+                    <md-button ng-hide="event.audio_url !== null" class="audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Upload Audio</md-button>
+                    <md-button ng-show="event.audio_url !== null" class="audio-upload" ng-click="vm.openPicker(event.id, event.speaker_id)">Edit Audio</md-button>
                     <md-button class="event-edit" ng-click="vm.showEditEvent(event, ev)">
                         <i class="material-icons">mode_edit</i>
                     </md-button>
