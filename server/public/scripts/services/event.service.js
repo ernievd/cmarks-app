@@ -1,23 +1,11 @@
 myApp.service('EventService', ['$http', '$location', 'moment', function ($http, $location, moment) {
     var self = this;
 
-    // variables for conrollers
-    self.upcomingEvents = {
-        list: []
-    };
-    self.pastEvents = {
-        list: []
-    };
-    self.eventInfo = {
-        list: []
-    };
-    self.wrongCode = {
-        code: '',
-        check: false
-    };
-    self.audienceEvents = {
-        list: []
-    };
+    self.upcomingEvents = { list: [] };
+    self.pastEvents = { list: [] };
+    self.eventInfo = { list: [] };
+    self.wrongCode = { code: '', check: false };
+    self.audienceEvents = { list: [] };
 
     // get speaker's upcoming events
     self.getUpcomingEvents = function () {
@@ -52,13 +40,13 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     // change an event's status to complete
     self.completeEvent = function (event_id) {
         $http.put(`/event/complete/${event_id}`).then(function (response) {
-                // get past and upcoming events to have most recent info
-                self.getPastEvents();
-                self.getUpcomingEvents();
+            // get past and upcoming events to have most recent info
+            self.getPastEvents();
+            self.getUpcomingEvents();
 
-                // delete join code
-                self.deleteCode(event_id);
-            })
+            // delete join code
+            self.deleteCode(event_id);
+        })
             .catch(function (error) {
                 console.error('Error completing event', error);
             })
@@ -67,9 +55,9 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     // add event
     self.addEvent = function (newEvent) {
         $http.post('/event', newEvent).then(function (response) {
-                //get events to keep DOM updated
-                self.getUpcomingEvents();
-            })
+            //get events to keep DOM updated
+            self.getUpcomingEvents();
+        })
             .catch(function (error) {
                 console.error('Error adding event:', error);
             })
@@ -79,10 +67,10 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     // edit event
     self.editEvent = function (editedEvent) {
         $http.put(`/event/edit`, editedEvent).then(function (response) {
-                //get events from database to ensure they are updated on DOM
-                self.getUpcomingEvents();
-                self.getPastEvents();
-            })
+            //get events from database to ensure they are updated on DOM
+            self.getUpcomingEvents();
+            self.getPastEvents();
+        })
             .catch(function (error) {
                 console.error('Error editing event:', error);
             })
@@ -91,40 +79,36 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     // get all events audience member has attended
     self.getAudienceEvents = function () {
         $http.get('/event/audience/all').then(function (response) {
-                self.audienceEvents.list = response.data;
-            })
+            self.audienceEvents.list = response.data;
+        })
             .catch(function (error) {
                 console.error('Error getting audience events:', error);
             })
     } //end getAudienceEvents
 
-    // join event
+    // join event with a code, displays a message if the code is invalid
     self.joinEvent = function (code) {
         $http.put(`/event/join/${code}`).then(function (response) {
-                console.log('got join info', response.data);
-                self.eventInfo.list = response.data;
-                if (self.eventInfo.list[0] != undefined) {
-                    self.wrongCode.check = false;
-                    $location.path(`/event`);
-                } else {
-                    console.log('Not correct code', code);
-                    self.wrongCode.code = `${code} is not a valid event code, please try again`;
-                    self.wrongCode.check = true;
-                }
-            })
+            self.eventInfo.list = response.data;
+            if (self.eventInfo.list[0] != undefined) {
+                self.wrongCode.check = false;
+                $location.path(`/event`);
+            } else {
+                console.error('Not correct code', code);
+                self.wrongCode.code = `${code} is not a valid event code, please try again`;
+                self.wrongCode.check = true;
+            }
+        })
             .catch(function (error) {
-                console.log('Error on get join info', error);
-
+                console.error('Error on get join info', error);
             })
     }
 
     //delete used code
     self.deleteCode = function (eventId) {
-        $http.delete(`/event/delete/${eventId}`).then(function (response) {
-                console.log('Code Deleted');
-            })
+        $http.delete(`/event/delete/${eventId}`).then(function (response) { })
             .catch(function (error) {
-                console.log('Error on deleting code');
+                console.error('Error on deleting code');
             })
     }
 }]);
