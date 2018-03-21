@@ -33,6 +33,8 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 			})
 	}; // End self.timestampSwipe
 
+
+	
 	self.finishEvent = function () {
 		$location.path('/my-events');
 	}; // End self.finishEvent
