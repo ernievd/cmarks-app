@@ -19,7 +19,7 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 
 		self.getAudienceEvent = CmarkService.getAudienceEvent;
 
-		
+
 		self.redirectTo = function (event_id) {
 			$location.path(`/my-events/${event_id}`);
 		};
@@ -53,13 +53,13 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 		function AddCommentController($mdDialog, cmark, CmarkService) {
 			var self = this;
 			self.addComment = CmarkService.addComment;
-			
-			self.singleCmark = { 
+
+			self.singleCmark = {
 				id: cmark.id,
 				comment: cmark.comment,
 				event_id: cmark.event_id
-			 }
-			 
+			}
+
 
 			self.hide = function () {
 				$mdDialog.hide();
