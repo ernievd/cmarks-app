@@ -5,25 +5,27 @@ When attending lectures, conferences, or any event where audience members are le
 ## Built With
 
 - PostgreSQL 
-- AngularJS 
+- AngularJS
 - Angular Material
 - Node.js 
-- Express 
-- Passport 
-- Javascript 
+- Express.js 
+- Passport.js 
+- JavaScript 
 - Filestack API
-- Google Oauth
-- Linkedin Oauth.
+- Google OAuth
+- LinkedIn OAuth
+- Moment.js
+- Angular Moment Picker
 
 ## Getting Started
 
-- Fork and Clone
+- Fork and clone
 - ```npm install```
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- postgres
+- PostgreSQL (https://www.postgresql.org/)
 
 
 ### Installing
@@ -81,10 +83,7 @@ High level list of items completed.
 - [x] “My Events” view (display audience member’s events)
 - [x] “Listen with CMarks” view - audio loaded into browser’s built-in player
 - [x] Audience member’s saved CMarks listed on “Listen with CMarks” view, plays audio clip
-
-
-
-
+- [x] Audience members can comment on individual CMarks 
 
 ### Next Steps
 
@@ -92,6 +91,7 @@ Features that you would like to add at some point in the future.
 
 - [ ] Email notifications to notify users when audio has been uploaded to a specific event.
 - [ ] Responsive and working on safari mobile. 
+- [ ] Aggregate CMarks made by audience members at events and provide data to speakers for insight on their performance.
 
 ## Authors
 
