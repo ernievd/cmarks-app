@@ -190,6 +190,10 @@ md-backdrop {
 .swipeScreen {
     height: 100vh;
 }
+
+#noOverscroll {
+    overscroll-behavior: none;
+}
 /************ Cmark Counter ************/
 .countContainer {
     line-height: 50px;
