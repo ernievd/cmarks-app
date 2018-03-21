@@ -1,7 +1,6 @@
 /************ CMarks Header ************/
 .user-header {
     min-height: 75px;
-    position: fixed;
 }
 
 .app-heading {
@@ -30,14 +29,6 @@ md-backdrop {
     border-bottom: 1px solid #F44336;
     text-align: center;
     padding: 20px;
-}
-
-#first-divider {
-    margin-top: 100px;
-}
-
-#add-event {
-    margin-top: 90px;
 }
 
 .nav-link > a {
@@ -247,15 +238,20 @@ md-backdrop {
     font-size: 18px;
 }
 
+.joinForm {
+    text-align: center;
+}
+
 .joinEventContainer {
     height: 100vh;
-    text-align: center;
+    /* text-align: center; */
     margin: auto 0;
     background-image: url('../assets/antenna-502680-unsplash.jpg'); 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
+    top: 0;
 }
 
 .join-speaker {
@@ -264,6 +260,7 @@ md-backdrop {
     padding: 10px;
     color: rgb(255, 255, 255);
     margin-top: 100px !important;
+    text-align: center;
 }
 
 .complete-audio:hover {
