@@ -1,6 +1,8 @@
 const express = require('express');
 
-
+/**
+ * Checks Authentication of users and speakers
+ */
 
 let isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
