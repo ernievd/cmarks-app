@@ -1,6 +1,6 @@
 <md-dialog flex-xs flex-gt-xs="60" layout-padding>
     <h2 class="heading" layout-align="center center">Edit Event</h2>
-    <form class="event-form">  
+    <form class="event-form">
         <md-input-container class="event-input">
             <label>Event Title</label>
             <input ng-model="vm.eventToEdit.title" type="text">
@@ -12,26 +12,20 @@
         <md-input-container class="event-input">
             <label>Location</label>
             <input ng-model="vm.eventToEdit.location" type="text">
-        </md-input-container> 
+        </md-input-container>
         <md-input-container class="md-icon-float md-block event-input">
-                <label>Select new date...</label>
-                <md-icon md-font-library="material-icons">today</md-icon>
-                <input moment-picker="ctrl.stringDate"
-                        locale="en"
-                        format="YYYY-MM-DD"
-                        ng-model="vm.eventToEdit.date"
-                        ng-model-options="{ updateOn: 'blur' }"
-                        placeholder="{{vm.eventToEdit.date}}">
+            <label>Select new date...</label>
+            <md-icon md-font-library="material-icons">today</md-icon>
+            <input moment-picker="ctrl.stringDate" locale="en" format="YYYY-MM-DD" ng-model="vm.eventToEdit.date" ng-model-options="{ updateOn: 'blur' }"
+                placeholder="{{vm.eventToEdit.date}}">
         </md-input-container>
         <md-input-container class="md-icon-float md-block event-input">
             <label>Adjust start time...(hh:mm:ss)</label>
-            <input  type="text"
-                    ng-model="vm.eventToEdit.start_time"
-                    placeholder="{{vm.eventToEdit.start_time}}">
+            <input type="text" ng-model="vm.eventToEdit.start_time" placeholder="{{vm.eventToEdit.start_time}}">
         </md-input-container>
         <div class="form-action" layout="row" layout-align="end center">
             <md-button flex class="form-button" ng-click="vm.hide()">Cancel</md-button>
             <md-button flex class="form-button md-primary md-raised" ng-click="vm.editEvent(vm.eventToEdit)">Update</md-button>
         </div>
-    </form>         
+    </form>
 </md-dialog>

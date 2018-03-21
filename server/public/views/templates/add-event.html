@@ -16,11 +16,7 @@
         <md-input-container class="md-icon-float md-block event-input">
             <label>Select a date...</label>
             <md-icon md-font-library="material-icons">today</md-icon>
-            <input moment-picker="ctrl.stringDate"
-                    locale="en"
-                    format="YYYY-MM-DD"
-                    ng-model="newEvent.date"
-                    ng-model-options="{ updateOn: 'blur' }">
+            <input moment-picker="ctrl.stringDate" locale="en" format="YYYY-MM-DD" ng-model="newEvent.date" ng-model-options="{ updateOn: 'blur' }">
         </md-input-container>
         <md-input-container class="event-input">
             <label>Enter a time...</label>
