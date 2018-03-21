@@ -1,6 +1,6 @@
 myApp.controller('EventController', ['UserService', 'EventService', 'CmarkService', '$location',
-	function (UserService, EventService, CmarkService, $location) {
-		var self = this;
+	function (UserService, EventService, CmarkService) {
+		let self = this;
 
 		self.userService = UserService;
 		self.userObject = UserService.userObject;
@@ -8,7 +8,7 @@ myApp.controller('EventController', ['UserService', 'EventService', 'CmarkServic
 		self.count = CmarkService.count;
 
 		//Disable the device from sleeping
-		var noSleep = new NoSleep();
+		let noSleep = new NoSleep();
 		noSleep.enable();
 
 		// Allows user to use swipe functionality on mobile (difficult on desktop)
