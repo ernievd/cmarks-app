@@ -1,13 +1,10 @@
 myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioService', 'EventService', '$location', '$routeParams', '$mdDialog',
 	function (UserService, CmarkService, AudioService, EventService, $location, $routeParams, $mdDialog) {
-		var self = this;
-
+		let self = this;
 		self.userService = UserService;
-
 		//get all events audience member has attended
 		self.getAudienceEvents = EventService.getAudienceEvents;
 		self.audienceEvents = EventService.audienceEvents;
-
 		self.cmarkService = CmarkService;
 		self.audienceCmarks = CmarkService.audienceCmarks;
 
@@ -16,14 +13,11 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 		CmarkService.cmarkArr.list = [];
 		self.adjustedCmarks = CmarkService.adjustedCmarks;
 		self.cmarkArr = CmarkService.cmarkArr;
-
 		self.getAudienceEvent = CmarkService.getAudienceEvent;
-
 
 		self.redirectTo = function (event_id) {
 			$location.path(`/my-events/${event_id}`);
 		};
-
 
 		if ($routeParams.id) {
 			self.getAudienceEvent($routeParams.id);
@@ -51,14 +45,14 @@ myApp.controller('CmarkController', ['UserService', 'CmarkService', 'AudioServic
 
 		// Dialog Controller for Adding Comments for CMarks. 
 		function AddCommentController($mdDialog, cmark, CmarkService) {
-			var self = this;
+			let self = this;
 			self.addComment = CmarkService.addComment;
 
 			self.singleCmark = {
 				id: cmark.id,
 				comment: cmark.comment,
 				event_id: cmark.event_id
-			}
+			};
 
 
 			self.hide = function () {
