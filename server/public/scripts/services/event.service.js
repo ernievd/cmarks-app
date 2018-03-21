@@ -1,4 +1,4 @@
-myApp.service('EventService', ['$http', '$location', 'moment', function ($http, $location, moment) {
+myApp.service('EventService', ['$http', '$location', 'moment', function ($http, $location) {
     var self = this;
 
     self.upcomingEvents = { list: [] };
@@ -17,7 +17,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error getting upcoming events:', error);
             })
-    } // end getUpcomingEvents
+    }; // end getUpcomingEvents
 
     //on load
     self.getUpcomingEvents();
@@ -32,7 +32,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error getting past events:', error);
             })
-    } // end getPastEvents
+    }; // end getPastEvents
 
     //on load
     self.getPastEvents();
@@ -50,7 +50,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error completing event', error);
             })
-    } //end completeEvent
+    }; //end completeEvent
 
     // add event
     self.addEvent = function (newEvent) {
@@ -61,7 +61,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error adding event:', error);
             })
-    } // end addEvent
+    }; // end addEvent
 
 
     // edit event
@@ -74,7 +74,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error editing event:', error);
             })
-    } //end editEvent
+    }; //end editEvent
 
     // get all events audience member has attended
     self.getAudienceEvents = function () {
@@ -84,7 +84,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error getting audience events:', error);
             })
-    } //end getAudienceEvents
+    }; //end getAudienceEvents
 
     // join event with a code, displays a message if the code is invalid
     self.joinEvent = function (code) {
@@ -102,7 +102,7 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
             .catch(function (error) {
                 console.error('Error on get join info', error);
             })
-    }
+    };
 
     //delete used code
     self.deleteCode = function (eventId) {
