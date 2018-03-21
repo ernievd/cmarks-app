@@ -24,6 +24,7 @@ When attending lectures, conferences, or any event where audience members are le
 - Get google API Key and Secret here (https://console.developers.google.com/apis/credentials).
 - The database name is "cmarks-app" 
 - Use the tables below to set up database. 
+- see ".env-dist" file for specific variable names.
 
 ```sql
 CREATE TABLE users (
