@@ -22,14 +22,6 @@ md-backdrop {
     position: fixed;
 }
 
-md-sidenav,
-md-sidenav.md-locked-open-add-active,
-md-sidenav.md-closed.md-locked-open-add-active,
-md-sidenav.md-locked-open {
-  /* width: 200%; 
-  min-width: 600px;  */
-}
-
 .nav-divider {
     margin: 0 auto;
     width: 80%;
@@ -263,7 +255,6 @@ md-sidenav.md-locked-open {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
-    overflow: scroll;
 }
 
 .join-speaker {
