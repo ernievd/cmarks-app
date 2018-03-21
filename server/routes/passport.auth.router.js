@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+/**
+ * GET /auth
+ * 
+ * Checks if the user is logged in
+ * 
+ * assigns status as false if unsuccessful
+ */
 router.get('/', function (req, res) {
     if (req.isAuthenticated()) {
         res.json({ status: true, name: req.user.displayName });
