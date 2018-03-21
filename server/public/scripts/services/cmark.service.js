@@ -1,31 +1,24 @@
-myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', function ($http, $location, moment, $routeParams) {
-	
+myApp.service('CmarkService', ['$http', '$location', 'moment', function ($http, $location, moment) {
+
 	let self = this;
-
 	self.postedTime;
-	self.audienceCmarks = { list: [] };
-
+	self.audienceCmarks = {list: []};
 	self.adjustedCmarks = [];
 	self.bufferAmount = 10;
 	self.count = 0;
 	self.displayCmark = [];
-	self.cmarkArr = { list: [] };
-
+	self.cmarkArr = {list: []};
 	let noSleep = new NoSleep;
-
 
 	// getting time upon swipe and posting to the database
 	self.timestampSwipe = function (event_id) {
-
 		self.count += 1;
-
 		let now = moment().format('h:mm:ss a');
-
 		self.postedTime = {
 			now,
 			event_id
 		};
-		
+
 		// posting to time to database.
 		$http.post(`/cmark/swipe/`, self.postedTime)
 			.then(function (response) {
@@ -37,38 +30,30 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 	}; // End self.timestampSwipe
 
 
-
 	self.finishEvent = function () {
 		$location.path('/my-events');
 	}; // End self.finishEvent
 
+	// get the list of cmarks for the event passed in and make the calculations to properly adjust the times
 	self.getAudienceEvent = function (event_id) {
 		$http.get(`/event/audience/${event_id}`).then(function (response) {
 			self.audienceCmarks.list = response.data;
-			console.log('time', self.audienceCmarks.list);
 
-			// Convert the time
+			// convert the time
 			for (i = 0; i < self.audienceCmarks.list.length; i++) {
 				let cmark = moment(self.audienceCmarks.list[i].timestamp, 'h:mm:ss');
-
 				let mediaRealStartTime = moment(self.audienceCmarks.list[i].start_time, 'h:mm:ss');
-
-
 				let cmarkAdjustedTime = moment.duration(cmark.diff(mediaRealStartTime));
-
-
-				var seconds = moment.duration(cmarkAdjustedTime).seconds();
-
+				let seconds = moment.duration(cmarkAdjustedTime).seconds();
 				if (seconds < 10) {
 					seconds = '0' + seconds
 				}
-				var minutes = moment.duration(cmarkAdjustedTime).minutes();
+				let minutes = moment.duration(cmarkAdjustedTime).minutes();
 				if (minutes < 10) {
 					minutes = '0' + minutes
 				}
 				let displayFriendly = minutes + ':' + seconds;
-
-				var convertedCmark = moment.duration({
+				let convertedCmark = moment.duration({
 					seconds: parseInt(seconds),
 					minutes: parseInt(minutes),
 				});
@@ -79,7 +64,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 						id: self.audienceCmarks.list[i].id,
 						comment: self.audienceCmarks.list[i].comment,
 						event_id: self.audienceCmarks.list[i].event_id
-					}
+					};
 					self.adjustedCmarks.push(cmarkAdjustedTime);
 					self.cmarkArr.list.push(cmarkData);
 				}
@@ -108,7 +93,7 @@ myApp.service('CmarkService', ['$http', '$location', 'moment', '$routeParams', f
 		segmentEnd = playEndTime;
 		audio.currentTime = playStartTime;
 		audio.play();
-	} //End self.playSegment
+	}; //End self.playSegment
 
 	self.insertComment = function (singleCmark) {
 		$http.put(`/cmark/comment`, singleCmark).then((response) => {
