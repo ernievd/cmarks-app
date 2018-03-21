@@ -1,6 +1,7 @@
 myApp.service('EventService', ['$http', '$location', 'moment', function ($http, $location, moment) {
     var self = this;
 
+    // variables for conrollers
     self.upcomingEvents = { list: [] };
     self.pastEvents = { list: [] };
     self.eventInfo = { list: [] };
@@ -11,11 +12,11 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
     self.getUpcomingEvents = function () {
         $http.get(`/event/upcoming/`)
             .then(function (response) {
+                //set the response to the upcomingEvents list
                 self.upcomingEvents.list = response.data;
-                console.log(self.upcomingEvents.list);
             })
             .catch(function (error) {
-                console.log('error getting events:', error);
+                console.error('Error getting upcoming events:', error);
             })
     } // end getUpcomingEvents
 
@@ -24,14 +25,13 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
 
     // get speaker's past events
     self.getPastEvents = function () {
-        //hard code for now, later take in speaker id
         $http.get(`/event/past/`)
             .then(function (response) {
+                //set response from server to pastEvents list
                 self.pastEvents.list = response.data;
-                console.log(self.pastEvents.list);
             })
             .catch(function (error) {
-                console.log('error getting events:', error);
+                console.error('Error getting past events:', error);
             })
     } // end getPastEvents
 
@@ -40,24 +40,21 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
 
     // change an event's status to complete
     self.completeEvent = function (event_id) {
-        console.log('event id:', event_id);
-
         $http.put(`/event/complete/${event_id}`).then(function (response) {
-            console.log('event completed!');
+            // get past and upcoming events to have most recent info
             self.getPastEvents();
             self.getUpcomingEvents();
+
+            // delete join code
             self.deleteCode(event_id);
         })
             .catch(function (error) {
-                console.log('error completing event');
+                console.error('Error completing event', error);
             })
     } //end completeEvent
 
     // add event
-    self.addEvent = function (newEvent) {
-        //hard code for now, later take in from input on DOM
-        console.log('new event: ', newEvent);
-        
+    self.addEvent = function (newEvent) {        
         $http.post('/event', newEvent).then(function (response) {
             console.log('event added!', response);
             //get events   
@@ -71,35 +68,27 @@ myApp.service('EventService', ['$http', '$location', 'moment', function ($http, 
 
 
     // edit event
-    self.editEvent = function(editedEvent) {
- 
-        console.log('in service with event to edit: ', editedEvent);
-        
+    self.editEvent = function(editedEvent) {        
         $http.put(`/event/edit`, editedEvent).then(function(response) {
-            console.log('event edited!', response);
             //get events from database to ensure they are updated on DOM
             self.getUpcomingEvents();
             self.getPastEvents();
         })
         .catch(function(error) {
-            console.log('error editing event:', error);
+            console.error('Error editing event:', error);
         })
-    }
+    } //end editEvent
 
-    // get audience member's events
+    // get events audience member has attended
     self.getAudienceEvents = function() {
         $http.get('/event/audience/all').then(function(response){
-            // console.log('got events!', response);
             self.audienceEvents.list = response.data;
             console.log('events:', self.audienceEvents.list);
-            
         })
-    }
-
-    //get event info to edit
-    self.getEventInfo = function() {
-        $http.get()
-    }
+        .catch(function(error){
+            console.error('Error getting audience events:', error);
+        })
+    } //end getAudienceEvents
 
     // join event
     self.joinEvent = function(code){
