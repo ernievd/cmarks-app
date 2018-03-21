@@ -1,26 +1,25 @@
 myApp.controller('ManageEventsController', ['UserService', 'EventService', 'AudioService', '$mdDialog',
   function (UserService, EventService, AudioService, $mdDialog) {
     var self = this;
+
     self.userService = UserService;
+
     //EventService variables
     self.upcomingEvents = EventService.upcomingEvents;
     self.pastEvents = EventService.pastEvents;
-    console.log('pastEvents', self.pastEvents);
     self.eventToEdit = { title: 'Hello'};
     
     //EventService functions
     self.getUpcomingEvents = EventService.getUpcomingEvents;
     self.getPastEvents = EventService.getPastEvents;
     self.completeEvent = EventService.completeEvent;
-    console.log('completeEvent', self.completeEvent);
     
-    // Filestack audio upload function 
+    // Filestack audio upload modal 
     self.openPicker = function (event_id, speaker_id) {
-      console.log('event id', event_id);
       AudioService.openPicker(event_id, speaker_id);
     }
 
-
+    // On click pops up modal to add and event. 
     self.showAddEvent = function(ev) {
       $mdDialog.show({
         controller: AddEventController,
@@ -34,7 +33,7 @@ myApp.controller('ManageEventsController', ['UserService', 'EventService', 'Audi
     };
 
 
-  
+    // Controller for adding events modal
     function AddEventController($mdDialog, EventService) {
       var self = this;
       self.addEvent = EventService.addEvent;

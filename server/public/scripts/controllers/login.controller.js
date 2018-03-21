@@ -1,10 +1,12 @@
 myApp.controller('LoginController', ['$http', '$location', 'UserService', function($http, $location, UserService) {
     console.log('LoginController created');
     var self = this;
+
     self.user = {
       username: '',
       password: ''
     };
+    
     self.message = '';
 
     self.login = function () {
