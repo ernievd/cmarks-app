@@ -3,11 +3,6 @@ const router = express.Router();
 const linkedinStrategy = require('../strategies/linkedin.strategy');
 
 
-// router.get('/', function (req, res) {
-// 	console.log('req.user', req.user);
-// 	res.send(req.user);
-// });
-
 // GET /auth/linkedin
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Linkedin authentication will involve

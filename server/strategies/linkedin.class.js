@@ -11,7 +11,7 @@ function Strategy(options, verify) {
 	options.profileFields = options.profileFields || null;
 
 	//By default we want data in JSON
-	options.customHeaders = options.customHeaders || {"x-li-format":"json"};
+	options.customHeaders = options.customHeaders || { "x-li-format": "json" };
 
 	OAuth2Strategy.call(this, options, verify);
 	this.name = 'linkedin';
@@ -20,7 +20,7 @@ function Strategy(options, verify) {
 
 util.inherits(Strategy, OAuth2Strategy);
 
-Strategy.prototype.userProfile = function(accessToken, done) {
+Strategy.prototype.userProfile = function (accessToken, done) {
 
 	//LinkedIn uses a custom name for the access_token parameter
 	this._oauth2.setAccessTokenName("oauth2_access_token");
@@ -37,7 +37,7 @@ Strategy.prototype.userProfile = function(accessToken, done) {
 			profile.displayName = json.formattedName;
 			profile.name = {
 				familyName: json.lastName,
-				givenName:  json.firstName
+				givenName: json.firstName
 			};
 			profile.emails = [{ value: json.emailAddress }];
 			profile.photos = [];
@@ -48,7 +48,7 @@ Strategy.prototype.userProfile = function(accessToken, done) {
 			profile._json = json;
 
 			done(null, profile);
-		} catch(e) {
+		} catch (e) {
 			done(e);
 		}
 	});
@@ -57,10 +57,10 @@ Strategy.prototype.userProfile = function(accessToken, done) {
 
 
 
-Strategy.prototype._convertScopeToUserProfileFields = function(scope, profileFields) {
+Strategy.prototype._convertScopeToUserProfileFields = function (scope, profileFields) {
 	var self = this;
 	var map = {
-		'r_basicprofile':   [
+		'r_basicprofile': [
 			'id',
 			'first-name',
 			'last-name',
@@ -86,8 +86,8 @@ Strategy.prototype._convertScopeToUserProfileFields = function(scope, profileFie
 			'api-standard-profile-request:(headers,url)',
 			'public-profile-url'
 		],
-		'r_emailaddress':   ['email-address'],
-		'r_fullprofile':   [
+		'r_emailaddress': ['email-address'],
+		'r_fullprofile': [
 			'last-modified-timestamp',
 			'proposal-comments',
 			'associations',
@@ -118,13 +118,12 @@ Strategy.prototype._convertScopeToUserProfileFields = function(scope, profileFie
 	var fields = [];
 
 	// To obtain pre-defined field mappings
-	if(Array.isArray(scope) && profileFields === null)
-	{
-		if(scope.indexOf('r_basicprofile') === -1){
+	if (Array.isArray(scope) && profileFields === null) {
+		if (scope.indexOf('r_basicprofile') === -1) {
 			scope.unshift('r_basicprofile');
 		}
 
-		scope.forEach(function(f) {
+		scope.forEach(function (f) {
 			if (typeof map[f] === 'undefined') return;
 
 			if (Array.isArray(map[f])) {
@@ -133,7 +132,7 @@ Strategy.prototype._convertScopeToUserProfileFields = function(scope, profileFie
 				fields.push(map[f]);
 			}
 		});
-	}else if (Array.isArray(profileFields)){
+	} else if (Array.isArray(profileFields)) {
 		fields = profileFields;
 	}
 
@@ -142,7 +141,7 @@ Strategy.prototype._convertScopeToUserProfileFields = function(scope, profileFie
 
 
 
-Strategy.prototype.authorizationParams = function(options) {
+Strategy.prototype.authorizationParams = function (options) {
 
 	var params = {};
 

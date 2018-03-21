@@ -6,8 +6,7 @@ When attending lectures, conferences, or any event where audience members are le
 
 - PostgreSQL 
 - AngularJS 
-- Angular 
-- Material
+- Angular Material
 - Node.js 
 - Express 
 - Passport 

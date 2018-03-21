@@ -15,8 +15,8 @@
 		</div>
 		<md-content class="md-padding" layout="row" layout-align="center center">
 			<div flex-xs flex-gt-xs="150" layout="column">
-					<h2 class="subheading">Play CMarks</h2>
-					<p class="manage-info">Click on a CMark below to play an audio clip surrounding your swipe.</p>
+				<h2 class="subheading">Play CMarks</h2>
+				<p class="manage-info">Click on a CMark below to play an audio clip surrounding your swipe.</p>
 				<md-card class="event-cards" layout="column" ng-repeat="cmark in vm.cmarkArr.list | orderBy : 'displayCmark'">
 					<md-card-actions layout="row" layout-align="space-between">
 						<md-button layout="column" layout-align="center center" class="cmark-card" ng-click="vm.cmarkService.playAudioSegment(vm.cmarkService.audienceCmarks.list[0].start_time, cmark.cmarkAdjustedTime)">
