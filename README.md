@@ -85,6 +85,11 @@ High level list of items completed.
 - [x] Audience member’s saved CMarks listed on “Listen with CMarks” view, plays audio clip
 - [x] Audience members can comment on individual CMarks 
 
+### Known Bugs
+
+- [ ] iOS overscroll behavior causing a bug when swiping to save a CMark.
+- [ ] Angular Moment Picker (datepicker) does not open in the correct spot after scrolling through the page.
+
 ### Next Steps
 
 Features that you would like to add at some point in the future.
@@ -92,6 +97,7 @@ Features that you would like to add at some point in the future.
 - [ ] Email notifications to notify users when audio has been uploaded to a specific event.
 - [ ] Responsive and working on safari mobile. 
 - [ ] Aggregate CMarks made by audience members at events and provide data to speakers for insight on their performance.
+- [ ] Add ability to record audio within the application.
 
 ## Authors
 
