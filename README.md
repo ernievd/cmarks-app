@@ -22,11 +22,17 @@ When attending lectures, conferences, or any event where audience members are le
 - Fork and clone
 - ```npm install```
 - Use port number 5000.
-- Get linkedin API key and Secret here (https://www.linkedin.com/developer/apps). 
-- Get google API Key and Secret here (https://console.developers.google.com/apis/credentials).
+- Get linkedin Client ID and Secret here (https://www.linkedin.com/developer/apps). 
+	- Create Credentials -> OAuth client ID
+	- Add these to the .env-dist
+- Get google OAuth Client ID and Secret here (https://console.developers.google.com/apis/credentials).
+	- Add these to the .env-dist file
 - The database name is "cmarks-app" 
+- see ".env-dist" file for specific variable names.de3
+	- Change name of .env-dist to just .env when finished adding the specified keys
 - Use the tables below to set up database. 
-- see ".env-dist" file for specific variable names.
+	- After database set up run the command `postgres` to start your database
+- `npm start` to run the app
 
 ```sql
 CREATE TABLE users (
@@ -60,6 +66,10 @@ CREATE TABLE cmarks (
 
 - [Node.js](https://nodejs.org/en/)
 - postgres
+
+### Deployment
+
+We have deployed to Heroku which is pretty painless and easy. With heroku and any deployment you must add the contents of the .env file to some sort of config.
 
 
 ## Screen Shot
@@ -108,4 +118,4 @@ Features that you would like to add at some point in the future.
 
 ## Acknowledgments
 
-* Thank you to Chris Carlson, Kris Szfranski, Dane Smith and Luke Schlangen.
+* Thank you to Chris Carlson, Kris Szafranski, Dane Smith and Luke Schlangen.

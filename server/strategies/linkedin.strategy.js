@@ -13,7 +13,7 @@ const router = express.Router();
 //   profile), and invoke a callback with a user object.
 
 passport.use(new LinkedinStrategy({
-	clientID: process.env.LINKEDIN_API_KEY,
+	clientID: process.env.LINKEDIN_CLIENT_ID,
 	clientSecret: process.env.LINKEDIN_SECRET_KEY,
 	callbackURL: process.env.CALLBACK || process.env.HEROKU_LINKEDIN,
 	scope: ['r_basicprofile', 'r_emailaddress'],
