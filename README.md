@@ -27,10 +27,10 @@ When attending lectures, conferences, or any event where audience members are le
 	- Add these to the .env-dist
 - Get google OAuth Client ID and Secret here (https://console.developers.google.com/apis/credentials).
 	- Add these to the .env-dist file
-- The database name is "cmarks-app" 
-- see ".env-dist" file for specific variable names.de3
+- see ".env-dist" file for specific variable names
 	- Change name of .env-dist to just .env when finished adding the specified keys
-- Use the tables below to set up database. 
+- The database name is "cmarks-app" 
+- Use the tables below to set up database
 	- After database set up run the command `postgres` to start your database
 - `npm start` to run the app
 
@@ -65,7 +65,8 @@ CREATE TABLE cmarks (
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- postgres
+- postgreSQL
+- [Postico](https://eggerapps.at/postico/)
 
 ### Deployment
 
