@@ -108,4 +108,4 @@ Features that you would like to add at some point in the future.
 
 ## Acknowledgments
 
-* Thank you to Chris Carlson, Kris Szfranski, Dane Smith and Luke Schlangen.
+* Thank you to Chris Carlson, Kris Szafranski, Dane Smith and Luke Schlangen.
